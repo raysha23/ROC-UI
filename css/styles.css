@@ -1,0 +1,338 @@
+@font-face {
+    font-family: 'Reaver';
+    src: url('Reaver-Regular.woff') format('woff');
+    
+}
+
+@font-face {
+    font-family: 'Radiance';
+    src: url('fonts/Radiance.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.rpg-container {
+    width: 1400px;
+    height: 620px;
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+   
+    color: #e2e8ef;
+
+    background: #202D38;   /* ✅ YOUR EXACT COLOR */
+
+
+    border: 1px solid #d9f0ff;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+
+.stats-master {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+      background: #141c23;
+    border:  #202D38;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+
+.stats-top {
+    display: flex;
+    gap: 6px;
+}
+
+/* Make top columns stretch */
+.stats-top .column {
+    flex: 1;           /* each column stretches equally */
+    min-width: 0;      /* prevent overflow */
+}
+
+/* COLUMN STYLE */
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+     background: #202D38;
+    border: 1px solid #6aa9ff;
+    padding: 6px;
+}
+
+
+/* HEADER */
+.column-header {
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9fd7ff;
+    font-size: 18px;
+    border-bottom: 1px solid #6aa9ff;
+}
+
+/* ROW */
+.table-row {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* LABEL */
+.label {
+    width: 130px;   /* increased */
+    color: #8fd3ff;
+    white-space: nowrap; /* prevent breaking */
+}
+
+
+/* INPUT */
+input {
+    width: 60px;
+    height: 24px;
+    background: #d9f0ff;
+    border: 2px solid #6aa9ff;
+    border-radius: 3px;
+    text-align: center;
+    font-family: 'Reaver';
+}
+
+/* VALUE */
+.value {
+    width: 40px;
+    text-align: center;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid #6aa9ff;
+    color: #cfe9ff;
+}
+
+/* BUTTONS */
+.plus-btn,
+.symbol-btn {
+    width: 28px;
+    height: 24px;
+     background: #141c23;
+    border: 2px solid #7fc4ff;
+    color: #e6f4ff;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 'Reaver';
+    text-align: center;
+}
+
+/* ================= STATUS ================= */
+.status-wrapper {
+      background: #141c23;
+    border: 1px solid #6aa9ff;
+    padding: 6px;
+}
+
+.status-title {
+    text-align: center;
+    font-size: 20px;
+    color: #9fd7ff;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #6aa9ff;
+    padding-bottom: 4px;
+}
+
+.status-columns {
+    display: flex;
+    gap: 6px;
+}
+
+/* FULL WIDTH STATUS ROWS (UNDER CRITICAL + ASPD) */
+.status-full {
+    margin-top: 6px;
+       background: #202D38;
+    border: 1px solid #6aa9ff;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Make Hit Rate, Critical Rate, and Attack Speed boxes longer */
+.status-columns .column:first-child .table-row:nth-child(3) input,   /* Hit Rate */
+.status-columns .column:first-child .table-row:nth-child(4) input,   /* Critical Rate */
+.status-columns .column:last-child .table-row:nth-child(4) input {   /* Attack Speed */
+    width: 170px;
+}
+
+
+.status-full .table-row:nth-child(1) input,                          /* Status Point */
+.status-full .table-row:nth-child(2) input {                         /* Guild */
+    width: 528px;
+}
+
+
+
+/* Center Job Bonus + Pts Req contents in each row */
+.stats-top .column:nth-child(2) .table-row,   /* Job Bonus */
+.stats-top .column:nth-child(3) .table-row {  /* Pts Req */
+    display: flex;
+    justify-content: center;   /* center horizontally */
+    align-items: center;       /* center vertically */
+    gap: 6px;                  /* spacing between button/value */
+}
+
+/* Make sure Job Bonus value box and plus button are centered and same height */
+.stats-top .column:nth-child(2) .value,
+.stats-top .column:nth-child(3) .value,
+.stats-top .column:nth-child(2) .plus-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Change ONLY Status Information input box colors */
+.status-wrapper input {
+    background: rgba(0,0,0,0.35);
+    border: 1px solid #6aa9ff;
+    color: #cfe9ff;
+}
+
+/* Make Job Bonus and Pts Req boxes have curved corners like inputs */
+.value {
+    border-radius: 3px;
+}
+
+.character-gif {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 60px;
+    margin-left: 105px; /* push GIF slightly to the right */
+}
+
+/* GIF Styling */
+.character-gif img {
+    width: 400px;   /* adjust size as needed */
+    height: auto;
+   
+    object-fit: cover;
+}
+
+/* ===== ABILITIES SECTION ===== */
+
+.abilities-section {
+    margin-top: 30px;
+    margin-left: 105px; /* align with GIF */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.abilities-text {
+    font-family: 'Reaver';
+    font-size: 16px;
+    color: #9fd7ff;
+    letter-spacing: 1px;
+}
+
+.abilities-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Left innate icons */
+.innate-left {
+    display: flex;
+    gap: 8px;
+}
+
+/* Right ability icons */
+.innate-right {
+    display: flex;
+    gap: 8px;
+}
+
+/* Icon sizing */
+.innate-left img,
+.innate-right img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+
+
+/* ================= MATCH JOB BONUS & PTS REQ TO STATUS STYLE ================= */
+
+/* Make font identical to inputs */
+.value {
+    font-family: 'Reaver';
+    font-size: 14px;      /* Match input text size */
+    height: 24px;         /* Same height as input */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0,0,0,0.35);
+    border: 1px solid #6aa9ff;
+    color: #cfe9ff;
+
+    border-radius: 3px;
+}
+
+/* Add same hover effect as status inputs */
+.value:hover {
+    border-color: #9fd7ff;
+    box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
+}
+
+
+/* ================= STATUS INPUT HOVER LIKE .value ================= */
+
+.status-wrapper input {
+    transition: all 0.2s ease-in-out;
+}
+
+.status-wrapper input:hover {
+    border-color: #9fd7ff;
+    box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
+}
+
+/* ================= HOME BACKGROUND (NO CROPPING) ================= */
+
+body {
+    margin: 0;
+    font-family: 'Reaver', serif;
+}
+
+/* Let the image keep its natural height */
+.home-container {
+    position: relative;
+    width: 100%;
+}
+
+
+
+.home-container img {
+    width: 100%;
+    height: auto;   /* keeps full image height */
+    display: block;
+}
+
+/* Overlay RPG container */
+.rpg-container {
+    margin-top: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Small stat icon */
+.stat-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}

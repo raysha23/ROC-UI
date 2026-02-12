@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raysha23</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="home-container">
+    <img src="images/home1.png">
+</div>
+
+<div class="rpg-container">
+
+    <!-- LEFT SIDE (GIF + ABILITIES) -->
+    <div class="left-panel">
+
+        <!-- CHARACTER GIF -->
+        <div class="character-gif">
+            <img src="images/oleg-knyazev-gif2.gif" alt="Character GIF">
+        </div>
+
+        <!-- ABILITIES SECTION -->
+        <div class="abilities-section">
+
+            <div class="abilities-text">ABILITIES</div>
+
+            <div class="abilities-icons">
+
+                <div class="innate-left">
+                    <img src="images/talents.svg" alt="Talent Icon">
+                    <img src="images/innate_icon.png" alt="Innate Icon">
+                </div>
+
+                <div class="innate-right">
+                    <img src="images/lina_dragon_slave.png" alt="Ability">
+                    <img src="images/lina_light_strike_array.png" alt="Ability">
+                    <img src="images/lina_fiery_soul.png" alt="Ability">
+                    <img src="images/lina_laguna_blade.png" alt="Ability">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE (STATS) -->
+    <div class="stats-master">
+
+        <!-- ================= TOP ================= -->
+        <div class="stats-top">
+
+            <!-- STATS COLUMN -->
+            <div class="column">
+                <div class="column-header">Stats</div>
+
+                <div class="table-row">
+                    <img src="images/hero_strength.png" class="stat-icon">
+                    <span class="label">Strength</span>
+                    <input value="1">
+                </div>
+
+                <div class="table-row">
+                    <img src="images/hero_agility.png" class="stat-icon">
+                    <span class="label">Agility</span>
+                    <input value="1">
+                </div>
+
+                <div class="table-row">
+                    <img src="images/hero_vitality.png" class="stat-icon">
+                    <span class="label">Vitality</span>
+                    <input value="1">
+                </div>
+
+                <div class="table-row">
+                    <img src="images/hero_intelligence.png" class="stat-icon">
+                    <span class="label">Intelligence</span>
+                    <input value="1">
+                </div>
+
+                <div class="table-row">
+                    <img src="images/hero_dexterity.jpg" class="stat-icon">
+                    <span class="label">Dexterity</span>
+                    <input value="1">
+                </div>
+
+                <div class="table-row">
+                    <img src="images/hero_luck.jpg" class="stat-icon">
+                    <span class="label">Luck</span>
+                    <input value="1">
+                </div>
+            </div>
+
+            <!-- JOB BONUS -->
+            <div class="column">
+                <div class="column-header">Job Bonus</div>
+                <div class="table-row"><button class="plus-btn">+</button><span class="value">0</span></div>
+                <div class="table-row"><button class="plus-btn">+</button><span class="value">0</span></div>
+                <div class="table-row"><button class="plus-btn">+</button><span class="value">0</span></div>
+                <div class="table-row"><button class="plus-btn">+</button><span class="value">0</span></div>
+                <div class="table-row"><button class="plus-btn">+</button><span class="value">0</span></div>
+                <div class="table-row"><button class="plus-btn">+</button><span class="value">0</span></div>
+            </div>
+
+            <!-- PTS REQ -->
+            <div class="column">
+                <div class="column-header">Pts Req</div>
+                <div class="table-row"><span class="value">2</span></div>
+                <div class="table-row"><span class="value">2</span></div>
+                <div class="table-row"><span class="value">2</span></div>
+                <div class="table-row"><span class="value">2</span></div>
+                <div class="table-row"><span class="value">2</span></div>
+                <div class="table-row"><span class="value">2</span></div>
+            </div>
+
+        </div>
+
+        <!-- ================= STATUS INFORMATION ================= -->
+        <div class="status-wrapper">
+            <div class="status-title">Status Information</div>
+
+            <div class="status-columns">
+
+                <!-- LEFT STATUS -->
+                <div class="column">
+
+                    <div class="table-row">
+                        <img src="images/icon_damage.png" class="stat-icon">
+                        <span class="label">Attack</span>
+                        <input value="1" readonly>
+                        <button class="symbol-btn">+</button>
+                        <input value="0" readonly>
+                    </div>
+
+                    <div class="table-row">
+                        <img src="images/icon_vision.png" class="stat-icon">
+                        <span class="label">Magic Attack</span>
+                        <input value="1" readonly>
+                        <button class="symbol-btn">~</button>
+                        <input value="1" readonly>
+                    </div>
+
+                    <div class="table-row">
+                        <img src="images/icon_attack_range.png" class="stat-icon">
+                        <span class="label">Hit Rate</span>
+                        <input value="2" readonly>
+                    </div>
+
+                    <div class="table-row">
+                        <img src="images/icon_attack_time.png" class="stat-icon">
+                        <span class="label">Critical Rate</span>
+                        <input value="1" readonly>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT STATUS -->
+                <div class="column">
+
+                    <div class="table-row">
+                        <img src="images/icon_armor.png" class="stat-icon">
+                        <span class="label">Defense</span>
+                        <input value="0" readonly>
+                        <button class="symbol-btn">+</button>
+                        <input value="1" readonly>
+                    </div>
+
+                    <div class="table-row">
+                        <img src="images/icon_magic_resist.png" class="stat-icon">
+                        <span class="label">Magic Defense</span>
+                        <input value="0" readonly>
+                        <button class="symbol-btn">+</button>
+                        <input value="1" readonly>
+                    </div>
+
+                    <div class="table-row">
+                        <img src="images/icon_movement_speed.png" class="stat-icon">
+                        <span class="label">Flee Rate</span>
+                        <input value="2" readonly>
+                        <button class="symbol-btn">+</button>
+                        <input value="1" readonly>
+                    </div>
+
+                    <div class="table-row">
+                        <img src="images/attack_speed.png" class="stat-icon">
+                        <span class="label">Attack Speed</span>
+                        <input value="150" readonly>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="status-full">
+
+                <div class="table-row">
+                    <img src="images/status_point.webp" class="stat-icon">
+                    <span class="label">Status Point</span>
+                    <input value="48" readonly>
+                </div>
+
+                <div class="table-row">
+                    <img src="images/guild.png" class="stat-icon">
+                    <span class="label">Guild</span>
+                    <input value="RMS" readonly>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
