@@ -52,6 +52,8 @@ html, body {
 
 /* ================= LEFT PANEL FIX ================= */
 
+
+
 .left-panel {
     display: flex;
     flex-direction: column;
@@ -72,6 +74,25 @@ html, body {
     padding: 15px;
 }
 
+.lvl-value-input { 
+    width: 50px;
+    font-family: 'Reaver';
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #6aa9ff;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+
+.lvl-value-input:focus {
+    border-color: #9fd7ff;
+    box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
+    background: rgba(0,0,0,0.3);
+}
 
 .stats-top {
     display: flex;
