@@ -10,13 +10,32 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Reaver-Bold';
+    src: url('fonts/Reaver-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Reaver-SemiBold';
+    src: url('fonts/Reaver-SemiBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;   /* 🚀 removes ALL scrollbars */
+}
+
 .rpg-container {
     width: 1400px;
     height: 620px;
     padding: 30px;
     border-radius: 10px;
     position: relative;
-   
+       margin-top: -760px;
+       margin-left: 225px;
     color: #e2e8ef;
 
     background: #202D38;   /* ✅ YOUR EXACT COLOR */
@@ -203,24 +222,41 @@ input {
 }
 
 .character-gif {
+    position: relative;   /* ✅ ADDED */
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;   /* ✅ ADDED */
+    align-items: center;      /* ✅ CHANGED */
     margin-top: 60px;
-    margin-left: 105px; /* push GIF slightly to the right */
+    margin-left: 105px;
 }
 
-/* GIF Styling */
 .character-gif img {
-    width: 400px;   /* adjust size as needed */
+    width: 400px;
     height: auto;
-   
     object-fit: cover;
+    position: relative;   /* ✅ ADDED */
+    z-index: 2;           /* ✅ ADDED */
 }
+
 
 /* ===== ABILITIES SECTION ===== */
 
+.rock-spot {
+    position: absolute;
+    bottom: -15px;
+    z-index: 1;
+   
+}
+
+.rock-spot img {
+    width: 260px;         /* ✅ CHANGED SIZE */
+    height: auto;         /* ✅ CHANGED */
+    object-fit: contain;  /* ✅ ADDED */
+}
+
+
 .abilities-section {
-    margin-top: 30px;
+    margin-top: 20px; 
     margin-left: 105px; /* align with GIF */
     display: flex;
     flex-direction: column;
@@ -313,22 +349,20 @@ body {
 }
 
 
+.home-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;   /* full screen height */
+    overflow: hidden;
+}
 
 .home-container img {
     width: 100%;
-    height: auto;   /* keeps full image height */
+    height: 100%;
+    object-fit: cover;   /* fills screen without distortion */
     display: block;
 }
 
-/* Overlay RPG container */
-.rpg-container {
-    margin-top: 200px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
 
 /* Small stat icon */
 .stat-icon {
@@ -336,3 +370,67 @@ body {
     height: 20px;
     object-fit: contain;
 }
+
+
+/* ================= PROFESSIONAL RPG HEADER ================= */
+
+.rpg-header-bar {
+    position: absolute;
+    top: -45px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Tabs container */
+.rpg-tabs {
+    display: flex;
+    gap: 8px;
+    margin-left: 40px;
+    position: relative;
+}
+
+/* Long connected line */
+.rpg-tabs::after {
+    display: none;
+}
+
+/* Individual tabs */
+.rpg-tab {
+    width: 120px;
+    height: 42px;
+
+    background: linear-gradient(to bottom, #1b2731, #111a22);
+    border: 1px solid #6aa9ff;
+    border-bottom: none;
+
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+
+    position: relative;
+    z-index: 2;
+
+    transition: all 0.25s ease;
+}
+
+/* Inactive tabs slightly darker */
+.rpg-tab:not(.active) {
+    opacity: 0.7;
+}
+
+/* Hover glow */
+.rpg-tab:hover {
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(120,180,255,0.6);
+}
+
+/* Active tab blends into container */
+.rpg-tab.active {
+    background: #202D38; /* SAME as container */
+    border: 1px solid #d9f0ff;
+    border-bottom: 2px solid #202D38;
+    box-shadow: 0 0 10px rgba(150,220,255,0.7);
+}
+
+
