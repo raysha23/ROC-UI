@@ -586,3 +586,30 @@ body {
     font-family: 'Reaver', serif;
     font-weight: normal;  /* <-- changed from bold to normal */
 }
+
+
+
+.bar-text-input {
+    width: 80px;
+    font-size: 11px;
+    color: #fff;
+    text-align: right;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Reaver', serif;
+    font-weight: normal;
+}
+
+/* Make readonly truly non-interactive */
+.bar-text-input[readonly] {
+    pointer-events: none;   /* prevents clicking */
+    user-select: none;      /* prevents text selection */
+}
+
+/* Remove focus effects if readonly */
+.bar-text-input[readonly]:focus {
+    border: none;
+    box-shadow: none;
+}
+
