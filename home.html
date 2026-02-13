@@ -14,27 +14,44 @@
 <div class="rpg-container">
 
     <div class="rpg-header-bar">
-    <div class="rpg-tabs">  
-        <div class="rpg-tab active"></div>
-        <div class="rpg-tab"></div>
-        <div class="rpg-tab"></div>
+        <div class="rpg-tabs">  
+            <div class="rpg-tab active">STATUS</div>
+            <div class="rpg-tab">SKILLS</div>
+            <div class="rpg-tab">EQUIP</div>
+        </div>
     </div>
-   
-</div>
 
-
-    <!-- LEFT SIDE (GIF + ABILITIES) -->
+    <!-- LEFT SIDE -->
     <div class="left-panel">
 
-        <!-- CHARACTER GIF -->
+        <div class="vital-stats">
+            <div class="level-box">
+                <span class="lvl-label">BASE LVL.</span>
+                <span class="lvl-value">99</span>
+            </div>
+            <div class="bars-container">
+                <div class="bar-row">
+                    <span class="bar-label">HP</span>
+                    <div class="bar-bg"><div class="bar-fill hp-fill" style="width: 85%;"></div></div>
+                    <span class="bar-text">4,250 / 5,000</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">SP</span>
+                    <div class="bar-bg"><div class="bar-fill sp-fill" style="width: 60%;"></div></div>
+                    <span class="bar-text">1,200 / 2,000</span>
+                </div>
+            </div>
+        </div>
+
         <div class="character-gif">
             <img src="images/oleg-knyazev-gif2.gif" alt="Character GIF">
         </div>
-         <div class="rock-spot">
-              <img src="images/rockyy.png">
+
+        <div class="rock-spot">
+            <img src="images/rockyy.png">
         </div>
 
-        <!-- ABILITIES SECTION -->
+        <!-- ABILITIES -->
         <div class="abilities-section">
 
             <div class="abilities-text">ABILITIES</div>
@@ -42,15 +59,15 @@
             <div class="abilities-icons">
 
                 <div class="innate-left">
-                    <img src="images/talents.svg" alt="Talent Icon">
-                    <img src="images/innate_icon.png" alt="Innate Icon">
+                    <img src="images/talents.svg">
+                    <img src="images/innate_icon.png">
                 </div>
 
                 <div class="innate-right">
-                    <img src="images/lina_dragon_slave.png" alt="Ability">
-                    <img src="images/lina_light_strike_array.png" alt="Ability">
-                    <img src="images/lina_fiery_soul.png" alt="Ability">
-                    <img src="images/lina_laguna_blade.png" alt="Ability">
+                    <img src="images/lina_dragon_slave.png">
+                    <img src="images/lina_light_strike_array.png">
+                    <img src="images/lina_fiery_soul.png">
+                    <img src="images/lina_laguna_blade.png">
                 </div>
 
             </div>
@@ -58,53 +75,65 @@
         </div>
 
     </div>
-
     <!-- RIGHT SIDE (STATS) -->
     <div class="stats-master">
 
         <!-- ================= TOP ================= -->
         <div class="stats-top">
+<!-- STATS COLUMN -->
+<div class="column">
+    <div class="column-header">Stats</div>
 
-            <!-- STATS COLUMN -->
-            <div class="column">
-                <div class="column-header">Stats</div>
+    <div class="table-row">
+        <img src="images/hero_strength.png" class="stat-icon">
+        <span class="label">Strength</span>
+        <button class="stat-btn plus">+</button>
+        <input type="text" value="1" class="stat-input">
+        <button class="stat-btn minus">−</button>
+    </div>
 
-                <div class="table-row">
-                    <img src="images/hero_strength.png" class="stat-icon">
-                    <span class="label">Strength</span>
-                    <input value="1">
-                </div>
+    <div class="table-row">
+        <img src="images/hero_agility.png" class="stat-icon">
+        <span class="label">Agility</span>
+        <button class="stat-btn plus">+</button>
+        <input type="text" value="1" class="stat-input">
+        <button class="stat-btn minus">−</button>
+    </div>
 
-                <div class="table-row">
-                    <img src="images/hero_agility.png" class="stat-icon">
-                    <span class="label">Agility</span>
-                    <input value="1">
-                </div>
+    <div class="table-row">
+        <img src="images/hero_vitality.png" class="stat-icon">
+        <span class="label">Vitality</span>
+        <button class="stat-btn plus">+</button>
+        <input type="text" value="1" class="stat-input">
+        <button class="stat-btn minus">−</button>
+    </div>
 
-                <div class="table-row">
-                    <img src="images/hero_vitality.png" class="stat-icon">
-                    <span class="label">Vitality</span>
-                    <input value="1">
-                </div>
+    <div class="table-row">
+        <img src="images/hero_intelligence.png" class="stat-icon">
+        <span class="label">Intelligence</span>
+        <button class="stat-btn plus">+</button>
+        <input type="text" value="1" class="stat-input">
+        <button class="stat-btn minus">−</button>
+    </div>
 
-                <div class="table-row">
-                    <img src="images/hero_intelligence.png" class="stat-icon">
-                    <span class="label">Intelligence</span>
-                    <input value="1">
-                </div>
+    <div class="table-row">
+        <img src="images/hero_dexterity.jpg" class="stat-icon">
+        <span class="label">Dexterity</span>
+        <button class="stat-btn plus">+</button>
+        <input type="text" value="1" class="stat-input">
+        <button class="stat-btn minus">−</button>
+    </div>
 
-                <div class="table-row">
-                    <img src="images/hero_dexterity.jpg" class="stat-icon">
-                    <span class="label">Dexterity</span>
-                    <input value="1">
-                </div>
+    <div class="table-row">
+        <img src="images/hero_luck.jpg" class="stat-icon">
+        <span class="label">Luck</span>
+        <button class="stat-btn plus">+</button>
+        <input type="text" value="1" class="stat-input">
+        <button class="stat-btn minus">−</button>
+    </div>
+</div>
 
-                <div class="table-row">
-                    <img src="images/hero_luck.jpg" class="stat-icon">
-                    <span class="label">Luck</span>
-                    <input value="1">
-                </div>
-            </div>
+
 
             <!-- JOB BONUS -->
             <div class="column">

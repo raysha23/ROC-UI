@@ -1,3 +1,5 @@
+
+
 @font-face {
     font-family: 'Reaver';
     src: url('Reaver-Regular.woff') format('woff');
@@ -34,7 +36,7 @@ html, body {
     padding: 30px;
     border-radius: 10px;
     position: relative;
-       margin-top: -760px;
+       margin-top: -810px;
        margin-left: 225px;
     color: #e2e8ef;
 
@@ -48,6 +50,16 @@ html, body {
     align-items: flex-start;
 }
 
+/* ================= LEFT PANEL FIX ================= */
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 500px;
+    position: relative;
+}
 
 
 .stats-master {
@@ -66,10 +78,18 @@ html, body {
     gap: 6px;
 }
 
-/* Make top columns stretch */
-.stats-top .column {
-    flex: 1;           /* each column stretches equally */
-    min-width: 0;      /* prevent overflow */
+/* ===== CUSTOM COLUMN WIDTHS ===== */
+
+.stats-top .column:nth-child(1) {
+    flex: 1.6;   /* Stats column (wider) */
+}
+
+.stats-top .column:nth-child(2) {
+    flex: 0.7;   /* Job Bonus (smaller) */
+}
+
+.stats-top .column:nth-child(3) {
+    flex: 0.6;   /* Pts Req (smallest) */
 }
 
 /* COLUMN STYLE */
@@ -222,31 +242,28 @@ input {
 }
 
 .character-gif {
-    position: relative;   /* ✅ ADDED */
     display: flex;
-    flex-direction: column;   /* ✅ ADDED */
-    align-items: center;      /* ✅ CHANGED */
-    margin-top: 60px;
-    margin-left: 105px;
+    justify-content: center;
+    margin-top: 30px;
+    margin-left: 140px;
 }
 
 .character-gif img {
     width: 400px;
     height: auto;
     object-fit: cover;
-    position: relative;   /* ✅ ADDED */
-    z-index: 2;           /* ✅ ADDED */
 }
+
 
 
 /* ===== ABILITIES SECTION ===== */
 
 .rock-spot {
-    position: absolute;
-    bottom: -15px;
-    z-index: 1;
-   
+    margin-top: 25px;   /* moved down */
+    margin-left: 80px;
+    z-index: 0;
 }
+
 
 .rock-spot img {
     width: 260px;         /* ✅ CHANGED SIZE */
@@ -254,49 +271,11 @@ input {
     object-fit: contain;  /* ✅ ADDED */
 }
 
-
-.abilities-section {
-    margin-top: 20px; 
-    margin-left: 105px; /* align with GIF */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.abilities-text {
-    font-family: 'Reaver';
-    font-size: 16px;
-    color: #9fd7ff;
-    letter-spacing: 1px;
-}
-
-.abilities-icons {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-/* Left innate icons */
-.innate-left {
-    display: flex;
-    gap: 8px;
-}
-
-/* Right ability icons */
-.innate-right {
-    display: flex;
-    gap: 8px;
-}
-
-/* Icon sizing */
-.innate-left img,
-.innate-right img {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-}
-
+/* ABILITIES */
+.abilities-section { margin-top: 20px; text-align: center; }
+.abilities-text { font-size: 12px; color: #6aa9ff; margin-bottom: 8px; letter-spacing: 2px; }
+.abilities-icons { display: flex; gap: 15px; }
+.innate-left img, .innate-right img { width: 32px; height: 32px; border: 1px solid #6aa9ff; padding: 2px; background: #000; }
 
 
 /* ================= MATCH JOB BONUS & PTS REQ TO STATUS STYLE ================= */
@@ -412,6 +391,10 @@ body {
     z-index: 2;
 
     transition: all 0.25s ease;
+    
+    display: flex;              /* 🔥 ADD THIS */
+    align-items: center;        /* vertical center */
+    justify-content: center;    /* horizontal center */
 }
 
 /* Inactive tabs slightly darker */
@@ -434,3 +417,107 @@ body {
 }
 
 
+/* ===== FIX STAT BUTTON ALIGNMENT ===== */
+
+.table-row {
+    height: 32px;
+    display: flex;
+    align-items: center;   /* vertical center everything */
+    gap: 6px;
+}
+
+/* Make input and buttons identical height */
+.table-row input {
+    height: 24px;
+    box-sizing: border-box;
+}
+
+/* Stat buttons */
+.stat-btn {
+    width: 28px;
+    height: 24px;
+    display: flex;              /* important */
+    align-items: center;        /* center symbol vertically */
+    justify-content: center;    /* center symbol horizontally */
+    padding: 0;
+
+    background: #141c23;
+    border: 2px solid #7fc4ff;
+    color: #e6f4ff;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 'Reaver';
+    line-height: 1;             /* prevents symbol shift */
+}
+
+.stat-btn:hover {
+    border-color: #9fd7ff;
+    box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
+}
+
+
+
+/* ===== RPG STAT TEXTBOX (NO NUMBER STYLE) ===== */
+
+.stat-input {
+    width: 50px;
+    height: 24px;
+
+    background: #d9f0ff;
+    border: 2px solid #6aa9ff;
+    border-radius: 3px;
+
+    text-align: center;
+    font-family: 'Reaver';
+    font-size: 14px;
+
+    outline: none;
+    box-sizing: border-box;
+
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover glow like RPG UI */
+.stat-input:hover {
+    border-color: #9fd7ff;
+    box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
+}
+
+/* Remove blue highlight on click */
+.stat-input:focus {
+    border-color: #9fd7ff;
+    box-shadow: 0 0 8px rgba(120, 200, 255, 0.8);
+}
+
+
+
+/* VITAL STATS (HP/SP/LVL) */
+.vital-stats {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #3a4a5a;
+}
+.level-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #3a4a5a;
+    padding-right: 15px;
+}
+.lvl-label { font-size: 10px; color: #6aa9ff; }
+.lvl-value { font-size: 24px; color: #fff; font-weight: bold; }
+
+.bars-container { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.bar-row { display: flex; align-items: center; gap: 10px; }
+.bar-label { width: 25px; font-weight: bold; color: #fff; }
+.bar-bg { flex: 1; height: 12px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid #444; }
+.bar-fill { height: 100%; transition: width 0.5s ease; }
+.hp-fill { background: linear-gradient(to right, #ff4b4b, #a30000); }
+.sp-fill { background: linear-gradient(to right, #4b90ff, #003da3); }
+.bar-text { font-size: 11px; width: 80px; text-align: right; }
