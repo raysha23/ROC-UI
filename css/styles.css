@@ -1,3 +1,7 @@
+
+
+
+
 @font-face {
     font-family: 'Reaver';
     src: url('Reaver-Regular.woff') format('woff');
@@ -28,7 +32,7 @@ html, body {
 }
 .rpg-container {
     width: min(1400px, 95vw);
-    height: min(620px, 90vh);
+    height: min(640px, 90vh);
 
     padding: 30px;
     border-radius: 10px;
@@ -112,6 +116,8 @@ html, body {
      background: #202D38;
     border: 1px solid #6aa9ff;
     padding: 6px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 
@@ -234,7 +240,7 @@ input {
     gap: 6px;                  /* spacing between button/value */
 }
 
-/* Make sure Job Bonus value box and plus button are centered and same height */
+/*  Make sure Job Bonus value box and plus button are centered and same height */
 .stats-top .column:nth-child(2) .value,
 .stats-top .column:nth-child(3) .value,
 .stats-top .column:nth-child(2) .plus-btn {
@@ -268,7 +274,7 @@ input {
     justify-content: center;
 
     overflow: hidden;
-    margin-top: -50px;;
+    margin-top: -40px;;
     margin-left: -10px;
 }
 
@@ -300,7 +306,7 @@ input {
 /* ===== ABILITIES SECTION ===== */
 
 .rock-spot {
-    margin-top: -12px;   /* moved down */
+    margin-top: -35px;   /* moved down */
     margin-left: 80px;
     z-index: 0;
 }
@@ -313,11 +319,11 @@ input {
 }
 
 /* ABILITIES */
-.abilities-section { margin-top: 20px; text-align: center; margin-right: -100px; }
+.abilities-section { margin-top: 15px; text-align: center; margin-right: -100px; }
 .abilities-text { font-size: 12px; color: #6aa9ff; margin-bottom: 8px; letter-spacing: 2px; }
 .abilities-icons { display: flex; gap: 15px; }
 .innate-left img, .innate-right img { width: 32px; height: 32px; border: 1px solid #6aa9ff; padding: 2px; background: #000; }
-/* ADDED SLIDE UP ANIMATION SMOOTH */
+/* SLIDE UP ANIMATION SMOOTH */
 @keyframes slideUp {
     0% { transform: translateY(30px); opacity: 0; }
     60% { transform: translateY(-5px); opacity: 1; } /* overshoot for smooth feel */
@@ -328,7 +334,7 @@ input {
     animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* ADDED stagger the icons */
+/* Optional: stagger the icons */
 .innate-left img.innate-slide-up:nth-child(1),
 .innate-right img.innate-slide-up:nth-child(1) {
     animation-delay: 0s;
@@ -708,7 +714,7 @@ body {
 }
 
 
-/* UPDATED ===== STATS-MASTER TECH HUD STYLE (REALISTIC ANIMATION) ===== */
+/* ===== UPDATED STATS-MASTER TECH HUD STYLE (REALISTIC ANIMATION) ===== */
 .stats-master {
     display: flex;
     flex-direction: column;
@@ -716,6 +722,7 @@ body {
     padding: 15px;
     border-radius: 12px;
     position: relative;
+    height: 615px;
 
     background: #141c23; /* dark panel */
     overflow: hidden;
@@ -785,7 +792,7 @@ body {
     justify-content: center;
 }
 
-/* Hover glow */
+/* ADDED Hover glow */
 .arrow-btn:hover {
     border-color: #9fd7ff;
     box-shadow: 0 0 12px rgba(120,200,255,0.7);
@@ -795,7 +802,7 @@ body {
 
 
 
-/* ADDED Slide out directions */
+/* ADDED DIRI HANGTUD UBOS Slide out directions */
 .slide-out-left {
     transform: translateX(-100%);
     opacity: 0;
@@ -805,7 +812,7 @@ body {
     opacity: 0;
 }
 
-/* UPDATED Slide in directions */
+/*Slide in directions */
 .slide-in-left {
     transform: translateX(-100%);
     opacity: 0;
@@ -817,7 +824,7 @@ body {
     animation: slideInRight 0.4s forwards;
 }
 
-/* UPDATED Slide in animations */
+/* Slide in animations */
 @keyframes slideInLeft {
     0% { transform: translateX(-100%); opacity: 0; }
     100% { transform: translateX(0); opacity: 1; }
@@ -828,19 +835,53 @@ body {
     100% { transform: translateX(0); opacity: 1; }
 }
 
-/* ADDED*/
 .character-name {
     font-family: 'Reaver-Bold';
-    font-size: 26px;
-    color: #9fd7ff;
-    letter-spacing: 2px;
-    margin-top: -20px;
-    margin-bottom: 10px;
+    font-size: 30px;
+    letter-spacing: 3px;
     text-align: center;
 
+    margin-top: -30px;
+    margin-bottom: 40px;
+    margin-left: 130px;
+
+    /* Metallic gradient text */
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #b8e6ff 40%,
+        #7cc7ff 60%,
+        #ffffff 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Sharp RPG outline */
     text-shadow:
-        0 0 6px rgba(130,200,255,0.7),
-        0 0 12px rgba(130,200,255,0.4);
+        0 0 4px rgba(120, 200, 255, 0.8),
+        0 0 10px rgba(120, 200, 255, 0.6),
+        0 0 20px rgba(120, 200, 255, 0.4);
+
+    position: relative;
+    transition: all 0.3s ease;
 }
 
+.character-name::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
 
+    background: linear-gradient(
+        to right,
+        transparent,
+        #7cc7ff,
+        transparent
+    );
+
+    box-shadow: 0 0 8px rgba(120,200,255,0.8);
+}

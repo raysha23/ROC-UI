@@ -2,12 +2,13 @@
 //ADDED
 document.addEventListener("DOMContentLoaded", function () {
 
-    // 🔥 Array of heroes with corresponding innate-left and innate-right abilities
+    // 🔥 Array of heroes (NOW WITH NAMES)
     const heroes = [
         {
+            name: "LINA",
             gif: "images/Lina.gif",
             innateLeft: [
-               "images/talents.svg",
+                "images/talents.svg",
                 "images/innate_icon.png",
             ],
             innateRight: [
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
         {
+            name: "VISAGE",
             gif: "images/Visage.gif",
             innateLeft: [
                 "images/talents.svg",
@@ -31,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
         {
+            name: "EZALOR",
             gif: "images/KeeperoftheLight.gif",
             innateLeft: [
                 "images/talents.svg",
@@ -49,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let isAnimating = false;
 
     const heroImage = document.getElementById("heroImage");
+    const characterName = document.getElementById("characterName");
     const leftArrow = document.querySelector(".arrow-btn.left");
     const rightArrow = document.querySelector(".arrow-btn.right");
 
@@ -56,70 +60,87 @@ document.addEventListener("DOMContentLoaded", function () {
     const innateRightImgs = document.querySelectorAll(".innate-right img");
 
     if (!heroImage || !leftArrow || !rightArrow || 
+        !characterName ||
         innateLeftImgs.length === 0 || innateRightImgs.length === 0) {
         console.error("Elements not found.");
         return;
     }
 
-    // ✅ Slide up animation function
-    function animateInnates() {
-        [...innateLeftImgs, ...innateRightImgs].forEach(img => {
-            img.classList.remove("innate-slide-up");   // remove first
-            void img.offsetWidth;                      // force reflow
-            img.classList.add("innate-slide-up");      // add to trigger animation
-        });
-    }
-
-  function changeHero(direction) {
-    if (isAnimating) return;
-    isAnimating = true;
-
-    // Determine slide classes based on direction
-    const slideOutClass = direction === "right" ? "slide-out-left" : "slide-out-right";
-    const slideInClass = direction === "right" ? "slide-in-right" : "slide-in-left";
-
-    // Slide out current GIF
-    heroImage.classList.add(slideOutClass);
-
-    setTimeout(() => {
-        // Update index
-        currentIndex = direction === "right"
-            ? (currentIndex + 1) % heroes.length
-            : (currentIndex - 1 + heroes.length) % heroes.length;
-
-        // Update hero GIF
+    // ✅ Initialize first hero properly
+    function initializeHero() {
         heroImage.src = heroes[currentIndex].gif;
+        characterName.textContent = heroes[currentIndex].name;
 
-        // Update innate-left images
         heroes[currentIndex].innateLeft.forEach((src, i) => {
             if (innateLeftImgs[i]) innateLeftImgs[i].src = src;
         });
 
-        // Update innate-right images
         heroes[currentIndex].innateRight.forEach((src, i) => {
             if (innateRightImgs[i]) innateRightImgs[i].src = src;
         });
+    }
 
-        // Trigger slide-up animation
-        animateInnates();
-
-        // Remove previous slide-out class
-        heroImage.classList.remove(slideOutClass);
-
-        // Add slide-in class
-        heroImage.classList.add(slideInClass);
-
-        // Remove slide-in class after animation
-        heroImage.addEventListener("animationend", function handler() {
-            heroImage.classList.remove(slideInClass);
-            heroImage.removeEventListener("animationend", handler);
-            isAnimating = false;
+    // ✅ Slide up animation for abilities
+    function animateInnates() {
+        [...innateLeftImgs, ...innateRightImgs].forEach(img => {
+            img.classList.remove("innate-slide-up");
+            void img.offsetWidth; // force reflow
+            img.classList.add("innate-slide-up");
         });
+    }
 
-    }, 400); // match original transition
-}
+    function changeHero(direction) {
+        if (isAnimating) return;
+        isAnimating = true;
 
+        const slideOutClass = direction === "right" ? "slide-out-left" : "slide-out-right";
+        const slideInClass = direction === "right" ? "slide-in-right" : "slide-in-left";
+
+        heroImage.classList.add(slideOutClass);
+
+        setTimeout(() => {
+
+            currentIndex = direction === "right"
+                ? (currentIndex + 1) % heroes.length
+                : (currentIndex - 1 + heroes.length) % heroes.length;
+
+            // Update GIF
+            heroImage.src = heroes[currentIndex].gif;
+
+            // 🔥 Update NAME
+            characterName.textContent = heroes[currentIndex].name;
+
+            // Update abilities
+            heroes[currentIndex].innateLeft.forEach((src, i) => {
+                if (innateLeftImgs[i]) innateLeftImgs[i].src = src;
+            });
+
+            heroes[currentIndex].innateRight.forEach((src, i) => {
+                if (innateRightImgs[i]) innateRightImgs[i].src = src;
+            });
+
+            animateInnates();
+
+            heroImage.classList.remove(slideOutClass);
+            heroImage.classList.add(slideInClass);
+
+            heroImage.addEventListener("animationend", function handler() {
+                heroImage.classList.remove(slideInClass);
+                heroImage.removeEventListener("animationend", handler);
+                isAnimating = false;
+            });
+
+        }, 400);
+    }
 
     rightArrow.addEventListener("click", () => changeHero("right"));
     leftArrow.addEventListener("click", () => changeHero("left"));
+
+    // 🔥 Start properly
+    initializeHero();
 });
+
+
+
+
+
