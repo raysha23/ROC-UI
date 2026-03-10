@@ -1,390 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Raysha23</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
 
-<div class="home-container">
-    <img src="images/ragnarokbg.png">
-</div>
-
-<!-- LEFT SIDE -->
-<div class="left-panel">
-
-    <!-- DESCRIPTION CONTAINER -->
-<!-- DESCRIPTION CONTAINER -->
-<div class="description-container">
-    <!-- Job Title -->
-    <div class="desc-title" id="jobTitle">Novice</div>
-
-    <!-- Job Description -->
-    <div class="desc-text" id="descText">
-        Novices are the spark of potential. They <br>
-        focus on learning fundamentals and support <br>
-        their teams as adaptable beginners.
-    </div>
-</div>
-    <!-- Vital Stats Section -->
-   <div class="vital-stats">
-
-    <img src="images/swordsman2.png" class="bars-character">
-
-    <div class="level-box">
-        <span class="lvl-label">BASE LVL.</span>
-        <input type="text" class="lvl-value-input" value="99" />
+  <body>
+    <div class="home-container">
+      <img src="images/ragnarokbg.png" />
     </div>
 
-    <div class="bars-container">
+    <!-- LEFT SIDE -->
+    <div class="left-panel">
+      <!-- DESCRIPTION CONTAINER -->
+      <!-- DESCRIPTION CONTAINER -->
+      <div class="description-container">
+        <!-- Job Title -->
+        <div class="desc-title" id="jobTitle">Novice</div>
 
-            <div class="bar-row">
-                <div class="bar-label">HP</div>
-                <div class="bar-bg">
-                    <div class="bar-fill hp-fill" style="width: 85%;"></div>
-                </div>
-                <input type="text" class="bar-text-input" value="4,250 / 5,000" readonly>
-            </div>
-
-            <div class="bar-row">
-                <div class="bar-label">SP</div>
-                <div class="bar-bg">
-                    <div class="bar-fill sp-fill" style="width: 70%;"></div>
-                </div>
-                <input type="text" class="bar-text-input" value="1,250 / 2,000" readonly>
-            </div>
-
+        <!-- Job Description -->
+        <div class="desc-text" id="descText">
+          Novices are the spark of potential. They <br />
+          focus on learning fundamentals and support <br />
+          their teams as adaptable beginners.
         </div>
-    </div>
+      </div>
+      <!-- Vital Stats Section -->
+      <div class="vital-stats">
+        <img src="images/swordsman2.png" class="bars-character" />
 
-    <div class="regen-container">
-    <div class="regen-row">
-        <span class="regen-label">Natural <span class="hp-text">HP</span> Regen:</span>
-        <span class="regen-value">1</span>
-        <span class="regen-detail">per 6s standing (per 3s sitting)</span>
+        <div class="level-box">
+          <span class="lvl-label">BASE LVL.</span>
+          <input type="text" class="lvl-value-input" value="99" />
+        </div>
 
-         <span class="weight-group">
-        Weight: <span class="weight-box">2030</span>
-    </span>
-    </div>
-    <div class="regen-row">
-        <span class="regen-label">Natural <span class="sp-text">SP</span> Regen:</span>
-        <span class="regen-value">1</span>
-        <span class="regen-detail">per 8s standing (per 4s sitting)</span>
-    </div>
-</div>
+        <div class="bars-container">
+          <div class="bar-row">
+            <div class="bar-label">HP</div>
+            <div class="bar-bg">
+              <div class="bar-fill hp-fill" style="width: 85%"></div>
+            </div>
+            <input
+              type="text"
+              class="bar-text-input"
+              value="4,250 / 5,000"
+              readonly
+            />
+          </div>
 
-    <div class="job-menu">
-      <!-- NOVICE -->
-    <div class="job-item active" data-job="novice">
-        <img src="images/leftnovice.png" class="job-head-icon">
-        <img src="images/noviceactive.png" class="job-icon">
-        <span class="job-name">Novice</span>
-    </div>
+          <div class="bar-row">
+            <div class="bar-label">SP</div>
+            <div class="bar-bg">
+              <div class="bar-fill sp-fill" style="width: 70%"></div>
+            </div>
+            <input
+              type="text"
+              class="bar-text-input"
+              value="1,250 / 2,000"
+              readonly
+            />
+          </div>
+        </div>
+      </div>
 
-    <!-- SWORDSMAN -->
-    <div class="job-item" data-job="swordsman">
-        <img src="images/leftswordsman.png" class="job-head-icon">
-        <img src="images/swordinactive.png" class="job-icon">
-        <span class="job-name">Swordsman</span>
-    </div>
+      <div class="regen-container">
+        <div class="regen-row">
+          <span class="regen-label"
+            >Natural <span class="hp-text">HP</span> Regen:</span
+          >
+          <span class="regen-value">1</span>
+          <span class="regen-detail">per 6s standing (per 3s sitting)</span>
 
-     <!-- MAGICIAN -->
-    <div class="job-item" data-job="magician">
-        <img src="images/leftmagician.png" class="job-head-icon">
-        <img src="images/mageinactive.png" class="job-icon">
-        <span class="job-name">Magician</span>
-    </div>
+          <span class="weight-group">
+            Weight: <span class="weight-box">2030</span>
+          </span>
+        </div>
+        <div class="regen-row">
+          <span class="regen-label"
+            >Natural <span class="sp-text">SP</span> Regen:</span
+          >
+          <span class="regen-value">1</span>
+          <span class="regen-detail">per 8s standing (per 4s sitting)</span>
+        </div>
+      </div>
 
-      <!-- ARCHER -->
-    <div class="job-item" data-job="archer">
-        <img src="images/leftarcher.png" class="job-head-icon">
-        <img src="images/archerinactive.png" class="job-icon">
-        <span class="job-name">Archer</span>
-    </div>
+      <div class="job-menu">
+        <!-- NOVICE -->
+        <div class="job-item active" data-job="novice">
+          <img src="images/leftnovice.png" class="job-head-icon" />
+          <img src="images/noviceactive.png" class="job-icon" />
+          <span class="job-name">Novice</span>
+        </div>
 
-     <!-- ACOLYTE -->
-    <div class="job-item" data-job="acolyte">
-        <img src="images/leftacolyte.png" class="job-head-icon">
-        <img src="images/acolyteinactive.png" class="job-icon">
-        <span class="job-name">Acolyte</span>
-    </div>
+        <!-- SWORDSMAN -->
+        <div class="job-item" data-job="swordsman">
+          <img src="images/leftswordsman.png" class="job-head-icon" />
+          <img src="images/swordinactive.png" class="job-icon" />
+          <span class="job-name">Swordsman</span>
+        </div>
 
-    <!-- MERCHANT -->
-    <div class="job-item" data-job="merchant">
-        <img src="images/leftmerchant.png" class="job-head-icon">
-        <img src="images/merchantinactive.png" class="job-icon">
-        <span class="job-name">Merchant</span>
-    </div>
+        <!-- MAGICIAN -->
+        <div class="job-item" data-job="magician">
+          <img src="images/leftmagician.png" class="job-head-icon" />
+          <img src="images/mageinactive.png" class="job-icon" />
+          <span class="job-name">Magician</span>
+        </div>
 
-    <!-- THIEF -->
-    <div class="job-item" data-job="thief">
-        <img src="images/leftthief.png" class="job-head-icon">
-        <img src="images/thieftinactive.png" class="job-icon">
-        <span class="job-name">Thief</span>
-    </div>
+        <!-- ARCHER -->
+        <div class="job-item" data-job="archer">
+          <img src="images/leftarcher.png" class="job-head-icon" />
+          <img src="images/archerinactive.png" class="job-icon" />
+          <span class="job-name">Archer</span>
+        </div>
 
+        <!-- ACOLYTE -->
+        <div class="job-item" data-job="acolyte">
+          <img src="images/leftacolyte.png" class="job-head-icon" />
+          <img src="images/acolyteinactive.png" class="job-icon" />
+          <span class="job-name">Acolyte</span>
+        </div>
 
-</div>
+        <!-- MERCHANT -->
+        <div class="job-item" data-job="merchant">
+          <img src="images/leftmerchant.png" class="job-head-icon" />
+          <img src="images/merchantinactive.png" class="job-icon" />
+          <span class="job-name">Merchant</span>
+        </div>
 
-<!-- GENDER SELECTION -->
-<div class="gender-container">
-    <div class="gender-item">
-        <img src="images/maleactive.png" class="gender-icon" id="maleBtn" alt="Male">
-    </div>
+        <!-- THIEF -->
+        <div class="job-item" data-job="thief">
+          <img src="images/leftthief.png" class="job-head-icon" />
+          <img src="images/thieftinactive.png" class="job-icon" />
+          <span class="job-name">Thief</span>
+        </div>
+      </div>
 
-    <div class="gender-item">
-        <img src="images/femaleinactive.png" class="gender-icon" id="femaleBtn" alt="Female">
-    </div>
-</div>
+      <!-- GENDER SELECTION -->
+      <div class="gender-container">
+        <div class="gender-item">
+          <img
+            src="images/maleactive.png"
+            class="gender-icon"
+            id="maleBtn"
+            alt="Male"
+          />
+        </div>
 
-    <div class="hero-selection">
-        <img src="images/swordsman.png" alt="selection">
-    </div>
+        <div class="gender-item">
+          <img
+            src="images/femaleinactive.png"
+            class="gender-icon"
+            id="femaleBtn"
+            alt="Female"
+          />
+        </div>
+      </div>
 
-    <div class="character-name" id="characterName"></div>
+      <div class="hero-selection">
+        <img src="images/swordsman.png" alt="selection" />
+      </div>
 
+      <div class="character-name" id="characterName"></div>
 
-   <!-- WEAPON TYPE UI -->
-<div class="weapon-ui">
-
-    <div class="weapon-label-group">
-        <div class="label-glow"></div>
-        <div class="label-text">
+      <!-- WEAPON TYPE UI -->
+      <div class="weapon-ui">
+        <div class="weapon-label-group">
+          <div class="label-glow"></div>
+          <div class="label-text">
             <span class="main">WEAPON</span>
             <span class="sub">TYPE</span>
+          </div>
         </div>
-    </div>
 
-    <div class="weapon-select-wrapper">
-        <span class="slot-indicator">RIGHT:</span>
-        <div class="custom-select-container">
+        <div class="weapon-select-wrapper">
+          <span class="slot-indicator">RIGHT:</span>
+          <div class="custom-select-container">
             <select id="weapon-select" class="game-dropdown">
-                <option value="hand">Hand</option>
-                <option value="dagger">Dagger</option>
-                <option value="sword">One-Handed Sword</option>
-                <option value="sword">One-Handed Axe</option>
-                <option value="2hsword">Two-Handed Mace</option>
-                <option value="bow">Rod & Staff</option>
-                <option value="staff">Two-Handed Staff</option>
+              <option value="hand">Hand</option>
+              <option value="dagger">Dagger</option>
+              <option value="sword">One-Handed Sword</option>
+              <option value="sword">One-Handed Axe</option>
+              <option value="2hsword">Two-Handed Mace</option>
+              <option value="bow">Rod & Staff</option>
+              <option value="staff">Two-Handed Staff</option>
             </select>
             <div class="dropdown-arrow"></div>
+          </div>
         </div>
-    </div>
+      </div>
 
-</div>
+      <!-- Character GIF Section (Arrows Removed) -->
+      <div class="character-selector">
+        <div class="character-gif">
+          <img id="heroImage" src="images/novice.gif" alt="Character GIF" />
+        </div>
+      </div>
 
-
-
-<!-- Character GIF Section (Arrows Removed) -->
-<div class="character-selector">
-    <div class="character-gif">
-        <img id="heroImage" src="images/novice.gif" alt="Character GIF">
-    </div>
-</div>
-
-    <!-- Rock Spot -->
-    <div class="rock-spot">
+      <!-- Rock Spot -->
+      <div class="rock-spot">
         <div class="spawn-platform">
-            <div class="glow-outer"></div>
-            <div class="glow-inner"></div>
-            <div class="scan-line"></div>
+          <div class="glow-outer"></div>
+          <div class="glow-inner"></div>
+          <div class="scan-line"></div>
         </div>
+      </div>
+
+      <!-- Abilities Section -->
+      <div class="abilities-section">
+        <div class="abilities-icons">
+          <div class="innate-left">
+            <img src="images/novice1.png" alt="Talents" />
+            <img src="images/novice2.png" alt="Innate Icon" />
+            <img src="images/novice3.png" alt="Dragon Slave" />
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Abilities Section -->
-    <div class="abilities-section">
-
-    <div class="abilities-icons">
-
-        <div class="innate-left">
-            <img src="images/novice1.png" alt="Talents">
-            <img src="images/novice2.png" alt="Innate Icon">
-            <img src="images/novice3.png" alt="Dragon Slave">
-        </div>
-
-    </div>
-
-</div>
-
-</div>
-
-
-<!-- RIGHT SIDE (STATS) -->
-<div class="stats-master">
-
-    <!-- ================= TOP ================= -->
-    <div class="stats-top">
-
+    <!-- RIGHT SIDE (STATS) -->
+    <div class="stats-master">
+      <!-- ================= TOP ================= -->
+      <div class="stats-top">
         <!-- STATS COLUMN -->
         <div class="column">
-            <div class="column-header">Stats</div>
+          <div class="column-header">Stats</div>
 
-            <div class="table-row">
-                <img src="images/strength1.png" class="stat-icon">
-                <span class="label">Strength</span>
-                <button class="stat-btn plus">-</button>
-                <input type="text" value="1" class="stat-input">
-                <button class="stat-btn minus">+</button>
-            </div>
+          <div class="table-row">
+            <img src="images/strength1.png" class="stat-icon" />
+            <span class="label">Strength</span>
+            <button class="stat-btn plus">-</button>
+            <input type="text" value="1" class="stat-input" />
+            <button class="stat-btn minus">+</button>
+          </div>
 
-            <div class="table-row">
-                <img src="images/agility2.png" class="stat-icon">
-                <span class="label">Agility</span>
-                <button class="stat-btn plus">-</button>
-                <input type="text" value="1" class="stat-input">
-                <button class="stat-btn minus">+</button>
-            </div>
+          <div class="table-row">
+            <img src="images/agility2.png" class="stat-icon" />
+            <span class="label">Agility</span>
+            <button class="stat-btn plus">-</button>
+            <input type="text" value="1" class="stat-input" />
+            <button class="stat-btn minus">+</button>
+          </div>
 
-            <div class="table-row">
-                <img src="images/vitality3.png" class="stat-icon">
-                <span class="label">Vitality</span>
-                <button class="stat-btn plus">-</button>
-                <input type="text" value="1" class="stat-input">
-                <button class="stat-btn minus">+</button>
-            </div>
+          <div class="table-row">
+            <img src="images/vitality3.png" class="stat-icon" />
+            <span class="label">Vitality</span>
+            <button class="stat-btn plus">-</button>
+            <input type="text" value="1" class="stat-input" />
+            <button class="stat-btn minus">+</button>
+          </div>
 
-            <div class="table-row">
-                <img src="images/intelligence4.png" class="stat-icon">
-                <span class="label">Intelligence</span>
-                <button class="stat-btn plus">-</button>
-                <input type="text" value="1" class="stat-input">
-                <button class="stat-btn minus">+</button>
-            </div>
+          <div class="table-row">
+            <img src="images/intelligence4.png" class="stat-icon" />
+            <span class="label">Intelligence</span>
+            <button class="stat-btn plus">-</button>
+            <input type="text" value="1" class="stat-input" />
+            <button class="stat-btn minus">+</button>
+          </div>
 
-            <div class="table-row">
-                <img src="images/dexterity5.png" class="stat-icon">
-                <span class="label">Dexterity</span>
-                <button class="stat-btn plus">-</button>
-                <input type="text" value="1" class="stat-input">
-                <button class="stat-btn minus">+</button>
-            </div>
+          <div class="table-row">
+            <img src="images/dexterity5.png" class="stat-icon" />
+            <span class="label">Dexterity</span>
+            <button class="stat-btn plus">-</button>
+            <input type="text" value="1" class="stat-input" />
+            <button class="stat-btn minus">+</button>
+          </div>
 
-            <div class="table-row">
-                <img src="images/luck6.png" class="stat-icon">
-                <span class="label">Luck</span>
-                <button class="stat-btn plus">-</button>
-                <input type="text" value="1" class="stat-input">
-                <button class="stat-btn minus">+</button>
-            </div>
+          <div class="table-row">
+            <img src="images/luck6.png" class="stat-icon" />
+            <span class="label">Luck</span>
+            <button class="stat-btn plus">-</button>
+            <input type="text" value="1" class="stat-input" />
+            <button class="stat-btn minus">+</button>
+          </div>
         </div>
 
         <!-- JOB BONUS -->
         <div class="column">
-            <div class="column-header">Job Bonus</div>
-            <div class="table-row"><button class="plus-btn">+</button><span class="value">0</span></div>
-            <div class="table-row"><button class="plus-btn">+</button><span class="value">0</span></div>
-            <div class="table-row"><button class="plus-btn">+</button><span class="value">0</span></div>
-            <div class="table-row"><button class="plus-btn">+</button><span class="value">0</span></div>
-            <div class="table-row"><button class="plus-btn">+</button><span class="value">0</span></div>
-            <div class="table-row"><button class="plus-btn">+</button><span class="value">0</span></div>
+          <div class="column-header">Job Bonus</div>
+          <div class="table-row">
+            <button class="plus-btn">+</button><span class="value">0</span>
+          </div>
+          <div class="table-row">
+            <button class="plus-btn">+</button><span class="value">0</span>
+          </div>
+          <div class="table-row">
+            <button class="plus-btn">+</button><span class="value">0</span>
+          </div>
+          <div class="table-row">
+            <button class="plus-btn">+</button><span class="value">0</span>
+          </div>
+          <div class="table-row">
+            <button class="plus-btn">+</button><span class="value">0</span>
+          </div>
+          <div class="table-row">
+            <button class="plus-btn">+</button><span class="value">0</span>
+          </div>
         </div>
 
         <!-- PTS REQ -->
         <div class="column">
-            <div class="column-header">Pts Req</div>
-            <div class="table-row"><span class="value">2</span></div>
-            <div class="table-row"><span class="value">2</span></div>
-            <div class="table-row"><span class="value">2</span></div>
-            <div class="table-row"><span class="value">2</span></div>
-            <div class="table-row"><span class="value">2</span></div>
-            <div class="table-row"><span class="value">2</span></div>
+          <div class="column-header">Pts Req</div>
+          <div class="table-row"><span class="value">2</span></div>
+          <div class="table-row"><span class="value">2</span></div>
+          <div class="table-row"><span class="value">2</span></div>
+          <div class="table-row"><span class="value">2</span></div>
+          <div class="table-row"><span class="value">2</span></div>
+          <div class="table-row"><span class="value">2</span></div>
         </div>
+      </div>
 
-    </div>
-
-    <!-- ================= STATUS INFORMATION ================= -->
-    <div class="status-wrapper">
+      <!-- ================= STATUS INFORMATION ================= -->
+      <div class="status-wrapper">
         <div class="status-title">Status Information</div>
 
         <div class="status-columns">
-
-            <!-- LEFT STATUS -->
-            <div class="column">
-                <div class="table-row">
-                    <img src="images/attack.png" class="stat-icon">
-                    <span class="label">Attack</span>
-                    <input value="1" readonly>
-                    <button class="symbol-btn">+</button>
-                    <input value="0" readonly>
-                </div>
-
-                <div class="table-row">
-                    <img src="images/magicattack.png" class="stat-icon">
-                    <span class="label">Magic Attack</span>
-                    <input value="1" readonly>
-                    <button class="symbol-btn">~</button>
-                    <input value="1" readonly>
-                </div>
-
-                <div class="table-row">
-                    <img src="images/hitrate.png" class="stat-icon">
-                    <span class="label">Hit Rate</span>
-                    <input value="2" readonly>
-                </div>
-
-                <div class="table-row">
-                    <img src="images/criticalhit.png" class="stat-icon">
-                    <span class="label">Critical Rate</span>
-                    <input value="1" readonly>
-                </div>
+          <!-- LEFT STATUS -->
+          <div class="column">
+            <div class="table-row">
+              <img src="images/attack.png" class="stat-icon" />
+              <span class="label">Attack</span>
+              <input value="1" readonly />
+              <button class="symbol-btn">+</button>
+              <input value="0" readonly />
             </div>
 
-            <!-- RIGHT STATUS -->
-            <div class="column">
-                <div class="table-row">
-                    <img src="images/defense.png" class="stat-icon">
-                    <span class="label">Defense</span>
-                    <input value="0" readonly>
-                    <button class="symbol-btn">+</button>
-                    <input value="1" readonly>
-                </div>
-
-                <div class="table-row">
-                    <img src="images/magicdefense.png" class="stat-icon">
-                    <span class="label">Magic Defense</span>
-                    <input value="0" readonly>
-                    <button class="symbol-btn">+</button>
-                    <input value="1" readonly>
-                </div>
-
-                <div class="table-row">
-                    <img src="images/fleerate.png" class="stat-icon">
-                    <span class="label">Flee Rate</span>
-                    <input value="2" readonly>
-                    <button class="symbol-btn">+</button>
-                    <input value="1" readonly>
-                </div>
-
-                <div class="table-row">
-                    <img src="images/attackspeed.png" class="stat-icon">
-                    <span class="label">Attack Speed</span>
-                    <input value="150" readonly>
-                </div>
+            <div class="table-row">
+              <img src="images/magicattack.png" class="stat-icon" />
+              <span class="label">Magic Attack</span>
+              <input value="1" readonly />
+              <button class="symbol-btn">~</button>
+              <input value="1" readonly />
             </div>
 
+            <div class="table-row">
+              <img src="images/hitrate.png" class="stat-icon" />
+              <span class="label">Hit Rate</span>
+              <input value="2" readonly />
+            </div>
+
+            <div class="table-row">
+              <img src="images/criticalhit.png" class="stat-icon" />
+              <span class="label">Critical Rate</span>
+              <input value="1" readonly />
+            </div>
+          </div>
+
+          <!-- RIGHT STATUS -->
+          <div class="column">
+            <div class="table-row">
+              <img src="images/defense.png" class="stat-icon" />
+              <span class="label">Defense</span>
+              <input value="0" readonly />
+              <button class="symbol-btn">+</button>
+              <input value="1" readonly />
+            </div>
+
+            <div class="table-row">
+              <img src="images/magicdefense.png" class="stat-icon" />
+              <span class="label">Magic Defense</span>
+              <input value="0" readonly />
+              <button class="symbol-btn">+</button>
+              <input value="1" readonly />
+            </div>
+
+            <div class="table-row">
+              <img src="images/fleerate.png" class="stat-icon" />
+              <span class="label">Flee Rate</span>
+              <input value="2" readonly />
+              <button class="symbol-btn">+</button>
+              <input value="1" readonly />
+            </div>
+
+            <div class="table-row">
+              <img src="images/attackspeed.png" class="stat-icon" />
+              <span class="label">Attack Speed</span>
+              <input value="150" readonly />
+            </div>
+          </div>
         </div>
 
         <div class="status-full">
-            <div class="table-row">
-                <img src="images/statuspoint7.png" class="stat-icon">
-                <span class="label">Status Point</span>
-                <input value="48" readonly>
-            </div>
+          <div class="table-row">
+            <img src="images/statuspoint7.png" class="stat-icon" />
+            <span class="label">Status Point</span>
+            <input value="48" readonly />
+          </div>
 
-            <div class="table-row">
-                <img src="images/guild8.png" class="stat-icon">
-                <span class="label">Guild</span>
-                <input value="RMS" readonly>
-            </div>
+          <div class="table-row">
+            <img src="images/guild8.png" class="stat-icon" />
+            <span class="label">Guild</span>
+            <input value="RMS" readonly />
+          </div>
         </div>
-
+      </div>
     </div>
 
-</div>
-
-<script src="js/str-function.js"></script>
-
-</body>
+    <script src="js/str-function.js"></script>
+  </body>
 </html>
+  
