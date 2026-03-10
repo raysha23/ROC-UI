@@ -273,8 +273,8 @@ input {
     position: relative;
     z-index: 100; /* ALWAYS above spawn */
 
-    width: 70px;   /* smaller */
-    height: 300px; /* smaller */
+    width: 60px;   /* smaller */
+    height: 270px; /* smaller */
 
     display: flex;
     align-items: center;
@@ -292,38 +292,65 @@ input {
     object-fit: contain;
 }
 
+
 /* Make only Acolyte and Archer GIFs smaller */
+.character-gif img[src*="thieffemale.gif"]
+{
+     width: 43px !important;   /* adjust as needed */
+    height: auto !important;   /* maintain aspect ratio */
+    object-fit: contain; 
+}
+
 .character-gif img[src*="acolytemale.gif"],
-.character-gif img[src*="swordsmanfemale.gif"],
-.character-gif img[src*="archerfemale.gif"],
-.character-gif img[src*="archermale.gif"] {
-    width: 90px !important;   /* adjust as needed */
+.character-gif img[src*="acolytefemale.gif"],
+.character-gif img[src*="novicefemale.gif"]
+{
+     width: 45px !important;   /* adjust as needed */
     height: auto !important;   /* maintain aspect ratio */
-    object-fit: contain;
+    object-fit: contain; 
 }
-.character-gif img[src*="merchantmale.gif"]{
-     width: 78px !important;   /* adjust as needed */
+
+.character-gif img[src*="thiefmale.gif"],
+.character-gif img[src*="merchantfemale.gif"]{
+       width: 48px !important;   /* adjust as needed */
     height: auto !important;   /* maintain aspect ratio */
-    object-fit: contain;
+    object-fit: contain; 
 }
-.character-gif img[src*="magicianmale.gif"]{
-     width: 200px !important;   /* adjust as needed */
+
+.character-gif img[src*="magicianfemale.gif"],
+.character-gif img[src*="magicianmale.gif"],
+.character-gif img[src*="archermale.gif"],
+
+.character-gif img[src*="swordsmanmale.gif"] {
+    width: 50px !important;   /* adjust as needed */
     height: auto !important;   /* maintain aspect ratio */
-    object-fit: contain;
-}
-.character-gif img[src*="thieffemale.gif"]{
-     width: 200px !important;   /* adjust as needed */
-    height: 190px !important; 
-    margin-top: -50px;  /* maintain aspect ratio */
     object-fit: contain;
 }
 .character-gif img[src*="archerfemale.gif"]{
-     width: 115px !important;   /* adjust as needed */
-    height: 800px !important; 
-    margin-top: -50px;  /* maintain aspect ratio */
+     width: 52px !important;   /* adjust as needed */
+    height: auto !important;   /* maintain aspect ratio */
     object-fit: contain;
-      margin-top: -5px;  /* maintain aspect ratio */
 }
+
+.character-gif img[src*="novicemale.gif"],
+.character-gif img[src*="merchantmale.gif"] {
+    width: 55px !important;   /* adjust as needed */
+    height: auto !important;   /* maintain aspect ratio */
+    object-fit: contain;
+}
+
+
+.character-gif img[src*="swordsmanfemale.gif"]{
+    width: 60px !important;   /* adjust as needed */
+    height: auto !important;   /* maintain aspect ratio */
+    object-fit: contain; 
+}
+
+
+
+
+
+
 
 
 /* Female Novice – larger, showing only up to knees */
@@ -380,7 +407,7 @@ input {
      /* ABOVE stats but BELOW character */
 
     margin-left: 2435px;
-    margin-top: -626px;
+    margin-top: -650px;
 }
 .spawn-platform {
     position: relative;
@@ -1156,7 +1183,7 @@ body {
     gap:15px;                 /* more space between male & female */
     margin-top:15px;
     justify-content:center;
-    margin-top: 50px;
+    margin-top: 80px;
     margin-left:210px;         /* move the whole container to the right */
 }
 
