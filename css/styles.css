@@ -1,1412 +1,1466 @@
-
-
-
-
 @font-face {
-    font-family: 'Reaver';
-    src: url('Reaver-Regular.woff') format('woff');
-    
+  font-family: "Reaver";
+  src: url("fonts/Reaver-Regular.woff") format("woff");
 }
 
 @font-face {
-    font-family: 'Radiance';
-    src: url('fonts/Radiance.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Radiance";
+  src: url("fonts/Radiance.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Reaver-Bold';
-    src: url('fonts/Reaver-Bold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Reaver-Bold";
+  src: url("fonts/Reaver-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Reaver-SemiBold';
-    src: url('fonts/Reaver-SemiBold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Reaver-SemiBold";
+  src: url("fonts/Reaver-SemiBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
-html, body {
-    height: 100%;
-    margin: 0;
-     overflow-x: hidden;  /* remove horizontal scrollbar */
-    overflow-y: hidden;  /* remove vertical scrollbar */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden; /* remove horizontal scrollbar */
+  overflow-y: hidden; /* remove vertical scrollbar */
 }
-
-
 
 .left-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 500px;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 500px;
+  position: relative;
+  margin-top: 50px;
 }
-
 
 .stats-master {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-      background: #141c23;
-   border: 1px solid #faf8f3;      /* Gold Border */
-    border-radius: 8px;
-    padding: 15px;
-    margin-left: 600px;
-    margin-top: -90px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #141c23;
+  border: 1px solid #faf8f3; /* Gold Border */
+  border-radius: 8px;
+  padding: 15px;
+  margin-left: 600px;
+  /* margin-top: -90px; */
 }
 
-.lvl-value-input { 
-    width: 50px;
-    font-family: 'Reaver';
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid#f3e8d2;
-    text-align: center;
-    outline: none;
-    cursor: pointer;
+.lvl-value-input {
+  width: 50px;
+  font-family: "Reaver";
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid#f3e8d2;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
 }
 
 .lvl-value-input:focus {
-    border-color: #9fd7ff;
-    box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
-    background: rgba(0,0,0,0.3);
+  border-color: #9fd7ff;
+  box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .stats-top {
-    display: flex;
-    gap: 6px;
+  display: flex;
+  gap: 6px;
 }
 
 /* ===== CUSTOM COLUMN WIDTHS ===== */
 
 .stats-top .column:nth-child(1) {
-    flex: 1.6;   /* Stats column (wider) */
+  flex: 1.6; /* Stats column (wider) */
 }
 
 .stats-top .column:nth-child(2) {
-    flex: 0.7;   /* Job Bonus (smaller) */
+  flex: 0.7; /* Job Bonus (smaller) */
 }
 
 .stats-top .column:nth-child(3) {
-    flex: 0.6;   /* Pts Req (smallest) */
+  flex: 0.6; /* Pts Req (smallest) */
 }
 
 /* COLUMN STYLE */
 .column {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-      background: transparent;
-    border: transparent; /* gold border instead of blue */
-    padding: 6px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: transparent;
+  border: transparent; /* gold border instead of blue */
+  padding: 6px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-
 
 /* HEADER */
 .column-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    color: #ffffff;              /* same as Status Information */
+  color: #ffffff; /* same as Status Information */
 
-    height: 24px;
-    font-size: 15px;
+  height: 24px;
+  font-size: 15px;
 
-    border-bottom: 1px solid #faf8f3;
+  border-bottom: 1px solid #faf8f3;
 
-    /* same glow as Status Information */
-    text-shadow:
-        0 1px 0 #0a0f14,
-        0 2px 0 #0a0f14,
-        0 4px 8px rgba(0,0,0,0.85),
-        0 0 6px rgba(252, 252, 173, 0.7),
-        0 0 12px rgba(255, 244, 94, 0.5);
+  /* same glow as Status Information */
+  text-shadow:
+    0 1px 0 #0a0f14,
+    0 2px 0 #0a0f14,
+    0 4px 8px rgba(0, 0, 0, 0.85),
+    0 0 6px rgba(252, 252, 173, 0.7),
+    0 0 12px rgba(255, 244, 94, 0.5);
 }
 
 /* ROW */
 .table-row {
-    
-    display: flex;
-    align-items: center;
-    height: 24px;   /* was 32px */
-    gap: 4px;       /* was 6px */
+  display: flex;
+  align-items: center;
+  height: 24px; /* was 32px */
+  gap: 4px; /* was 6px */
 }
 
 /* LABEL */
 .label {
-     width: 85px;
-    font-size: 13px;
-      color: white; /* light gold */
-    white-space: nowrap; /* prevent breaking */
+  width: 85px;
+  font-size: 13px;
+  color: white; /* light gold */
+  white-space: nowrap; /* prevent breaking */
 }
 
-
 input {
-    width: 48px;
-    height: 20px;
-    font-size: 12px;
-    background: #e4e4e4;
-    border: 2px solid #8a8a8a;   /* grey border */
-    border-radius: 3px;
-    text-align: center;
-    font-family: 'Reaver';
+  width: 48px;
+  height: 20px;
+  font-size: 12px;
+  background: #e4e4e4;
+  border: 2px solid #8a8a8a; /* grey border */
+  border-radius: 3px;
+  text-align: center;
+  font-family: "Reaver";
 }
 
 /* VALUE */
 .value {
-    width: 32px;
-    height: 20px;
-    font-size: 12px;
+  width: 32px;
+  height: 20px;
+  font-size: 12px;
 
-    text-align: center;
-   
-    background: rgba(0,0,0,0.35);
-    border: 1px solid #8a8a8a;   /* grey */
-    color: #e0e0e0;
+  text-align: center;
+
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid #8a8a8a; /* grey */
+  color: #e0e0e0;
 }
 
 /* BUTTONS */
 .plus-btn,
 .symbol-btn {
-    width: 28px;
-    height: 24px;
-    background: #141c23;
-    border: 2px solid #8a8a8a;   /* grey */
-    color: #e6e6e6;
-    border-radius: 3px;
-    cursor: pointer;
-    font-family: 'Reaver';
-    text-align: center;
+  width: 28px;
+  height: 24px;
+  background: #141c23;
+  border: 2px solid #8a8a8a; /* grey */
+  color: #e6e6e6;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: "Reaver";
+  text-align: center;
 }
-
-
 
 /* ================= STATUS ================= */
 .status-wrapper {
-      background: rgb(36, 34, 34);
-    border: 1px solid gray;
-    padding: 6px;
+  background: rgb(36, 34, 34);
+  border: 1px solid gray;
+  padding: 6px;
 }
 
 .status-title {
-    text-align: center;
-      font-size: 17px;   /* was 20px */
-    margin-bottom: 4px;
-    color: white;
-     border-bottom: 1px solid #faf8f3;
-    padding-bottom: 4px;
+  text-align: center;
+  font-size: 17px; /* was 20px */
+  margin-bottom: 4px;
+  color: white;
+  border-bottom: 1px solid #faf8f3;
+  padding-bottom: 4px;
 }
 
 .status-columns {
-    display: flex;
-      gap: 4px;  /* was 6px */
+  display: flex;
+  gap: 4px; /* was 6px */
 }
 
 /* FULL WIDTH STATUS ROWS (UNDER CRITICAL + ASPD) */
 .status-full {
-    margin-top: 6px;
-       background: transparent;
-    border: transparent;
-    padding: 6px;
-    display: flex;
-    flex-direction: column;
-   gap: 4px;
+  margin-top: 6px;
+  background: transparent;
+  border: transparent;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 /* Make Hit Rate, Critical Rate, and Attack Speed boxes longer */
 .status-columns .column:first-child .table-row:nth-child(3) input,   /* Hit Rate */
 .status-columns .column:first-child .table-row:nth-child(4) input,   /* Critical Rate */
-.status-columns .column:last-child .table-row:nth-child(4) input {   /* Attack Speed */
-    width: 130px;
+.status-columns .column:last-child .table-row:nth-child(4) input {
+  /* Attack Speed */
+  width: 130px;
 }
-
 
 .status-full .table-row:nth-child(1) input,                          /* Status Point */
-.status-full .table-row:nth-child(2) input {                         /* Guild */
-    width: 395px;
+.status-full .table-row:nth-child(2) input {
+  /* Guild */
+  width: 395px;
 }
-
-
 
 /* Center Job Bonus + Pts Req contents in each row */
 .stats-top .column:nth-child(2) .table-row,   /* Job Bonus */
-.stats-top .column:nth-child(3) .table-row {  /* Pts Req */
-    display: flex;
-    justify-content: center;   /* center horizontally */
-    align-items: center;       /* center vertically */
-    gap: 6px;                  /* spacing between button/value */
+.stats-top .column:nth-child(3) .table-row {
+  /* Pts Req */
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically */
+  gap: 6px; /* spacing between button/value */
 }
 
 /*  Make sure Job Bonus value box and plus button are centered and same height */
 .stats-top .column:nth-child(2) .value,
 .stats-top .column:nth-child(3) .value,
 .stats-top .column:nth-child(2) .plus-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Change ONLY Status Information input box colors */
 .status-wrapper input {
-    background: rgba(0,0,0,0.35);
-    border: 1px solid #8a8a8a;  /* grey */
-    color: #e0e0e0;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid #8a8a8a; /* grey */
+  color: #e0e0e0;
 }
 
 /* Make Job Bonus and Pts Req boxes have curved corners like inputs */
 .value {
-    border-radius: 3px;
+  border-radius: 3px;
 }
 
 /* ===== SLIDE ANIMATION ===== */
 
 /* ===== CHARACTER GIF FIXED SIZE ===== */
 .character-gif {
-    position: relative;
-    z-index: 100; /* ALWAYS above spawn */
+  position: relative;
+  z-index: 100; /* ALWAYS above spawn */
 
-    width: 60px;   /* smaller */
-    height: 270px; /* smaller */
+  width: 60px; /* smaller */
+  height: 270px; /* smaller */
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    margin-left: 2435px;
-    margin-top: -830px;
+  margin-left: 2435px;
+  margin-top: -940px;
 }
 
 .character-gif img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-
 /* Make only Acolyte and Archer GIFs smaller */
-.character-gif img[src*="thieffemale.gif"]
-{
-     width: 43px !important;   /* adjust as needed */
-    height: auto !important;   /* maintain aspect ratio */
-    object-fit: contain; 
+.character-gif img[src*="thieffemale.gif"] {
+  width: 43px !important; /* adjust as needed */
+  height: auto !important; /* maintain aspect ratio */
+  object-fit: contain;
 }
 
 .character-gif img[src*="acolytemale.gif"],
 .character-gif img[src*="acolytefemale.gif"],
-.character-gif img[src*="novicefemale.gif"]
-{
-     width: 45px !important;   /* adjust as needed */
-    height: auto !important;   /* maintain aspect ratio */
-    object-fit: contain; 
+.character-gif img[src*="novicefemale.gif"] {
+  width: 45px !important; /* adjust as needed */
+  height: auto !important; /* maintain aspect ratio */
+  object-fit: contain;
 }
 
 .character-gif img[src*="thiefmale.gif"],
-.character-gif img[src*="merchantfemale.gif"]{
-       width: 48px !important;   /* adjust as needed */
-    height: auto !important;   /* maintain aspect ratio */
-    object-fit: contain; 
+.character-gif img[src*="merchantfemale.gif"] {
+  width: 48px !important; /* adjust as needed */
+  height: auto !important; /* maintain aspect ratio */
+  object-fit: contain;
 }
 
 .character-gif img[src*="magicianfemale.gif"],
 .character-gif img[src*="magicianmale.gif"],
 .character-gif img[src*="archermale.gif"],
-
 .character-gif img[src*="swordsmanmale.gif"] {
-    width: 50px !important;   /* adjust as needed */
-    height: auto !important;   /* maintain aspect ratio */
-    object-fit: contain;
+  width: 50px !important; /* adjust as needed */
+  height: auto !important; /* maintain aspect ratio */
+  object-fit: contain;
 }
-.character-gif img[src*="archerfemale.gif"]{
-     width: 52px !important;   /* adjust as needed */
-    height: auto !important;   /* maintain aspect ratio */
-    object-fit: contain;
+.character-gif img[src*="archerfemale.gif"] {
+  width: 52px !important; /* adjust as needed */
+  height: auto !important; /* maintain aspect ratio */
+  object-fit: contain;
 }
 
 .character-gif img[src*="novicemale.gif"],
 .character-gif img[src*="merchantmale.gif"] {
-    width: 55px !important;   /* adjust as needed */
-    height: auto !important;   /* maintain aspect ratio */
-    object-fit: contain;
+  width: 55px !important; /* adjust as needed */
+  height: auto !important; /* maintain aspect ratio */
+  object-fit: contain;
 }
 
-
-.character-gif img[src*="swordsmanfemale.gif"]{
-    width: 60px !important;   /* adjust as needed */
-    height: auto !important;   /* maintain aspect ratio */
-    object-fit: contain; 
-}
-
-
-
-
-
-
-
-
-/* Female Novice – larger, showing only up to knees */
-.hero-selection img[src*="femalenovice.png"] {
-     margin-top: 60px !important; /* moves the image up; adjust as needed */
-  
-     width: 2200px !important;      /* much bigger */
-    height: 800px !important;  
-    position: relative;            /* ensure independent positioning */
-    z-index: 100;                  /* stays above background but below rock if needed */
+.character-gif img[src*="swordsmanfemale.gif"] {
+  width: 60px !important; /* adjust as needed */
+  height: auto !important; /* maintain aspect ratio */
+  object-fit: contain;
 }
 
 /* Female Novice – larger, showing only up to knees */
-.hero-selection img[src*="novice.png"] {
-     margin-top: 60px !important; /* moves the image up; adjust as needed */
-  
-     width: 2200px !important;      /* much bigger */
-    height: 800px !important;  
-    position: relative;            /* ensure independent positioning */
-    z-index: 100;                  /* stays above background but below rock if needed */
-}
+.hero-selection img[src*="novice.png"],
+.hero-selection img[src*="novicefemale.png"] {
+  margin-top: 130px !important; /* moves the image up; adjust as needed */
 
+  width: 2000px !important; /* much bigger */
+  height: 880px;
+  position: relative; /* ensure independent positioning */
+  z-index: 100; /* stays above background but below rock if needed */
+}
 
 /* Rock spot for Novice – absolute positioning */
 .hero-selection[data-job="novice"] .rock-spot {
-    position: absolute;            /* independent of image margin */
-    bottom: 100px;                 /* distance from bottom of hero-selection container */
-    left: 50%;                     /* horizontally centered under character */
-    transform: translateX(-50%);   /* perfect center */
-    z-index: 50;                   /* below the character image */
+  position: absolute; /* independent of image margin */
+  bottom: 100px; /* distance from bottom of hero-selection container */
+  left: 50%; /* horizontally centered under character */
+  transform: translateX(-50%); /* perfect center */
+  z-index: 50; /* below the character image */
 }
-
 
 /* ADDED Slide left */
 .slide-out-left {
-    transform: translateX(-100%);
-    opacity: 0;
+  transform: translateX(-100%);
+  opacity: 0;
 }
 
 /* ADDED Reset */
 .slide-reset {
-    transform: translateX(0);
-    opacity: 1;
+  transform: translateX(0);
+  opacity: 1;
 }
-
-
-
 
 /* ===== ABILITIES SECTION ===== */
 /* ===== SPAWN EFFECT (REPLACES ROCK IMAGE) ===== */
 .rock-spot {
-      position: relative;
-    z-index: 5; 
-     /* ABOVE stats but BELOW character */
+  position: relative;
+  z-index: 5;
+  /* ABOVE stats but BELOW character */
 
-    margin-left: 2435px;
-    margin-top: -650px;
+  margin-left: 2435px;
+  margin-top: -760px;
 }
 .spawn-platform {
-    position: relative;
-    width: 120px;
-    height: 30px;
-    border-radius: 50%;
-    perspective: 500px;
+  position: relative;
+  width: 120px;
+  height: 30px;
+  border-radius: 50%;
+  perspective: 500px;
 }
 
 /* ===== SCANLINE (NOW STATIC - NO MOVEMENT) ===== */
 .scan-line {
-    position: absolute;
-    top: -150px;
-    left: 0;
-    width: 100%;
-    height: 180px;
+  position: absolute;
+  top: -150px;
+  left: 0;
+  width: 100%;
+  height: 180px;
 
-    background: linear-gradient(
-        to top,
-        rgba(255, 215, 120, 0.35),   /* gold glow */
-        transparent
-    );
+  background: linear-gradient(
+    to top,
+    rgba(255, 215, 120, 0.35),
+    /* gold glow */ transparent
+  );
 
-    opacity: 0.25;
+  opacity: 0.25;
 
-    z-index: 0;   /* BACK LAYER */
+  z-index: 0; /* BACK LAYER */
 }
 
 /* ===== OUTER GLOW (WHITE + GOLD) ===== */
 .glow-outer {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
 
-    border: 2px solid rgba(255, 235, 180, 0.9);
+  border: 2px solid rgba(255, 235, 180, 0.9);
 
-    box-shadow:
-        0 0 18px rgba(255, 255, 255, 0.9),
-        0 0 35px rgba(255, 215, 120, 0.8),
-        inset 0 0 12px rgba(255, 215, 120, 0.5);
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.9),
+    0 0 35px rgba(255, 215, 120, 0.8),
+    inset 0 0 12px rgba(255, 215, 120, 0.5);
 
-    z-index: 1;
+  z-index: 1;
 }
 
 /* ===== INNER GLOW (SOFT GOLD CORE) ===== */
 .glow-inner {
-    position: absolute;
-    top: -10%;
-    left: 10%;
-    right: 10%;
-    bottom: 20%;
+  position: absolute;
+  top: -10%;
+  left: 10%;
+  right: 10%;
+  bottom: 20%;
 
-    background: radial-gradient(
-        circle,
-        rgba(255,255,255,0.9) 0%,
-        rgba(255,220,140,0.7) 40%,
-        rgba(255,200,90,0.35) 70%,
-        transparent 100%
-    );
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 220, 140, 0.7) 40%,
+    rgba(255, 200, 90, 0.35) 70%,
+    transparent 100%
+  );
 
-    border-radius: 50%;
-    filter: blur(10px);
+  border-radius: 50%;
+  filter: blur(10px);
 
-    z-index: 2;
+  z-index: 2;
 }
 
 /* Ensure the character stays above the glow */
 .character-selector {
-    z-index: 10;
-    position: relative;
+  z-index: 10;
+  position: relative;
 }
 /* ABILITIES */
 /* ABILITIES */
 .abilities-section {
-    position: fixed;
-    top: 200px;   /* moved down */
-    left: 74%;
-    transform: translateX(-50%);
-    z-index: 99998;
+  position: fixed;
+  top: 200px; /* moved down */
+  left: 74%;
+  transform: translateX(-50%);
+  z-index: 99998;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .abilities-icons {
-    display: flex;
-    flex-direction: column;
-    gap: 6px; /* closer icons */
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* closer icons */
 }
 
 .innate-left {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .innate-left img {
-    width: 24px;   /* smaller icon */
-    height: 24px;
+  width: 24px; /* smaller icon */
+  height: 24px;
 
-    padding: 1px;  /* thinner padding */
+  padding: 1px; /* thinner padding */
 
-    background: transparent;
-    display: block;
+  background: transparent;
+  display: block;
 }
 /* SLIDE UP ANIMATION SMOOTH */
 @keyframes slideUp {
-    0% { transform: translateY(30px); opacity: 0; }
-    60% { transform: translateY(-5px); opacity: 1; } /* overshoot for smooth feel */
-    100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-5px);
+    opacity: 1;
+  } /* overshoot for smooth feel */
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .innate-slide-up {
-    animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Optional: stagger the icons */
 .innate-left img.innate-slide-up:nth-child(1),
 .innate-right img.innate-slide-up:nth-child(1) {
-    animation-delay: 0s;
+  animation-delay: 0s;
 }
 
 .innate-left img.innate-slide-up:nth-child(2),
 .innate-right img.innate-slide-up:nth-child(2) {
-    animation-delay: 0.08s;
+  animation-delay: 0.08s;
 }
 
 .innate-left img.innate-slide-up:nth-child(3),
 .innate-right img.innate-slide-up:nth-child(3) {
-    animation-delay: 0.16s;
+  animation-delay: 0.16s;
 }
 
 .innate-left img.innate-slide-up:nth-child(4),
 .innate-right img.innate-slide-up:nth-child(4) {
-    animation-delay: 0.24s;
+  animation-delay: 0.24s;
 }
-
 
 /* ================= MATCH JOB BONUS & PTS REQ TO STATUS STYLE ================= */
 
 /* Make font identical to inputs */
 .value {
-    font-family: 'Reaver';
-    font-size: 14px;      /* Match input text size */
-    height: 24px;         /* Same height as input */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-family: "Reaver";
+  font-size: 14px; /* Match input text size */
+  height: 24px; /* Same height as input */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-     background: rgba(0,0,0,0.35);
-    border: 1px solid #8a8a8a;   /* grey border */
-    color: #e0e0e0;              /* grey text */
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid #8a8a8a; /* grey border */
+  color: #e0e0e0; /* grey text */
 
-
-    border-radius: 3px;
+  border-radius: 3px;
 }
 
 /* Add same hover effect as status inputs */
 .value:hover {
-     border-color: #a0a0a0;
-    box-shadow: 0 0 6px rgba(200, 200, 200, 0.3);
+  border-color: #a0a0a0;
+  box-shadow: 0 0 6px rgba(200, 200, 200, 0.3);
 }
-
 
 /* ================= STATUS INPUT HOVER LIKE .value ================= */
 
 .status-wrapper input {
-    transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .status-wrapper input:hover {
-    border-color: #9fd7ff;
-    box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
+  border-color: #9fd7ff;
+  box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
 }
 
 /* ================= HOME BACKGROUND (NO CROPPING) ================= */
 
 body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;   /* 🔥 change this */
-    padding-top: 100px;      
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* 🔥 change this */
+  padding-top: 30px;
 }
-
 
 .home-container {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .home-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* prevents cropping */
-    object-position: center; /* centers the image */
-    display: block;
-    background: black; /* optional: black bars for empty space */
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* prevents cropping */
+  object-position: center; /* centers the image */
+  display: block;
+  background: black; /* optional: black bars for empty space */
 }
-
 
 .home-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;   /* fills screen without distortion */
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills screen without distortion */
+  display: block;
 }
-
 
 /* Small stat icon */
 .stat-icon {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
-
 
 /* ================= PROFESSIONAL RPG HEADER ================= */
 
 .rpg-header-bar {
-    position: absolute;
-    top: -45px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
+  position: absolute;
+  top: -45px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
 }
 
 /* Tabs container */
 .rpg-tabs {
-    display: flex;
-    gap: 8px;
-    margin-left: 40px;
-    position: relative;
+  display: flex;
+  gap: 8px;
+  margin-left: 40px;
+  position: relative;
 }
 
 /* Long connected line */
 .rpg-tabs::after {
-    display: none;
+  display: none;
 }
 
 /* Individual tabs */
 .rpg-tab {
-    width: 120px;
-    height: 42px;
+  width: 120px;
+  height: 42px;
 
-    background: linear-gradient(to bottom, #1b2731, #111a22);
-    border: 1px solid #6aa9ff;
-    border-bottom: none;
+  background: linear-gradient(to bottom, #1b2731, #111a22);
+  border: 1px solid #6aa9ff;
+  border-bottom: none;
 
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 
-    transition: all 0.25s ease;
-    
-    display: flex;              /* 🔥 ADD THIS */
-    align-items: center;        /* vertical center */
-    justify-content: center;    /* horizontal center */
+  transition: all 0.25s ease;
+
+  display: flex; /* 🔥 ADD THIS */
+  align-items: center; /* vertical center */
+  justify-content: center; /* horizontal center */
 }
 
 /* Inactive tabs slightly darker */
 .rpg-tab:not(.active) {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 /* Hover glow */
 .rpg-tab:hover {
-    opacity: 1;
-    box-shadow: 0 0 10px rgba(120,180,255,0.6);
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(120, 180, 255, 0.6);
 }
 
 /* Active tab blends into container */
 .rpg-tab.active {
-    background: #202D38; /* SAME as container */
-    border: 1px solid #d9f0ff;
-    border-bottom: 2px solid #202D38;
-    box-shadow: 0 0 10px rgba(150,220,255,0.7);
+  background: #202d38; /* SAME as container */
+  border: 1px solid #d9f0ff;
+  border-bottom: 2px solid #202d38;
+  box-shadow: 0 0 10px rgba(150, 220, 255, 0.7);
 }
-
 
 /* ===== FIX STAT BUTTON ALIGNMENT ===== */
 
 .table-row {
-     height: 24px;
-    gap: 4px;
-    display: flex;
-    align-items: center;   /* vertical center everything */
+  height: 24px;
+  gap: 4px;
+  display: flex;
+  align-items: center; /* vertical center everything */
 }
 
 /* Make input and buttons identical height */
 .table-row input {
-    height: 24px;
-    box-sizing: border-box;
+  height: 24px;
+  box-sizing: border-box;
 }
 
 /* Stat buttons */
 .stat-btn {
-    width: 22px;
-    height: 20px;
-    font-size: 12px;
-    display: flex;              /* important */
-    align-items: center;        /* center symbol vertically */
-    justify-content: center;    /* center symbol horizontally */
-    padding: 0;
+  width: 22px;
+  height: 20px;
+  font-size: 12px;
+  display: flex; /* important */
+  align-items: center; /* center symbol vertically */
+  justify-content: center; /* center symbol horizontally */
+  padding: 0;
 
-    background: #141c23;
-     border: 2px solid #8a8a8a;  /* grey */
-    color: #e6f4ff;
-    border-radius: 3px;
-    cursor: pointer;
-    font-family: 'Reaver';
-    line-height: 1;             /* prevents symbol shift */
+  background: #141c23;
+  border: 2px solid #8a8a8a; /* grey */
+  color: #e6f4ff;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: "Reaver";
+  line-height: 1; /* prevents symbol shift */
 }
 
 .stat-btn:hover {
-    border-color: #9fd7ff;
-    box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
+  border-color: #9fd7ff;
+  box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
 }
-
-
 
 /* ===== RPG STAT TEXTBOX (NO NUMBER STYLE) ===== */
 
 .stat-input {
-    width: 50px;
-    height: 24px;
+  width: 50px;
+  height: 24px;
 
-    background: #e4e4e4;
-    border: 2px solid #8a8a8a;
-    border-radius: 3px;
+  background: #e4e4e4;
+  border: 2px solid #8a8a8a;
+  border-radius: 3px;
 
-    text-align: center;
-    font-family: 'Reaver';
-    font-size: 14px;
+  text-align: center;
+  font-family: "Reaver";
+  font-size: 14px;
 
-    outline: none;
-    box-sizing: border-box;
+  outline: none;
+  box-sizing: border-box;
 
-    transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 /* Hover glow like RPG UI */
 .stat-input:hover {
-     border-color: #a0a0a0;
-    box-shadow: 0 0 6px rgba(200,200,200,0.4);
+  border-color: #a0a0a0;
+  box-shadow: 0 0 6px rgba(200, 200, 200, 0.4);
 }
 
 /* Remove blue highlight on click */
 .stat-input:focus {
-    border-color: #9fd7ff;
-    box-shadow: 0 0 8px rgba(120, 200, 255, 0.8);
+  border-color: #9fd7ff;
+  box-shadow: 0 0 8px rgba(120, 200, 255, 0.8);
 }
-
-
 
 /* VITAL STATS (HP/SP/LVL) */
 .vital-stats {
-    width: 120%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  width: 120%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-    background: rgba(0,0,0,0.4);
-    padding: 8px 12px;
-    border-radius: 5px;
-    border: 1px solid #3a4a5a;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #3a4a5a;
 
-    margin-left: 290px;   /* 🔥 MOVE RIGHT */
+  margin-left: 290px; /* 🔥 MOVE RIGHT */
 }
 .level-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-right: 1px solid #3a4a5a;
-    padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #3a4a5a;
+  padding-right: 15px;
 }
-.lvl-label { font-size: 12px; color: #6aa9ff; }
-.lvl-value { font-size: 24px; color: #fff; font-weight: bold; }
+.lvl-label {
+  font-size: 12px;
+  color: #6aa9ff;
+}
+.lvl-value {
+  font-size: 24px;
+  color: #fff;
+  font-weight: bold;
+}
 
 .bars-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;  /* same as original */
-    
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* same as original */
 }
 
 .bar-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;  /* same as original */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* same as original */
 }
 
 .bar-label {
-    width: 25px;      /* same as original */
-    font-weight: bold;
-    color: #fff;
-    user-select: none;  /* prevents accidental text selection */
+  width: 25px; /* same as original */
+  font-weight: bold;
+  color: #fff;
+  user-select: none; /* prevents accidental text selection */
 }
 
 .bar-bg {
-    flex: 1;          /* fills the remaining space */
-    height: 12px;     /* exactly same as original */
-    background: #000; /* same as original */
-    border-radius: 6px; 
-    overflow: hidden;
-    border: 1px solid #444; /* same as original */
+  flex: 1; /* fills the remaining space */
+  height: 12px; /* exactly same as original */
+  background: #000; /* same as original */
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #444; /* same as original */
 }
 
 .bar-fill {
-    height: 100%; 
-    border-radius: 6px 0 0 6px; /* rounded only left side */
-    transition: width 0.5s ease;
+  height: 100%;
+  border-radius: 6px 0 0 6px; /* rounded only left side */
+  transition: width 0.5s ease;
 }
 .hp-fill {
-    background: linear-gradient(to right, #ffd36b, #c98a1d);
+  background: linear-gradient(to right, #ffd36b, #c98a1d);
 }
 
 .sp-fill {
-    background: linear-gradient(to right, #6fa8ff, #2a4fa3);
+  background: linear-gradient(to right, #6fa8ff, #2a4fa3);
 }
 
 .bar-text {
-    width: 80px;          /* same as original */
-    font-size: 15px;      /* same as original */
-    color: #fff;          /* text color */
-    text-align: right;
-    user-select: none;
-    font-family: 'Reaver', serif;
-    font-weight: normal;  /* <-- changed from bold to normal */
+  width: 80px; /* same as original */
+  font-size: 15px; /* same as original */
+  color: #fff; /* text color */
+  text-align: right;
+  user-select: none;
+  font-family: "Reaver", serif;
+  font-weight: normal; /* <-- changed from bold to normal */
 }
 
-
-
 .bar-text-input {
-   width: 110px; 
-    font-size: 15px;
-    color: #fff;
-    text-align: right;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-family: 'Reaver', serif;
-    font-weight: normal;
+  width: 110px;
+  font-size: 15px;
+  color: #fff;
+  text-align: right;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: "Reaver", serif;
+  font-weight: normal;
 }
 
 /* Make readonly truly non-interactive */
 .bar-text-input[readonly] {
-    pointer-events: none;   /* prevents clicking */
-    user-select: none;      /* prevents text selection */
+  pointer-events: none; /* prevents clicking */
+  user-select: none; /* prevents text selection */
 }
 
 /* Remove focus effects if readonly */
 .bar-text-input[readonly]:focus {
-    border: none;
-    box-shadow: none;
+  border: none;
+  box-shadow: none;
 }
-
-
-
 
 .column-header,
 .status-title {
+  font-family: "Reaver", sans-serif; /* 🔥 same as description text */
+  /* REMOVE animation */
+  animation: none;
 
-     font-family: 'Reaver', sans-serif;   /* 🔥 same as description text */
-    /* REMOVE animation */
-    animation: none;
-
-    /* Clean RPG Glow + Depth */
-    text-shadow:
+  /* Clean RPG Glow + Depth */
+  text-shadow:
         /* depth */
-        0 1px 0 #0a0f14,
-        0 2px 0 #0a0f14,
-        0 4px 8px rgba(0,0,0,0.85),
-
-        /* glow */
-        0 0 6px rgba(252, 252, 173, 0.7),
-        0 0 12px rgba(255, 244, 94, 0.5);
+    0 1px 0 #0a0f14,
+    0 2px 0 #0a0f14,
+    0 4px 8px rgba(0, 0, 0, 0.85),
+    /* glow */ 0 0 6px rgba(252, 252, 173, 0.7),
+    0 0 12px rgba(255, 244, 94, 0.5);
 }
-
-
 
 /* ===== CELESTIAL FANTASY STATS-MASTER ===== */
 .stats-master {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 
-    background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0,0,0,0));
-    overflow: hidden;
+  background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  overflow: hidden;
 
-    border: 1px solid gray;
-    padding: 10px;
+  border: 1px solid gray;
+  padding: 10px;
 
-    margin-left: 790px;
-    margin-top: 330px;
+  margin-left: 790px;
+  margin-top: 400px;
 
-    position: relative;
-    z-index: 20000;   /* higher than hero-selection */
+  position: relative;
+  z-index: 20000; /* higher than hero-selection */
 }
 /* Magical "Glimmer" Effect (Replacing the Tech Scanline) */
 
-
-
-
 /* Keyframes for the Magical Feel */
 @keyframes celestial-glimmer {
-    0% { left: -100%; opacity: 0; }
-    20% { opacity: 0.5; }
-    40% { left: 150%; opacity: 0; }
-    100% { left: 150%; opacity: 0; }
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  40% {
+    left: 150%;
+    opacity: 0;
+  }
+  100% {
+    left: 150%;
+    opacity: 0;
+  }
 }
 
 @keyframes stars-float {
-    from { background-position: 0 0, 25px 25px; }
-    to { background-position: 0 -500px, 25px -475px; }
+  from {
+    background-position:
+      0 0,
+      25px 25px;
+  }
+  to {
+    background-position:
+      0 -500px,
+      25px -475px;
+  }
 }
 
 /* Subtle pulse for the whole container */
 @keyframes subtlePulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.005); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.005);
+  }
 }
-
-
-
 
 /* ===== CENTER HERO SELECTION ===== */
 /* ===== LARGE HERO SELECTION (LIKE IMAGE) ===== */
 
 .hero-selection {
-    position: relative;   /* enables z-index */
-    z-index: 9999;        /* very high so it stays in front */
+  position: relative; /* enables z-index */
+  z-index: 9999; /* very high so it stays in front */
 
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    margin-left: 1255px;
-    margin-top: -770px;
-    
+  margin-left: 1255px;
+  margin-top: -810px;
 }
 .hero-selection img {
-    width: 1655px;
-    height: auto;
-    max-width: none;
+  width: 1755px;
+  height: 1010px;
+  max-width: none;
 
-    transform: translateX(80px) scaleX(1.1); /* makes it wider */
+  transform: translateX(80px) scaleX(1.1); /* makes it wider */
 
-    position: relative;
-    z-index: 9999;
+  position: relative;
+  z-index: 9999;
 }
 
 .bars-character {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
-
-
-
-
-
-
-
 
 /* Container */
 .job-menu {
-    display: flex;
-    flex-direction: column;
-    width: 450px;
-    margin-left: 88px;
-    margin-top: 110px; /* pushes Novice and the others down */
-    gap: 0px; 
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  margin-left: 88px;
+  margin-top: 110px; /* pushes Novice and the others down */
+  gap: 0px;
 }
 
 /* MENU ITEM */
 .job-item {
-    position: relative;
-    width: 100%;
-    height: 42px; /* Tightly packed inactive state */
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    /* Smooth height expansion for the neighbors */
-    transition: height 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    overflow: visible;
+  position: relative;
+  width: 100%;
+  height: 42px; /* Tightly packed inactive state */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  /* Smooth height expansion for the neighbors */
+  transition: height 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: visible;
 }
 
 /* ACTIVE STATE */
 .job-item.active {
-    height: 90px; 
-    margin: 8px 0; /* Creates breathing room around the active bar */
+  height: 90px;
+  margin: 8px 0; /* Creates breathing room around the active bar */
 }
 
 /* BACKGROUND IMAGE (FIXED - NO MOVEMENT) */
 .job-head-icon {
-    position: absolute;
-    left: -130px; /* Adjust based on your image crop */
-    top: 50%;
-    transform: translateY(-50%); /* Keeps it perfectly centered */
-    width: 460px;     
-    height: 100px;    
-    object-fit: contain;
-    
-    opacity: 0;
-    transition: none !important; /* 🔥 INSTANT appearance, zero movement */
-    pointer-events: none;
-    z-index: 1;
+  position: absolute;
+  left: -130px; /* Adjust based on your image crop */
+  top: 50%;
+  transform: translateY(-50%); /* Keeps it perfectly centered */
+  width: 460px;
+  height: 100px;
+  object-fit: contain;
+
+  opacity: 0;
+  transition: none !important; /* 🔥 INSTANT appearance, zero movement */
+  pointer-events: none;
+  z-index: 1;
 }
 
 .job-item.active .job-head-icon {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* ICON - THE "LEAD" SLIDE */
 .job-icon {
-    position: relative;
-    z-index: 2;
-    width: 30px;
-    height: 30px;
-    margin-left: 20px;
+  position: relative;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  margin-left: 20px;
 
-    /* 🔥 removed grayscale filter so icon stays normal */
-    filter: none;
+  /* 🔥 removed grayscale filter so icon stays normal */
+  filter: none;
 
-    transition: 
-        transform 0.45s cubic-bezier(0.19, 1, 0.22, 1), 
-        width 0.4s ease, 
-        height 0.4s ease, 
-        filter 0.3s ease;
+  transition:
+    transform 0.45s cubic-bezier(0.19, 1, 0.22, 1),
+    width 0.4s ease,
+    height 0.4s ease,
+    filter 0.3s ease;
 
-    transform: translateX(0px);
+  transform: translateX(0px);
 }
 
 .job-item.active .job-icon {
-    width: 68px;
-    height: 68px;
-    margin-left: -4px;
+  width: 68px;
+  height: 68px;
+  margin-left: -4px;
 
-    /* only glow when active */
-    filter: drop-shadow(0 0 10px rgba(255,165,0,0.5));
+  /* only glow when active */
+  filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.5));
 
-    transform: translateX(35px);
+  transform: translateX(35px);
 }
 
 /* TEXT - THE "FOLLOW" SLIDE (PARALLAX) */
 .job-name {
-    position: relative;
-    z-index: 2;
-    margin-left: 15px;
-    font-size: 22px;
-    color: #8a959f;
-    font-family: 'Reaver';
-    letter-spacing: 0.5px;
-    
-    /* 🔥 Slower, wider slide to create depth (Parallax) */
-    transition: 
-        transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), 
-        font-size 0.4s ease, 
-        color 0.3s ease, 
-        letter-spacing 0.5s ease;
-    transform: translateX(0px);
+  position: relative;
+  z-index: 2;
+  margin-left: 15px;
+  font-size: 22px;
+  color: #8a959f;
+  font-family: "Reaver";
+  letter-spacing: 0.5px;
+
+  /* 🔥 Slower, wider slide to create depth (Parallax) */
+  transition:
+    transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+    font-size 0.4s ease,
+    color 0.3s ease,
+    letter-spacing 0.5s ease;
+  transform: translateX(0px);
 }
 
 .job-item.active .job-name {
-    color: #ffffff;
-    font-size: 25px;
-    margin-left: -5px;
-    letter-spacing: 1px; /* "Unfolding" text effect */
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 2px 2px 4px rgba(0,0,0,0.8);
-    transform: translateX(55px); /* Moves further than the icon */
+  color: #ffffff;
+  font-size: 25px;
+  margin-left: -5px;
+  letter-spacing: 1px; /* "Unfolding" text effect */
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.6),
+    2px 2px 4px rgba(0, 0, 0, 0.8);
+  transform: translateX(55px); /* Moves further than the icon */
 }
-
-
 
 /* REGEN SECTION DESIGN */
 .regen-container {
-    margin-top: 4px;
-     margin-left: 290px;
-    width: 122%;
-    padding-left: 10px;
-       background: rgba(0, 0, 0, 0.08);   /* grey background */
-    border-top: 1px solid rgba(160,160,160,0.25);
+  margin-top: 4px;
+  margin-left: 290px;
+  width: 122%;
+  padding-left: 10px;
+  background: rgba(0, 0, 0, 0.08); /* grey background */
+  border-top: 1px solid rgba(160, 160, 160, 0.25);
 
-
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .regen-row {
-    display: flex;
-    align-items: center;
-    font-family: 'Radiance', sans-serif;
-    font-size: 13px;
-    color: #cfe9ff;
-    letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  font-family: "Radiance", sans-serif;
+  font-size: 13px;
+  color: #cfe9ff;
+  letter-spacing: 0.5px;
 }
 
 .regen-label {
-    font-family: 'Reaver-SemiBold';
-    color:  #faf8f3;
-    margin-right: 8px;
+  font-family: "Reaver-SemiBold";
+  color: #faf8f3;
+  margin-right: 8px;
 }
 
-.hp-text { color: #ffd36b; } /* Matches HP bar color */
-.sp-text { color: #6fa8ff; } /* Matches SP bar color */
+.hp-text {
+  color: #ffd36b;
+} /* Matches HP bar color */
+.sp-text {
+  color: #6fa8ff;
+} /* Matches SP bar color */
 
 .regen-value {
-    font-family: 'Reaver-Bold';
-    color: #fff;
-    background: rgba(106, 169, 255, 0.2);
-    padding: 0 6px;
-    border-radius: 3px;
-    margin-right: 8px;
-    border: 1px solid rgba(106, 169, 255, 0.3);
+  font-family: "Reaver-Bold";
+  color: #fff;
+  background: rgba(106, 169, 255, 0.2);
+  padding: 0 6px;
+  border-radius: 3px;
+  margin-right: 8px;
+  border: 1px solid rgba(106, 169, 255, 0.3);
 }
 
 .regen-detail {
-    color: rgba(207, 233, 255, 0.7);
-    font-style: italic;
-    font-size: 12px;
+  color: rgba(207, 233, 255, 0.7);
+  font-style: italic;
+  font-size: 12px;
 }
 
 /* Optional: Add a subtle pulse to the values to make them feel "natural" */
 .regen-value {
-    animation: regenPulse 3s ease-in-out infinite;
+  animation: regenPulse 3s ease-in-out infinite;
 }
 
 @keyframes regenPulse {
-    0%, 100% { box-shadow: 0 0 2px rgba(159, 215, 255, 0.2); }
-    50% { box-shadow: 0 0 8px rgba(159, 215, 255, 0.5); }
+  0%,
+  100% {
+    box-shadow: 0 0 2px rgba(159, 215, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 8px rgba(159, 215, 255, 0.5);
+  }
 }
 
-
-
-.weight-group{
-    margin-left: 150px;     /* pushes weight section to the right */
-    font-family: 'Reaver-Bold';
-    font-size: 13px;
-    color:  #faf8f3;
+.weight-group {
+  margin-left: 150px; /* pushes weight section to the right */
+  font-family: "Reaver-Bold";
+  font-size: 13px;
+  color: #faf8f3;
 }
 
-.weight-box{
-    margin-left: 6px;
-    padding: 0 6px;
-    border-radius: 3px;
+.weight-box {
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 3px;
 
-    font-family: 'Reaver-Bold';
-    color: #fff;
+  font-family: "Reaver-Bold";
+  color: #fff;
 
-    background: rgba(106, 169, 255, 0.2);
-    border: 1px solid rgba(106, 169, 255, 0.3);
+  background: rgba(106, 169, 255, 0.2);
+  border: 1px solid rgba(106, 169, 255, 0.3);
 
-    animation: regenPulse 3s ease-in-out infinite; /* same glow */
+  animation: regenPulse 3s ease-in-out infinite; /* same glow */
 }
 /* ================= GENDER SELECTOR ================= */
 
-.gender-container{
-    display:flex;
-    gap:15px;                 /* more space between male & female */
-    margin-top:15px;
-    justify-content:center;
-    margin-top: 80px;
-    margin-left:210px;         /* move the whole container to the right */
+.gender-container {
+  display: flex;
+  gap: 15px; /* more space between male & female */
+  justify-content: center;
+  margin-top: 100px;
+  margin-left: 210px; /* move the whole container to the right */
 }
 
-.gender-item{
-    cursor:pointer;
-    transition:0.2s;
+.gender-item {
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.gender-icon{
-    width:105px;               /* bigger image */
-    height:105px;
-    object-fit:contain;
+.gender-icon {
+  width: 105px; /* bigger image */
+  height: 105px;
+  object-fit: contain;
 }
 
 /* hover glow only on image */
-.gender-icon:hover{
-    transform:scale(1.08);
-    filter:drop-shadow(0 0 6px rgba(100,180,255,0.8));
+.gender-icon:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 6px rgba(100, 180, 255, 0.8));
 }
-
-
 
 /* ================= WEAPON UI THEME (MATCH REGEN) ================= */
 
 .weapon-ui {
-    position: fixed;
-    top: 100px;
-    left: 78%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-
-    z-index: 99999;
+  position: fixed;
+  top: 100px;
+  left: 78%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: -20px;
+  z-index: 99999;
 }
 
 /* Container */
 .weapon-system-container {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 
-    padding: 6px 14px;
+  padding: 6px 14px;
 
-    background: rgba(106,169,255,0.06); /* same tone as regen */
-    border: 1px solid rgba(106,169,255,0.25);
-    border-radius: 8px;
+  background: rgba(106, 169, 255, 0.06); /* same tone as regen */
+  border: 1px solid rgba(106, 169, 255, 0.25);
+  border-radius: 8px;
 
-    backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 
-    box-shadow:
-        0 0 6px rgba(159,215,255,0.15),
-        inset 0 0 6px rgba(106,169,255,0.1);
+  box-shadow:
+    0 0 6px rgba(159, 215, 255, 0.15),
+    inset 0 0 6px rgba(106, 169, 255, 0.1);
+
+    
 }
 
 /* Label */
 .label-text .main {
-    font-family: 'Reaver-SemiBold';
-    color: #faf8f3;   /* same as regen labels */
-    font-size: 12px;
-    letter-spacing: 1px;
+  font-family: "Reaver-SemiBold";
+  color: #faf8f3; /* same as regen labels */
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 
 .label-text .sub {
-    font-family: 'Reaver-SemiBold';
-    color: #faf8f3;   /* same as regen labels */
-    font-size: 12px;
-    letter-spacing: 1px;
+  font-family: "Reaver-SemiBold";
+  color: #faf8f3; /* same as regen labels */
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 
 /* Slot text */
 .slot-indicator {
-    color: #cfe9ff;
-    font-size: 12px;
-    letter-spacing: 1px;
+  color: #cfe9ff;
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 
 /* Dropdown container */
 .custom-select-container {
-    position: relative;
-    width: 170px;
+  position: relative;
+  width: 170px;
 }
 
 /* Dropdown */
 .game-dropdown {
+  width: 180px;
+  min-width: 180px;
+  max-width: 180px;
+  padding: 6px 10px;
 
-    width: 100%;
-    padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid grey;
+  border-radius: 4px;
 
-    background: rgba(0,0,0,0.35);
-    border: 1px solid grey;
-    border-radius: 4px;
+  color: #ffffff;
+  font-family: "Reaver";
+  font-size: 13px;
 
-    color: #ffffff;
-    font-family: 'Reaver';
-    font-size: 13px;
+  appearance: none;
+  cursor: pointer;
 
-    appearance: none;
-    cursor: pointer;
-
-    transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 /* Hover effect (same glow style) */
 .game-dropdown:hover {
-    border-color: #9fd7ff;
-    box-shadow: 0 0 6px rgba(100,180,255,0.6);
+  border-color: #9fd7ff;
+  box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
 }
 
 /* Arrow */
 .dropdown-arrow {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 7px solid #cfe9ff;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid #cfe9ff;
 }
 
 /* Remove strong glow */
 .label-glow {
-    display: none;
+  display: none;
 }
-
-
 
 .description-container {
-    position: absolute;        /* overlay where you want it */
-    top: 180px;                /* adjust to align with character */
-    left: 1567px;              /* adjust to your layout */
-    width: 300px;
+  position: absolute; /* overlay where you want it */
+  top: 180px; /* adjust to align with character */
+  left: 1567px; /* adjust to your layout */
+  width: 300px;
 
-    background: transparent;   /* fully transparent */
-    border: none;              /* remove any border */
-    padding: 0;                /* no extra space */
-    color: #cfe9ff;            /* light text color */
-    font-family: 'Reaver', sans-serif;
-    font-size: 12px;
-    line-height: 1.4;
-    z-index: 10000;            /* ensure it’s on top */
+  background: transparent; /* fully transparent */
+  border: none; /* remove any border */
+  padding: 0; /* no extra space */
+  color: #cfe9ff; /* light text color */
+  font-family: "Reaver", sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  z-index: 10000; /* ensure it’s on top */
 }
 
-
-
-
-.hero-selection{
-    pointer-events:none;
+.hero-selection {
+  pointer-events: none;
 }
-.character-gif{
-    pointer-events:none;
+.character-gif {
+  pointer-events: none;
 }
-.rock-spot{
-    pointer-events:none;
+.rock-spot {
+  pointer-events: none;
 }
-.job-menu{
-    position: relative;
-    z-index: 20000;
+.job-menu {
+  position: relative;
+  z-index: 20000;
 }
-
-
-
 
 #jobTitle {
-    font-family: 'Reaver', sans-serif;
-    font-size: 26px;             /* bigger title */
-    font-weight: 700;            /* bold */
-    color: #ffffff;
-    margin-top: -60px;           /* moves the title higher */
-    margin-bottom: 10px;         /* creates space between title and description */
-    margin-right: 40px; 
-    text-align: center;
-    letter-spacing: 1px;
+  font-family: "Reaver", sans-serif;
+  font-size: 26px; /* bigger title */
+  font-weight: 700; /* bold */
+  color: #ffffff;
+  margin-top: -60px; /* moves the title higher */
+  margin-bottom: 10px; /* creates space between title and description */
+  margin-right: 40px;
+  text-align: center;
+  letter-spacing: 1px;
 
-    transition: all 0.4s ease-in-out; /* smooth transition when switching */
-    
-    /* Glow effect similar to Stats headers */
+  transition: all 0.4s ease-in-out; /* smooth transition when switching */
 
+  /* Glow effect similar to Stats headers */
 }
 
 #descText {
-    font-family: 'Reaver', sans-serif;
-    font-size: 12px;              /* readable description */
-    line-height: 1.5;
-    color: #cfe9ff;
-    text-align: center;
-    transition: opacity 0.3s ease-in-out; /* fade effect */
-    
-    margin-top: 0;   
-     margin-right: 40px;              /* keep a clean distance, already handled by title's margin-bottom */
+  font-family: "Reaver", sans-serif;
+  font-size: 12px; /* readable description */
+  line-height: 1.5;
+  color: #cfe9ff;
+  text-align: center;
+  transition: opacity 0.3s ease-in-out; /* fade effect */
+
+  margin-top: 0;
+  margin-right: 40px; /* keep a clean distance, already handled by title's margin-bottom */
 }
-
-
-
-
 
 /* ===== NOVICE ICON SIZE ADJUSTMENTS ===== */
 
 /* Default inactive size */
 /* Default inactive size */
 .job-item[data-job="novice"] .job-icon {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 
-    transition:
-        transform 0.45s cubic-bezier(0.19, 1, 0.22, 1),
-        width 0.4s ease,
-        height 0.4s ease,
-        filter 0.3s ease;
+  transition:
+    transform 0.45s cubic-bezier(0.19, 1, 0.22, 1),
+    width 0.4s ease,
+    height 0.4s ease,
+    filter 0.3s ease;
 }
 
 /* Active size */
 .job-item[data-job="novice"].active .job-icon {
-    width: 48px;
-    height: 48px;
+  width: 48px;
+  height: 48px;
 
-    transform: translateX(15px); /* same slide as others */
+  transform: translateX(15px); /* same slide as others */
 }
 
 
 
 
 
+.job-level-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
+  padding: 6px 14px;
+
+  background: rgba(106, 169, 255, 0.06); /* same as weapon UI */
+   border: 1px solid transparent; /* keeps the border “there” but invisible */
+  border-radius: 8px;
+
+  backdrop-filter: blur(4px);
+
+  box-shadow:
+    0 0 6px rgba(159, 215, 255, 0.15),
+    inset 0 0 6px rgba(106, 169, 255, 0.1);
+}
+
+.job-level-container h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #e0e0e0;
+  font-family: "Reaver", sans-serif;
+}
+
+.job-level-container select {
+  background: rgba(106, 169, 255, 0.06);
+  color: #f5f5f5;
+ border: 1px solid transparent; /* keeps the border “there” but invisible */
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-family: "Reaver", sans-serif;
+  cursor: pointer;
+  height: 26px;
+
+  box-shadow:
+    0 0 4px rgba(159, 215, 255, 0.12),
+    inset 0 0 4px rgba(106, 169, 255, 0.08);
+
+  transition: all 0.2s ease;
+}
+
+.job-level-container select:hover {
+  border-color: rgba(159, 215, 255, 0.6);
+  box-shadow:
+    0 0 6px rgba(159, 215, 255, 0.3),
+    inset 0 0 4px rgba(106, 169, 255, 0.12);
+}
+
+/* Make Job Level dropdown shorter */
+.job-level-select {
+  width: 70px;
+}
+
+.job-level-select .game-dropdown {
+  width: 70px;
+  min-width: 70px;
+  max-width: 70px;
+}
+
+
+
+.job-level-box {
+  background: transparent;       /* removes background color */
+  border: 1px solid transparent; /* makes border fully invisible */
+  box-shadow: none;
+  position: absolute;
+  top: 720px;   /* adjust this to move up or down */
+  left: 370px;  /* adjust horizontal position if needed */
+}
+
+
+/* Make JOB LEVEL label stay in one line */
+.job-level-box .label-text {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+
+.weapon-select-wrapper {
+  position: relative;
+}
+
+.weapon-select-wrapper .dropdown-arrow {
+  top: 58%;        /* move arrow slightly lower */
+  transform: translateY(-50%);
+}
+
+
+
+.weapon-system-container.job-level-box {
+  margin-top: -700px; /* move it 20px higher; adjust as needed */
+  margin-left: 1250px;
+  /* optional: keep relative positioning */
+}

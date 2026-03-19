@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -39,7 +39,7 @@
           <div class="bar-row">
             <div class="bar-label">HP</div>
             <div class="bar-bg">
-              <div class="bar-fill hp-fill" style="width: 85%"></div>
+              <div class="bar-fill hp-fill"></div>
             </div>
             <input
               type="text"
@@ -52,7 +52,7 @@
           <div class="bar-row">
             <div class="bar-label">SP</div>
             <div class="bar-bg">
-              <div class="bar-fill sp-fill" style="width: 70%"></div>
+              <div class="bar-fill sp-fill"></div>
             </div>
             <input
               type="text"
@@ -69,8 +69,10 @@
           <span class="regen-label"
             >Natural <span class="hp-text">HP</span> Regen:</span
           >
-          <span class="regen-value">1</span>
-          <span class="regen-detail">per 6s standing (per 3s sitting)</span>
+          <span class="hp-regen-value">1</span>
+          <span class="regen-detail"
+            >&nbsp; per 6s standing (per 3s sitting)</span
+          >
 
           <span class="weight-group">
             Weight: <span class="weight-box">2030</span>
@@ -80,8 +82,10 @@
           <span class="regen-label"
             >Natural <span class="sp-text">SP</span> Regen:</span
           >
-          <span class="regen-value">1</span>
-          <span class="regen-detail">per 8s standing (per 4s sitting)</span>
+          <span class="sp-regen-value">1</span>
+          <span class="regen-detail"
+            >&nbsp; per 8s standing (per 4s sitting)</span
+          >
         </div>
       </div>
 
@@ -157,6 +161,27 @@
         </div>
       </div>
 
+      <div class="weapon-system-container job-level-box">
+        <div class="label-text">
+          <span class="main">JOB LEVEL</span>
+        </div>
+
+        <div class="custom-select-container job-level-select">
+          <select class="game-dropdown" id="job-level">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+          </select>
+
+          <div class="dropdown-arrow"></div>
+        </div>
+      </div>
       <div class="hero-selection">
         <img src="images/swordsman.png" alt="selection" />
       </div>
@@ -175,18 +200,18 @@
 
         <div class="weapon-select-wrapper">
           <span class="slot-indicator">RIGHT:</span>
-          <div class="custom-select-container">
-            <select id="weapon-select" class="game-dropdown">
-              <option value="hand">Hand</option>
-              <option value="dagger">Dagger</option>
-              <option value="sword">One-Handed Sword</option>
-              <option value="sword">One-Handed Axe</option>
-              <option value="2hsword">Two-Handed Mace</option>
-              <option value="bow">Rod & Staff</option>
-              <option value="staff">Two-Handed Staff</option>
-            </select>
-            <div class="dropdown-arrow"></div>
-          </div>
+          <select id="weapon-select" class="game-dropdown">
+            <option value="Hand">Hand</option>
+            <option value="Dagger">Dagger</option>
+            <option value="One-handed Sword">One-handed Sword</option>
+            <option value="One-handed Axe">One-handed Axe</option>
+            <option value="One-handed Mace">One-handed Mace</option>
+            <option value="Two-handed Mace">Two-handed Mace</option>
+            <option value="Rod & Staff">Rod & Staff</option>
+            <option value="Two-handed Staff">Two-handed Staff</option>
+          </select>
+
+          <div class="dropdown-arrow"></div>
         </div>
       </div>
 
@@ -210,9 +235,9 @@
       <div class="abilities-section">
         <div class="abilities-icons">
           <div class="innate-left">
-            <img src="images/novice1.png" alt="Talents" />
-            <img src="images/novice2.png" alt="Innate Icon" />
-            <img src="images/novice3.png" alt="Dragon Slave" />
+            <img src="images/novice11.png" alt="Talents" />
+            <img src="images/novice22.png" alt="Innate Icon" />
+            <img src="images/novice33.png" alt="Dragon Slave" />
           </div>
         </div>
       </div>
@@ -229,72 +254,78 @@
           <div class="table-row">
             <img src="images/strength1.png" class="stat-icon" />
             <span class="label">Strength</span>
-            <button class="stat-btn plus">-</button>
+            <button class="stat-btn minus">-</button>
             <input type="text" value="1" class="stat-input" />
-            <button class="stat-btn minus">+</button>
+            <button class="stat-btn plus">+</button>
           </div>
 
           <div class="table-row">
             <img src="images/agility2.png" class="stat-icon" />
             <span class="label">Agility</span>
-            <button class="stat-btn plus">-</button>
+            <button class="stat-btn minus">-</button>
             <input type="text" value="1" class="stat-input" />
-            <button class="stat-btn minus">+</button>
+            <button class="stat-btn plus">+</button>
           </div>
 
           <div class="table-row">
             <img src="images/vitality3.png" class="stat-icon" />
             <span class="label">Vitality</span>
-            <button class="stat-btn plus">-</button>
+            <button class="stat-btn minus">-</button>
             <input type="text" value="1" class="stat-input" />
-            <button class="stat-btn minus">+</button>
+            <button class="stat-btn plus">+</button>
           </div>
 
           <div class="table-row">
             <img src="images/intelligence4.png" class="stat-icon" />
             <span class="label">Intelligence</span>
-            <button class="stat-btn plus">-</button>
+            <button class="stat-btn minus">-</button>
             <input type="text" value="1" class="stat-input" />
-            <button class="stat-btn minus">+</button>
+            <button class="stat-btn plus">+</button>
           </div>
 
           <div class="table-row">
             <img src="images/dexterity5.png" class="stat-icon" />
             <span class="label">Dexterity</span>
-            <button class="stat-btn plus">-</button>
+            <button class="stat-btn minus">-</button>
             <input type="text" value="1" class="stat-input" />
-            <button class="stat-btn minus">+</button>
+            <button class="stat-btn plus">+</button>
           </div>
 
           <div class="table-row">
             <img src="images/luck6.png" class="stat-icon" />
             <span class="label">Luck</span>
-            <button class="stat-btn plus">-</button>
+            <button class="stat-btn minus">-</button>
             <input type="text" value="1" class="stat-input" />
-            <button class="stat-btn minus">+</button>
+            <button class="stat-btn plus">+</button>
           </div>
         </div>
 
         <!-- JOB BONUS -->
-        <div class="column">
+        <div class="column job-bonus-column">
           <div class="column-header">Job Bonus</div>
           <div class="table-row">
-            <button class="plus-btn">+</button><span class="value">0</span>
+            <button class="plus-btn">+</button
+            ><span class="value job-bonus-value">0</span>
           </div>
           <div class="table-row">
-            <button class="plus-btn">+</button><span class="value">0</span>
+            <button class="plus-btn">+</button
+            ><span class="value job-bonus-value">0</span>
           </div>
           <div class="table-row">
-            <button class="plus-btn">+</button><span class="value">0</span>
+            <button class="plus-btn">+</button
+            ><span class="value job-bonus-value">0</span>
           </div>
           <div class="table-row">
-            <button class="plus-btn">+</button><span class="value">0</span>
+            <button class="plus-btn">+</button
+            ><span class="value job-bonus-value">0</span>
           </div>
           <div class="table-row">
-            <button class="plus-btn">+</button><span class="value">0</span>
+            <button class="plus-btn">+</button
+            ><span class="value job-bonus-value">0</span>
           </div>
           <div class="table-row">
-            <button class="plus-btn">+</button><span class="value">0</span>
+            <button class="plus-btn">+</button
+            ><span class="value job-bonus-value">0</span>
           </div>
         </div>
 
@@ -320,29 +351,29 @@
             <div class="table-row">
               <img src="images/attack.png" class="stat-icon" />
               <span class="label">Attack</span>
-              <input value="1" readonly />
+              <input class="atk-value" value="1" readonly />
               <button class="symbol-btn">+</button>
-              <input value="0" readonly />
+              <input class="atk-bonus" value="0" readonly />
             </div>
 
             <div class="table-row">
               <img src="images/magicattack.png" class="stat-icon" />
               <span class="label">Magic Attack</span>
-              <input value="1" readonly />
+              <input class="matk-min" value="1" readonly />
               <button class="symbol-btn">~</button>
-              <input value="1" readonly />
+              <input class="matk-max" value="1" readonly />
             </div>
 
             <div class="table-row">
               <img src="images/hitrate.png" class="stat-icon" />
               <span class="label">Hit Rate</span>
-              <input value="2" readonly />
+              <input class="hit-value" value="2" readonly />
             </div>
 
             <div class="table-row">
               <img src="images/criticalhit.png" class="stat-icon" />
               <span class="label">Critical Rate</span>
-              <input value="1" readonly />
+              <input class="crit-value" value="1" readonly />
             </div>
           </div>
 
@@ -351,31 +382,31 @@
             <div class="table-row">
               <img src="images/defense.png" class="stat-icon" />
               <span class="label">Defense</span>
-              <input value="0" readonly />
+              <input class="def-total" value="0" readonly />
               <button class="symbol-btn">+</button>
-              <input value="1" readonly />
+              <input class="def-base" value="0" readonly />
             </div>
 
             <div class="table-row">
               <img src="images/magicdefense.png" class="stat-icon" />
               <span class="label">Magic Defense</span>
-              <input value="0" readonly />
+              <input class="mdef-total" value="0" readonly />
               <button class="symbol-btn">+</button>
-              <input value="1" readonly />
+              <input class="mdef-base" value="0" readonly />
             </div>
 
             <div class="table-row">
               <img src="images/fleerate.png" class="stat-icon" />
               <span class="label">Flee Rate</span>
-              <input value="2" readonly />
+              <input class="flee-base" value="2" readonly />
               <button class="symbol-btn">+</button>
-              <input value="1" readonly />
+              <input class="flee-luk" value="1" readonly />
             </div>
 
             <div class="table-row">
               <img src="images/attackspeed.png" class="stat-icon" />
               <span class="label">Attack Speed</span>
-              <input value="150" readonly />
+              <input class="aspd-value" value="150" readonly />
             </div>
           </div>
         </div>
@@ -384,7 +415,7 @@
           <div class="table-row">
             <img src="images/statuspoint7.png" class="stat-icon" />
             <span class="label">Status Point</span>
-            <input value="48" readonly />
+            <input class="status-value" value="48" readonly />
           </div>
 
           <div class="table-row">
@@ -395,8 +426,6 @@
         </div>
       </div>
     </div>
-
-    <script src="js/str-function.js"></script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
-  
