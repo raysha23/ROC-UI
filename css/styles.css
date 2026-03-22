@@ -1464,3 +1464,61 @@ body {
   margin-left: 1250px;
   /* optional: keep relative positioning */
 }
+
+
+
+
+.skills-button-container {
+  position: absolute;
+  margin-left: 820px;   /* SAME as stats-master */
+  margin-top: 360px;    /* slightly above stats */
+  z-index: 20001;
+}
+
+
+.skills-btn {
+  font-family: "Reaver";
+  font-size: 14px;
+  letter-spacing: 1px;
+
+  padding: 6px 18px;
+
+  color: #faf8f3;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 28, 35, 0.95),
+    rgba(10, 15, 20, 0.95)
+  );
+
+  border: 1px solid gray;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  /* subtle RPG glow */
+  text-shadow:
+    0 1px 0 #000,
+    0 0 6px rgba(255, 244, 94, 0.6);
+
+  box-shadow:
+    0 0 6px rgba(159, 215, 255, 0.2),
+    inset 0 0 6px rgba(106, 169, 255, 0.1);
+
+  transition: all 0.2s ease;
+}
+
+/* Hover = same glow feel as your UI */
+.skills-btn:hover {
+  border-color: #9fd7ff;
+  box-shadow:
+    0 0 10px rgba(100, 180, 255, 0.6),
+    inset 0 0 6px rgba(106, 169, 255, 0.2);
+
+  transform: translateY(-1px);
+}
+
+/* Click effect */
+.skills-btn:active {
+  transform: scale(0.97);
+}

@@ -1,0 +1,1121 @@
+/* ===== Folder: RagnarokOnlineClone/UI/skill-folder/skill-styles.css ===== */
+
+/* ===== FONTS ===== */
+@font-face {
+  font-family: "Reaver";
+  src: url("fonts/Reaver-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Radiance";
+  src: url("fonts/Radiance.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Reaver-Bold";
+  src: url("fonts/Reaver-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Reaver-SemiBold";
+  src: url("fonts/Reaver-SemiBold.woff") format("woff");
+}
+
+/* ===== LOCK SCREEN ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* prevent scrolling */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-image: url("skill-images/ragnarokbgskill.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+}
+
+@media (max-width: 1920px) {
+  body {
+    background-size: 100% 100%;
+  }
+}
+
+/* ===== MESSAGE BOX (TOP CENTER) ===== */
+.message-box {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.message-box img {
+  width: 500px;
+  height: auto;
+  margin-left: -180px;
+  margin-top: 10px;
+}
+
+
+
+.message-text {
+  position: absolute;
+  top: 57%;
+  left: 21%;
+  transform: translate(-50%, -50%);
+  
+  font-family: "Reaver-SemiBold", Arial, sans-serif; /* ✅ FIXED */
+  font-size: 16.5px;
+  text-align: center;
+  
+  color: #372A2A;
+
+  width: 420px;
+  line-height: 1.4;
+
+  z-index: 10;
+  pointer-events: none;
+  
+}
+/* ===== BACK BUTTON ===== */
+.back-button {
+  position: absolute;
+  top: 50px;
+  left: 90px;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.back-button img {
+  width: 60px;
+  height: auto;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.back-button img:hover {
+  transform: scale(1.1);
+  filter: brightness(0.4) grayscale(100%);
+}
+
+/* ===== CLASS ICONS (LEFT COLUMN) ===== */
+/* ===== CLASS ICONS (LEFT COLUMN) ===== */
+.class-icons {
+  position: absolute;
+  top: 260px;
+  left: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 99999; /* 🔥 ALWAYS ABOVE EVERYTHING */
+}
+
+/* ICONS */
+.class-icons img {
+  width: 38px;
+  height: 38px;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: transform 0.4s ease, width 0.4s ease, height 0.4s ease, filter 0.3s ease;
+  position: relative;
+  z-index: 99999; /* 🔥 FORCE FRONT */
+}
+
+/* Hover */
+.class-icons img:hover {
+  width: 30px;
+  height: 30px;
+  transform: translateX(25px) scale(1.3);
+  filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.5));
+}
+
+/* Active */
+.class-icons img.active {
+  transform: translateX(15px);
+  width: 85px;
+  height: 85px;
+  filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.5));
+}
+
+/* Novice */
+.class-icons img.novice-icon {
+  width: 46px;
+  height: 46px;
+}
+
+.class-icons img.novice-icon:hover {
+  width: 55px;
+  height: 55px;
+  transform: translateX(25px);
+}
+
+.class-icons img.novice-icon.active {
+  width: 55px;
+  height: 55px;
+  transform: translateX(45px);
+}
+
+/* ===== CRITICAL FIX: NOTHING BLOCKS CLICKS ===== */
+.hero-display,
+.hero-display * {
+  pointer-events: none; /* 🔥 HERO CAN NEVER BLOCK */
+}
+
+.message-box,
+.message-box * {
+  pointer-events: none; /* 🔥 MESSAGE BOX CAN’T BLOCK */
+}
+
+/* BUT keep text visible */
+.message-text {
+  pointer-events: none;
+}
+
+/* BACK BUTTON should still work */
+.back-button {
+  pointer-events: auto;
+  z-index: 100000;
+}
+
+/* GENDER BUTTONS should still work */
+.gender-container {
+  pointer-events: auto;
+  z-index: 100000;
+}
+/* HERO SHADOW - DEFAULT FOR OTHERS */
+.hero-display img.hero-shadow {
+  position: absolute;
+  top: -40px;
+  left:  -420px;
+  width: 1955px;
+  height: 1010px;/* standard shadow size for all non-novice heroes */
+  z-index: 0;
+  
+}
+
+/* MAIN HERO IMAGE - DEFAULT FOR OTHERS */
+.hero-display #heroImage {
+  position: relative;
+  z-index: 1;
+  width: 1955px;
+  height: 1010px;
+  transition: transform 0.3s ease;
+  margin-left: 170px;
+}
+
+/* NOVICE HERO IMAGE & SHADOW OVERRIDE */
+/* ONLY NOVICE HERO IMAGE */
+#heroImage[src*="swordsman.png"],
+#heroImage[src*="femalethief.png"],
+#heroImage[src*="thief.png"],
+#heroImage[src*="acolyte.png"],
+#heroImage[src*="archerfemale.png"],
+#heroImage[src*="femalemerchant.png"],
+#heroImage[src*="swordswoman.png"] {
+  position: relative;
+  z-index: 1;
+  width: 1955px;
+  height: 1010px;
+  transition: transform 0.3s ease;
+  margin-left: 50px;
+}
+
+
+#heroImage[src*="femaleacolyte.png"]
+{
+  position: relative;
+  z-index: 1;
+  width: 1955px;
+  height: 1010px;
+  transition: transform 0.3s ease;
+  margin-left: 100px;
+}
+
+/* ===== INDIVIDUAL SHADOW POSITIONS PER CLASS ===== */
+
+/* SWORDSMAN */
+
+#heroShadow[src*="swordsmanshadow.png"]
+{
+  top: -35px;
+  left: -480px;
+}
+
+#heroShadow[src*="swordswomanshadow.png"],
+#heroShadow[src*="femalethiefshadow.png"] {
+  top: -35px;
+  left: -470px;
+}
+
+#heroShadow[src*="archerfemaleshadow.png"],
+#heroShadow[src*="thiefshadow.png"],
+#heroShadow[src*="femalemerchantshadow.png"],
+#heroShadow[src*="acolyteshadow.png"],
+#heroShadow[src*="femaleacolyteshadow.png"]
+{
+  top: -35px;
+  left: -485px;
+}
+
+#heroShadow[src*="femaleacolyteshadow.png"]
+{
+  top: -35px;
+  left: -465px;
+}
+
+#heroShadow[src*="noviceshadow.png"] {
+  position: absolute;
+  top: 50px !important;
+
+  left: 100px !important;   /* 🔥 IMPORTANT: REMOVE LEFT */
+
+
+ width: 835px !important;  /* Novice shadow bigger than others */
+  height: auto !important;
+  z-index: 0;
+}
+
+#heroShadow[src*="novicefemaleshadow.png"] {
+  position: absolute;
+  top: 50px !important;
+
+  left: 80px !important;   /* 🔥 IMPORTANT: REMOVE LEFT */
+
+
+ width: 835px !important;  /* Novice shadow bigger than others */
+  height: auto !important;
+  z-index: 0;
+}
+
+/* NOVICE HERO IMAGE & SHADOW OVERRIDE */
+/* ONLY NOVICE HERO IMAGE */
+#heroImage[src*="novice.png"],
+#heroImage[src*="novicefemale.png"] {
+  margin-top: 60px !important; /* move up/down */
+  width: 1310px !important;
+  height: 880px;
+  position: relative;
+  z-index: 100;
+  margin-top: 10px;
+
+  margin-left: 50px;
+}
+/* ===== HERO SELECTION PANEL ===== */
+.hero-selection-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-left: -1010px;
+}
+
+
+/* ===== GENDER OVERLAY ===== */
+.gender-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  margin-top: 380px;
+  margin-left: -150px;
+}
+
+.gender-container .gender-item {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.gender-container .gender-icon {
+  width: 90px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.gender-container .gender-icon:hover {
+   transform: scale(1.08);
+  filter: drop-shadow(0 0 6px rgba(100, 180, 255, 0.8));
+}
+
+/* ===== SKILL TREE TITLE ===== */
+/* ===== SKILL TREE TITLE ===== */
+.skill-tree-title {
+  position: absolute;
+  top: 200px;
+  left: 1230px;
+
+  font-family: "Reaver-Bold", Arial, sans-serif;
+  font-size: 30px;
+
+  background: radial-gradient(circle, #FCFFE9, #E6A659);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  z-index: 20;
+  line-height: 1.5;
+  transition: opacity 0.3s ease-in-out;
+
+  display: inline-block; /* 🔥 IMPORTANT: makes glow match text width */
+}
+
+/* ✨ GLOW UNDERLINE (AUTO SIZE) */
+.skill-tree-title::after {
+  content: "";
+  display: block;
+  margin: 6px auto 0;
+
+  width: 50%; /* 🔥 auto scales with text */
+  height: 3px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 200, 120, 0.9),
+    transparent
+  );
+
+  border-radius: 50px;
+  filter: blur(1.5px);
+}
+
+/* ✨ SOFT GLOW BACKLIGHT */
+.skill-tree-title::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+
+  width: 90%; /* 🔥 always follows text width */
+  height: 10px;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 220, 150, 0.4),
+    transparent 70%
+  );
+
+  filter: blur(6px);
+  z-index: -1;
+}
+
+
+/* ===== SKILL POINT INPUTS ===== */
+.skill-points-panel {
+  position: absolute;
+  top: 800px;
+  left: 1200px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  z-index: 20;
+  font-family: "Reaver-SemiBold", Arial, sans-serif;
+  font-size: 14px;
+  color: #faf8f3;
+}
+
+/* Labels (Used / Left) */
+.skill-point-item label {
+   font-family: "Reaver", Arial, sans-serif;
+  color: #faf8f3;
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+/* Text input boxes */
+.skill-point-item input {
+  width: 60px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-family: "Reaver", Arial, sans-serif;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid grey;
+  border-radius: 4px;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  text-align: center; /* CENTER the value inside the textbox */
+}
+
+/* Hover glow for inputs */
+.skill-point-item input:hover {
+  border-color: #9fd7ff;
+  box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
+}
+
+
+
+
+
+
+
+.hero-display img#heroImage {
+  pointer-events: none; /* clicks pass through the main hero image */
+}
+
+.hero-display img.hero-shadow {
+  pointer-events: none; /* clicks pass through the shadow */
+}
+
+
+
+
+/* ===== JOB LEVEL PANEL ===== */
+.job-level-panel {
+  position: absolute;
+  top: 80px; /* slightly below skill points */
+  left: 1300px; /* SAME alignment as skill points */
+  display: flex;
+  align-items: center;
+  z-index: 20;
+  font-family: "Reaver-SemiBold", Arial, sans-serif;
+}
+
+/* Label */
+.job-level-item label {
+  font-family: "Reaver", Arial, sans-serif;
+  color: #faf8f3;
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-right: 10px;
+}
+
+/* Dropdown */
+.job-level-item select {
+  width: 80px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-family: "Reaver", Arial, sans-serif;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid grey;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+
+  /* remove default ugly styles */
+  appearance: none;
+}
+
+/* Hover effect SAME as inputs */
+.job-level-item select:hover {
+  border-color: #9fd7ff;
+  box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
+}
+
+
+/* WRAPPER */
+.dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* SELECT (remove default arrow) */
+.dropdown-wrapper select {
+  width: 80px;
+  padding: 6px 30px 6px 10px; /* space for arrow */
+  font-size: 13px;
+  font-family: "Reaver", Arial, sans-serif;
+  color: #ffffff;
+
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid grey;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* HOVER */
+.dropdown-wrapper select:hover {
+  border-color: #9fd7ff;
+  box-shadow: 0 0 6px rgba(100, 180, 255, 0.6);
+}
+
+/* CUSTOM ARROW */
+.dropdown-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 0;
+  height: 0;
+
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid white; /* GOLD ARROW */
+
+  pointer-events: none;
+
+  /* subtle glow */
+  filter: drop-shadow(0 0 3px rgba(255, 200, 120, 0.6));
+}
+
+
+
+/* SKILL TREE CONTAINER */
+.character-skill-container {
+  position: absolute;
+  top: 250px;
+  left: 1150px;
+
+  width: 600px;
+  height: 500px;
+
+  z-index: 10;
+}
+
+
+
+
+/* SKILL TREE LAYOUT */
+.skill-tree-area {
+  display: flex;
+  flex-wrap: wrap; /* allows multiple rows for other classes */
+  gap: 20px;
+  align-items: center;
+}
+
+/* FORCE NOVICE = ONE ROW */
+
+
+/* SKILL NODE */
+.skill-node {
+  text-align: center;
+}
+
+.skill-node img {
+  width: 60px;
+  height: 60px;
+}
+
+.skill-level {
+  display: block;
+  font-size: 12px;
+  color: #fff;
+  margin-top: 4px;
+  font-family: "Reaver", Arial, sans-serif;
+  
+}
+
+/* ===== NOVICE SKILL TREE LAYOUT ===== */
+.skill-tree-area.novice-layout {
+  flex-wrap: nowrap;
+  margin-top: 50px;
+
+  position: relative;   /* IMPORTANT */
+  left: 115px;          /* Move to the RIGHT (adjust value) */
+}
+.skill-tree-area.novice-layout .skill-node img {
+  width: 65px;
+  height: 65px;
+}
+
+/* ===== MOVE NOVICE SKILL TREE DOWN ===== */
+
+/* Swordsman grid: 7 columns, auto rows for extra skills */
+.skill-tree-area.swordsman-layout {
+   margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 columns */
+  gap: 20px 15px; /* row gap 20px, column gap 15px */
+  justify-items: center; /* center skills in their columns */
+  align-items: start; /* align to top of each cell */
+  
+}
+
+/* Skill node styling */
+.skill-tree-area.swordsman-layout .skill-node {
+  text-align: center;
+}
+
+.skill-tree-area.swordsman-layout .skill-node img {
+  width: 60px;
+  height: 60px;
+}
+
+/* Skill level text */
+.skill-tree-area.swordsman-layout .skill-level {
+  display: block;
+  font-size: 12px;
+  color: #fff;
+  margin-top: 4px;
+  font-family: "Reaver", Arial, sans-serif;
+}
+
+
+
+
+
+
+
+/* ===== Magician grid: 8 columns (updated) ===== */
+.skill-tree-area.magician-layout {
+   margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* 8 columns */
+  gap: 20px 15px; /* row gap 20px, column gap 15px */
+  justify-items: center; /* center skills in each column */
+  align-items: start; /* align skills to top */
+}
+
+/* Skill nodes */
+.skill-tree-area.magician-layout .skill-node {
+  text-align: center;
+}
+
+.skill-tree-area.magician-layout .skill-node img {
+  width: 60px;
+  height: 60px;
+}
+
+/* Skill levels */
+.skill-tree-area.magician-layout .skill-level {
+  display: block;
+  font-size: 12px;
+  color: #fff;
+  margin-top: 4px;
+  font-family: "Reaver", Arial, sans-serif;
+}
+
+/* ===== Stack specific skills under certain columns ===== */
+/* 1st, 2nd, 5th columns: only one skill, no stacking */
+/* No extra rows needed: first node stays on row 1 */
+
+/* 3rd column extras */
+.skill-tree-area.magician-layout .skill-node:nth-child(3) {
+  grid-column: 3;
+  grid-row: 1;
+}
+.skill-tree-area.magician-layout .skill-node:nth-child(11) {
+  grid-column: 3;
+  grid-row: 2;
+}
+.skill-tree-area.magician-layout .skill-node:nth-child(12) {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+/* 4th column extras */
+.skill-tree-area.magician-layout .skill-node:nth-child(4) {
+  grid-column: 4;
+  grid-row: 1;
+}
+.skill-tree-area.magician-layout .skill-node:nth-child(13) {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+/* 5th column: only one skill node (no extra rows) */
+
+/* 6th column extras */
+.skill-tree-area.magician-layout .skill-node:nth-child(6) {
+  grid-column: 6;
+  grid-row: 1;
+}
+.skill-tree-area.magician-layout .skill-node:nth-child(14) {
+  grid-column: 6;
+  grid-row: 2;
+}
+.skill-tree-area.magician-layout .skill-node:nth-child(15) {
+  grid-column: 6;
+  grid-row: 3;
+}
+.skill-tree-area.magician-layout .skill-node:nth-child(16) {
+  grid-column: 6;
+  grid-row: 4;
+}
+
+/* 7th column extras */
+.skill-tree-area.magician-layout .skill-node:nth-child(7) {
+  grid-column: 7;
+  grid-row: 1;
+}
+.skill-tree-area.magician-layout .skill-node:nth-child(17) {
+  grid-column: 7;
+  grid-row: 2;
+}
+
+/* 8th column: only one skill node (default) */
+
+.skill-tree-area.magician-layout .skill-node:nth-child(18),
+.skill-tree-area.magician-layout .skill-node:nth-child(1),
+.skill-tree-area.magician-layout .skill-node:nth-child(2) {
+  display: none;
+}
+
+
+
+
+/* ===== Archer grid: 4 columns ===== */
+.skill-tree-area.archer-layout {
+   margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 20px 15px; /* row gap 20px, column gap 15px */
+  justify-items: center;
+  align-items: start;
+}
+
+/* Skill nodes */
+.skill-tree-area.archer-layout .skill-node {
+  text-align: center;
+}
+
+.skill-tree-area.archer-layout .skill-node img {
+  width: 60px;
+  height: 60px;
+}
+
+/* Skill level text */
+.skill-tree-area.archer-layout .skill-level {
+  display: block;
+  font-size: 12px;
+  color: #fff;
+  margin-top: 4px;
+  font-family: "Reaver", Arial, sans-serif;
+}
+
+/* ===== Stack specific skills under certain columns ===== */
+/* Column 1: 3 stacked */
+.skill-tree-area.archer-layout .skill-node:nth-child(1) {
+  grid-column: 1; grid-row: 1;
+}
+.skill-tree-area.archer-layout .skill-node:nth-child(2) {
+  grid-column: 1; grid-row: 2;
+}
+.skill-tree-area.archer-layout .skill-node:nth-child(3) {
+  grid-column: 1; grid-row: 3;
+}
+
+/* Column 2: 2 stacked */
+.skill-tree-area.archer-layout .skill-node:nth-child(4) {
+  grid-column: 2; grid-row: 1;
+}
+.skill-tree-area.archer-layout .skill-node:nth-child(5) {
+  grid-column: 2; grid-row: 2;
+}
+
+/* Column 3: single */
+.skill-tree-area.archer-layout .skill-node:nth-child(6) {
+  grid-column: 3; grid-row: 1;
+}
+
+/* Column 4: single */
+.skill-tree-area.archer-layout .skill-node:nth-child(7) {
+  grid-column: 4; grid-row: 1;
+}
+
+
+
+
+
+
+
+
+/* ===== ACOLYTE SKILL TREE LAYOUT ===== */
+.skill-tree-area.acolyte-layout {
+   margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 main columns */
+  gap: 20px 15px; /* row gap 20px, column gap 15px */
+  justify-items: center;
+  align-items: start;
+}
+
+/* Skill node default for Acolyte */
+.skill-tree-area.acolyte-layout .skill-node {
+  text-align: center;
+}
+
+.skill-tree-area.acolyte-layout .skill-node img {
+  width: 60px;
+  height: 60px;
+}
+
+.skill-tree-area.acolyte-layout .skill-level {
+  display: block;
+  font-size: 12px;
+  color: #fff;
+  margin-top: 4px;
+  font-family: "Reaver", Arial, sans-serif;
+}
+
+/* ===== ACOLYTE GRID PLACEMENT FIXED ===== */
+
+/* Column 1: 3 stacked + 1 under first = total 5 */
+.skill-tree-area.acolyte-layout .skill-node:nth-child(1) { grid-column: 1; grid-row: 1; }
+.skill-tree-area.acolyte-layout .skill-node:nth-child(2) { grid-column: 1; grid-row: 2; }
+.skill-tree-area.acolyte-layout .skill-node:nth-child(3) { grid-column: 1; grid-row: 3; }
+.skill-tree-area.acolyte-layout .skill-node:nth-child(4) { grid-column: 1; grid-row: 4; }
+.skill-tree-area.acolyte-layout .skill-node:nth-child(5) { grid-column: 1; grid-row: 5; }
+
+/* Column 2: 3 stacked = total 4 */
+.skill-tree-area.acolyte-layout .skill-node:nth-child(6) { grid-column: 2; grid-row: 1; }
+.skill-tree-area.acolyte-layout .skill-node:nth-child(7) { grid-column: 2; grid-row: 2; }
+.skill-tree-area.acolyte-layout .skill-node:nth-child(8) { grid-column: 2; grid-row: 3; }
+.skill-tree-area.acolyte-layout .skill-node:nth-child(9) { grid-column: 2; grid-row: 4; }
+
+/* Column 3: 2 stacked = total 3 */
+.skill-tree-area.acolyte-layout .skill-node:nth-child(10) { grid-column: 3; grid-row: 1; }
+.skill-tree-area.acolyte-layout .skill-node:nth-child(11) { grid-column: 3; grid-row: 2; }
+.skill-tree-area.acolyte-layout .skill-node:nth-child(12) { grid-column: 3; grid-row: 3; }
+
+/* Column 4: 1 image */
+.skill-tree-area.acolyte-layout .skill-node:nth-child(13) { grid-column: 4; grid-row: 1; }
+
+/* Column 5: 1 image */
+.skill-tree-area.acolyte-layout .skill-node:nth-child(14) { grid-column: 5; grid-row: 1; }
+
+/* Column 1 extra pic under first (total 15th image) */
+.skill-tree-area.acolyte-layout .skill-node:nth-child(15) { grid-column: 1; grid-row: 6; }
+
+
+
+
+/* ===== MERCHANT SKILL TREE LAYOUT ===== */
+.skill-tree-area.merchant-layout {
+   margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 columns */
+  gap: 20px 15px; /* row gap 20px, column gap 15px */
+  justify-items: center;
+  align-items: start;
+}
+
+/* Skill nodes styling */
+.skill-tree-area.merchant-layout .skill-node {
+  text-align: center;
+}
+
+.skill-tree-area.merchant-layout .skill-node img {
+  width: 60px;
+  height: 60px;
+}
+
+/* Skill level text */
+.skill-tree-area.merchant-layout .skill-level {
+  display: block;
+  font-size: 12px;
+  color: #fff;
+  margin-top: 4px;
+  font-family: "Reaver", Arial, sans-serif;
+}
+
+
+
+/* ===== THIEF SKILL TREE LAYOUT ===== */
+.skill-tree-area.thief-layout {
+   margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* 8 columns */
+  gap: 20px 15px; /* row gap 20px, column gap 15px */
+  justify-items: center;
+  align-items: start;
+}
+
+.skill-tree-area.thief-layout .skill-node img {
+  width: 60px;
+  height: 60px;
+}
+
+.skill-tree-area.thief-layout .skill-level {
+  display: block;
+  font-size: 12px;
+  color: #fff;
+  margin-top: 4px;
+  font-family: "Reaver", Arial, sans-serif;
+}
+
+
+
+
+
+/* ===== SKILL ICON HOVER EFFECT ===== */
+.skill-node img {
+  width: 60px;
+  height: 60px;
+  transition: filter 0.2s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+
+/* Hover = dark grey */
+.skill-node img:hover {
+  filter: grayscale(100%) brightness(0.5);
+  transform: scale(1.05);
+}
+
+/* Optional: when skill is active/learned */
+.skill-node img.active-skill {
+  filter: none;
+}
+
+/* Optional: when skill locked */
+.skill-node img.locked-skill {
+  filter: grayscale(100%) brightness(0.3);
+  opacity: 0.7;
+}
+
+
+
+
+
+
+
+
+:root {
+  /* GOLD (lighter, nicer) */
+  --gold-bright: #f0d77a;
+  --gold-muted: #d8b85a;
+  --gold-dark: #a67c2e;
+
+  /* BROWN (keep darker RO style) */
+  --brown-dark: #2b1d14;
+  --brown-med: #4a3424;
+  --brown-light: #efe4cc;
+
+  /* BACKGROUND */
+  --parchment: #f8f1df;
+
+  /* BORDERS */
+  --border-color: #e1c370;
+}
+
+/* ===== RO SKILL CARD OVERLAY ===== */
+.ro-skill-card {
+  position: fixed;        /* FLOATING OVERLAY */
+  top: 260px;              /* adjust vertical position */
+  right: 120px;            /* adjust horizontal position */
+
+  z-index: 999999;         /* ALWAYS IN FRONT */
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fffaf0;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  width: 720px;
+  overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+  /* Smooth pop animation */
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none; /* mouse can pass through */
+}
+
+/* SHOW CARD */
+.ro-skill-card.show {
+  opacity: 1;
+  transform: scale(1);
+}
+/* Header & Tabs */
+.card-header {
+  background: linear-gradient(to right, var(--brown-dark), var(--brown-med));
+  color: var(--gold-bright);
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-main h2 { margin: 0; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; }
+.skill-id { font-size: 0.8rem; color: var(--gold-muted); font-style: italic; }
+
+.tab-group .tab {
+  padding: 4px 12px;
+  margin-left: 5px;
+  border: 1px solid var(--gold-muted);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+}
+
+.tab.active { background: var(--gold-muted); color: var(--brown-dark); font-weight: bold; }
+
+/* Stats Table */
+.skill-stats {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--brown-light);
+}
+
+.skill-stats th {
+  background-color: var(--brown-med);
+  color: var(--gold-bright);
+  text-align: left;
+  padding: 8px;
+  width: 12%;
+  border: 1px solid var(--border-color);
+}
+
+.skill-stats td {
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  color: var(--brown-dark);
+}
+
+/* Level Details */
+.notes-container { display: flex; border-top: 2px solid var(--border-color); }
+.notes-label {
+  background-color: var(--brown-dark);
+  color: var(--gold-bright);
+  padding: 15px 10px;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.level-table { width: 100%; border-collapse: collapse; }
+.level-table th {
+  background-color: var(--gold-muted);
+  color: var(--brown-dark);
+  padding: 10px;
+}
+
+.level-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.lv-num {
+  text-align: center;
+  font-weight: bold;
+  background-color: rgba(212, 175, 55, 0.1);
+  color: var(--brown-dark);
+  width: 50px;
+}
+
+.level-table tr:hover { background-color: rgba(241, 196, 15, 0.05); }
+
+
+
