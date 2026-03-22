@@ -1,197 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Skills Page</title>
-  <link rel="stylesheet" href="skill-styles.css">
+  <meta charset="UTF-8">
+  <title>Skills Page</title>
+  <link rel="stylesheet" href="skill-styles.css">
 </head>
 <body>
 
-  <!-- MESSAGE BOX -->
-  <div class="message-box">
-    <img src="skill-images/messagebox.png" alt="Message Box">
+  <!-- MESSAGE BOX -->
+  <div class="message-box">
+    <img src="skill-images/messagebox.png" alt="Message Box">
 
 
-      <div class="message-text">
-        "I started with nothing… and that’s why I fear<br>nothing."
-  </div>
-  </div>
+      <div class="message-text">
+        "I started with nothing… and that’s why I fear<br>nothing."
+  </div>
+  </div>
 
-  
+  
 
-  <!-- BACK BUTTON -->
-  <div class="back-button" onclick="window.location.href='../../home.html'">
-    <img src="skill-images/backbutton.png" alt="Back Button">
-  </div>
+  <!-- BACK BUTTON -->
+  <div class="back-button" onclick="window.location.href='../../home.html'">
+    <img src="skill-images/backbutton.png" alt="Back Button">
+  </div>
 
-  <!-- HERO SELECTION CONTAINER -->
-  <div class="hero-selection-panel">
+  <!-- HERO SELECTION CONTAINER -->
+  <div class="hero-selection-panel">
 
 <!-- HERO IMAGE -->
 <div class="hero-display">
-  <!-- Shadow image behind -->
-  <img id="heroShadow" src="skill-images/noviceshadow.png" alt="Hero Shadow" class="hero-shadow">
+  <!-- Shadow image behind -->
+  <img id="heroShadow" src="skill-images/noviceshadow.png" alt="Hero Shadow" class="hero-shadow">
 
-  <!-- Main hero image -->
-  <img id="heroImage" src="skill-images/novice.png" alt="Selected Character">
+  <!-- Main hero image -->
+  <img id="heroImage" src="skill-images/novice.png" alt="Selected Character">
 </div>
-    <!-- CLASS ICONS -->
-    <div class="class-icons">
-    <img src="skill-images/noviceinactive.png" alt="Novice" data-character="novice" class="novice-icon">
-      <img src="skill-images/swordinactive.png" alt="Swordsman" data-character="swordsman">
-      <img src="skill-images/mageinactive.png" alt="Magician" data-character="magician">
-      <img src="skill-images/archerinactive.png" alt="Archer" data-character="archer">
-      <img src="skill-images/acolyteinactive.png" alt="Acolyte" data-character="acolyte">
-      <img src="skill-images/merchantinactive.png" alt="Merchant" data-character="merchant">
-      <img src="skill-images/thiefinactive.png" alt="Thief" data-character="thief">
-    </div>
+    <!-- CLASS ICONS -->
+    <div class="class-icons">
+    <img src="skill-images/noviceinactive.png" alt="Novice" data-character="novice" class="novice-icon">
+      <img src="skill-images/swordinactive.png" alt="Swordsman" data-character="swordsman">
+      <img src="skill-images/mageinactive.png" alt="Magician" data-character="magician">
+      <img src="skill-images/archerinactive.png" alt="Archer" data-character="archer">
+      <img src="skill-images/acolyteinactive.png" alt="Acolyte" data-character="acolyte">
+      <img src="skill-images/merchantinactive.png" alt="Merchant" data-character="merchant">
+      <img src="skill-images/thiefinactive.png" alt="Thief" data-character="thief">
+    </div>
 
-  </div>
+  </div>
 
-    <!-- GENDER SELECTION -->
-      <div class="gender-container">
-        <div class="gender-item">
-          <img
-            src="skill-images/maleactive.png"
-            class="gender-icon"
-            id="maleBtn"
-            alt="Male"
-          />
-        </div>
+    <!-- GENDER SELECTION -->
+      <div class="gender-container">
+        <div class="gender-item">
+          <img
+            src="skill-images/maleactive.png"
+            class="gender-icon"
+            id="maleBtn"
+            alt="Male"
+          />
+        </div>
 
-        <div class="gender-item">
-          <img
-            src="skill-images/femaleinactive.png"
-            class="gender-icon"
-            id="femaleBtn"
-            alt="Female"
-          />
-        </div>
-      </div>
+        <div class="gender-item">
+          <img
+            src="skill-images/femaleinactive.png"
+            class="gender-icon"
+            id="femaleBtn"
+            alt="Female"
+          />
+        </div>
+      </div>
 
 
 
-      <div class="skill-tree-title">
-  Novice Skill Tree
+      <div class="skill-tree-title">
+  Novice Skill Tree
 </div>
 
 <!-- CHARACTER SKILL TREE CONTAINER -->
 <div class="character-skill-container">
-  
-  <!-- This is where your skill nodes/tree will go -->
-  <div class="skill-tree-area novice-layout">
-    
-    <!-- SAMPLE NODE (you can duplicate later) -->
-    <div class="skill-node">
-      <img src="skill-images/sample-skill.png" alt="Skill">
-      <span class="skill-level">Lvl 1</span>
-    </div>
+  
+  <!-- This is where your skill nodes/tree will go -->
+  <div class="skill-tree-area novice-layout">
+    
+    <!-- SAMPLE NODE (you can duplicate later) -->
+    <div class="skill-node">
+      <img src="skill-images/sample-skill.png" alt="Skill">
+      <span class="skill-level">Lvl 1</span>
+    </div>
 
-  </div>
+  </div>
 
 </div>
-      <!-- SKILL POINTS PANEL -->
+
+<!-- SKILL POINTS PANEL -->
 <div class="skill-points-panel">
-  <div class="skill-point-item">
-    <label for="pointsUsed">Skill Points Used:</label>
-    <input type="text" id="pointsUsed" name="pointsUsed" value="0">
-  </div>
+  <div class="skill-point-item">
+    <label for="pointsUsed">Skill Points Used:</label>
+    <input type="text" id="pointsUsed" name="pointsUsed" value="0" readonly>
+  </div>
 
-  <div class="skill-point-item">
-    <label for="pointsLeft">Left:</label>
-    <input type="text" id="pointsLeft" name="pointsLeft" value="0">
-  </div>
+  <div class="skill-point-item">
+    <label for="pointsLeft">Left:</label>
+    <input type="text" id="pointsLeft" name="pointsLeft" value="0" readonly>
+  </div>
+
+  <div class="sidebar-controls">
+    <button id="resetSkills" class="reset-btn">Reset Points</button>
 </div>
-<div class="job-level-panel">
-  <div class="job-level-item">
-    <label for="jobLevel">JOB LEVEL</label>
+</div>
 
-    <div class="dropdown-wrapper">
-  <select id="jobLevel" name="jobLevel"></select>
-
-      <!-- CUSTOM ARROW -->
-      <div class="dropdown-arrow"></div>
-    </div>
-  </div>
+<div class="job-level-panel"> 
+  <div class="job-level-item">
+    <label for="jobLevel">JOB LEVEL</label>
+    <div class="dropdown-wrapper">
+      <select id="jobLevel" name="jobLevel"></select>
+      <div class="dropdown-arrow"></div>
+    </div>
+  </div>
 </div>
 
 
 <div class="ro-skill-card">
-  <div class="card-header">
-    <div class="header-main">
-      <h2>Basic Skill <span class="skill-id">Skill ID# 1 (NV_BASIC)</span></h2>
-    </div>
-    <div class="tab-group">
-      <span class="tab active">Pre-Re</span>
-      <span class="tab">Renewal</span>
-      <span class="tab">iRO</span>
-    </div>
-  </div>
+  <div class="card-header">
+    <div class="header-main">
+      <h2>Basic Skill <span class="skill-id">Skill ID# 1 (NV_BASIC)</span></h2>
+    </div>
+    <div class="tab-group">
+      <span class="tab active">Pre-Re</span>
+      <span class="tab">Renewal</span>
+      <span class="tab">iRO</span>
+    </div>
+  </div>
 
-  <table class="skill-stats">
-    <tr>
-      <th>Type</th>
-      <td>Passive</td>
-      <th>Max Lv</th>
-      <td>9</td>
-      <th>Target</th>
-      <td>-</td>
-      <th>Range</th>
-      <td>-</td>
-    </tr>
-    <tr>
-      <th>Effect</th>
-      <td colspan="7">Enable to apply Basic Interface Skills.</td>
-    </tr>
-  </table>
+  <table class="skill-stats">
+    <tr>
+      <th>Type</th>
+      <td>Passive</td>
+      <th>Max Lv</th>
+      <td>9</td>
+      <th>Target</th>
+      <td>-</td>
+      <th>Range</th>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>Effect</th>
+      <td colspan="7">Enable to apply Basic Interface Skills.</td>
+    </tr>
+  </table>
 
-  <div class="notes-container">
-    <div class="notes-label">Other Notes</div>
-    <table class="level-table">
-      <thead>
-        <tr>
-          <th class="col-lv">Level</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-  <tr>
-    <td class="lv-num">1</td>
-    <td>Initialize Trade: allows trading items with other characters.</td>
-  </tr>
-  <tr>
-    <td class="lv-num">2</td>
-    <td>Express Emotions: use Alt+0~9; list with Alt+M.</td>
-  </tr>
-  <tr>
-    <td class="lv-num">3</td>
-    <td>Sit: regenerates HP/SP faster. Use /sit or Insert.</td>
-  </tr>
-  <tr>
-    <td class="lv-num">4</td>
-    <td>Open Chat Room: create a personal chat room (Alt+C).</td>
-  </tr>
-  <tr>
-    <td class="lv-num">5</td>
-    <td>Join Party: allows joining a party.</td>
-  </tr>
-  <tr>
-    <td class="lv-num">6</td>
-    <td>Kafra Storage: access 300-slot extra inventory.</td>
-  </tr>
-  <tr>
-    <td class="lv-num">7</td>
-    <td>Organize Party: /organize [Party Name].</td>
-  </tr>
-  <tr>
-    <td class="lv-num">9</td>
-    <td>Transform: change into 1st profession.</td>
-  </tr>
+  <div class="notes-container">
+    <div class="notes-label">Other Notes</div>
+    <table class="level-table">
+      <thead>
+        <tr>
+          <th class="col-lv">Level</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+  <tr>
+    <td class="lv-num">1</td>
+    <td>Initialize Trade: allows trading items with other characters.</td>
+  </tr>
+  <tr>
+    <td class="lv-num">2</td>
+    <td>Express Emotions: use Alt+0~9; list with Alt+M.</td>
+  </tr>
+  <tr>
+    <td class="lv-num">3</td>
+    <td>Sit: regenerates HP/SP faster. Use /sit or Insert.</td>
+  </tr>
+  <tr>
+    <td class="lv-num">4</td>
+    <td>Open Chat Room: create a personal chat room (Alt+C).</td>
+  </tr>
+  <tr>
+    <td class="lv-num">5</td>
+    <td>Join Party: allows joining a party.</td>
+  </tr>
+  <tr>
+    <td class="lv-num">6</td>
+    <td>Kafra Storage: access 300-slot extra inventory.</td>
+  </tr>
+  <tr>
+    <td class="lv-num">7</td>
+    <td>Organize Party: /organize [Party Name].</td>
+  </tr>
+  <tr>
+    <td class="lv-num">9</td>
+    <td>Transform: change into 1st profession.</td>
+  </tr>
 </tbody>
-    </table>
-  </div>
+    </table>
+  </div>
 </div>
-  <!-- JS -->
- <script src="skill-page.js"></script>
+  <!-- JS -->
+ <script src="skill-page.js"></script>
 </body>
 </html>

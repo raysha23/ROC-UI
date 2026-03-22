@@ -1117,5 +1117,20 @@ body {
 
 .level-table tr:hover { background-color: rgba(241, 196, 15, 0.05); }
 
+#resetSkills {
+    position: fixed !important;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999999 !important;
+    width: auto !important; /* Let it fit the text */
+    padding: 10px 20px !important;
+    border-radius: 50px !important; /* Makes it a pill shape */
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3); /* Adds a red glow */
+    border: 2px solid #ffd700;
+}
 
+#resetSkills:hover {
+    transform: scale(1.05); /* Slight pop-out effect */
+    background: #7d1a1a;
+}
 
