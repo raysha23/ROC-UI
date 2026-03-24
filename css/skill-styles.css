@@ -34,7 +34,7 @@ html, body {
 }
 
 body {
-  background-image: url("../images/ragnarokbg.png");
+  background-image: url("../images/ragnarokbgskill.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -581,25 +581,27 @@ body {
   position: absolute;
   top: 250px;
   left: 1150px;
+
   width: 600px;
   height: 500px;
 
-
   z-index: 10;
-
-  border: 1px solud black;
 }
+
+
+
+
 /* SKILL TREE LAYOUT */
 .skill-tree-area {
   display: flex;
   flex-wrap: wrap; /* allows multiple rows for other classes */
   gap: 20px;
   align-items: center;
-  border: 1px solud black;
-
 }
 
 /* FORCE NOVICE = ONE ROW */
+
+
 /* SKILL NODE */
 .skill-node {
   text-align: center;
@@ -623,7 +625,6 @@ body {
 .skill-tree-area.novice-layout {
   flex-wrap: nowrap;
   margin-top: 50px;
-
   position: relative;   /* IMPORTANT */
   left: 115px;          /* Move to the RIGHT (adjust value) */
 }
@@ -663,12 +664,6 @@ body {
   margin-top: 4px;
   font-family: "Reaver", Arial, sans-serif;
 }
-
-
-
-
-
-
 
 /* ===== Magician grid: 8 columns (updated) ===== */
 .skill-tree-area.magician-layout {
@@ -993,6 +988,47 @@ body {
 
   /* BORDERS */
   --border-color: #e1c370;
+
+  --node-row: 92px; /* consistent row height for skill grids (tweak as needed) */
+}
+
+/* Make each skill node a centered flex box and give a predictable height
+   so grid rows align vertically when prerequisites are stacked. */
+.skill-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--node-row);
+  box-sizing: border-box; /* ensure padding doesn't affect alignment */
+}
+
+/* Apply consistent row sizing to all grid-based layouts so children align
+   vertically across columns when you position them with grid-row/grid-column. */
+.skill-tree-area.swordsman-layout,
+.skill-tree-area.magician-layout,
+.skill-tree-area.archer-layout,
+.skill-tree-area.acolyte-layout,
+.skill-tree-area.merchant-layout,
+.skill-tree-area.thief-layout {
+  grid-auto-rows: var(--node-row);
+  align-content: start;    /* keep rows starting at the top */
+  justify-items: center;   /* center content in each grid cell */
+}
+
+/* Novice layout is flex-based; force equal vertical centering so icons sit
+   on the same baseline. */
+.skill-tree-area.novice-layout {
+  align-items: center; /* center vertically inside the single-row flex */
+  height: var(--node-row); /* keep consistent height so connectors line up */
+}
+
+/* Optional small adjustment: slightly reduce icon size when many stacked rows
+   to avoid overlap—adjust to taste. */
+.skill-tree-area.grid-compact .skill-node img,
+.skill-tree-area .skill-node.compact img {
+  width: 54px;
+  height: 54px;
 }
 
 /* ===== RO SKILL CARD OVERLAY ===== */
@@ -1123,59 +1159,5 @@ body {
 #resetSkills:hover {
     transform: scale(1.05); /* Slight pop-out effect */
     background: #7d1a1a;
-}
-
-
-/* UNLOCKED */
-.skill-node.is-unlocked {
-  filter: grayscale(0%);
-  opacity: 1;
-  transition: all 0.3s ease;
-}
-
-/* ACTIVE (HAS LEVEL) */
-.skill-node.is-active {
-  transform: scale(1.08);
-  filter: none;
-
-  box-shadow:
-    0 0 8px rgba(255, 215, 0, 0.6),
-    0 0 15px rgba(255, 180, 0, 0.4);
-
-  transition: all 0.25s ease;
-}
-
-/* ACTIVE (HAS LEVEL) */
-.skill-node.is-active {
-  box-shadow: 0 0 10px gold;
-  transform: scale(1.05);
-}
-
-/* HOVER EFFECT */
-.skill-node.is-unlocked:hover {
-  transform: scale(1.1);
-}
-
-.skill-node.clicked {
-  transform: scale(0.9);
-  transition: transform 0.1s ease;
-}
-
-/* CLICK EFFECT */
-.skill-node.clicked {
-  transform: scale(0.9);
-}
-
-/* LOCKED CLICK SHAKE */
-.skill-node.shake {
-  animation: shake 0.3s;
-}
-
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-3px); }
-  50% { transform: translateX(3px); }
-  75% { transform: translateX(-3px); }
-  100% { transform: translateX(0); }
 }
 

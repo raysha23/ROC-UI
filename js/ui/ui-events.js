@@ -61,14 +61,17 @@ export function initializeUIEvents() {
 
     // Set alternate selection images if available
     const selectionPaths = [
+      `images/${job}.png`,
       `images/${job}${currentGender}.png`,
       `images/${currentGender}${job}.png`,
-      `images/${job}.png`,
     ];
 
     const setHeroSelection = (index = 0) => {
       if (!heroSelection || index >= selectionPaths.length) return;
-      heroSelection.onerror = () => setHeroSelection(index + 1);
+      heroSelection.onerror = () => {
+        console.info('hero selection failed to load, trying next:', selectionPaths[index]);
+        setHeroSelection(index + 1);
+      };
       heroSelection.src = selectionPaths[index];
     };
 

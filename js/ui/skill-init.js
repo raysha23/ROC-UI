@@ -119,16 +119,16 @@ export function init() {
   });
 
   maleBtn.addEventListener("click", () => {
-    maleBtn.src = "skill-images/maleactive.png";
-    femaleBtn.src = "skill-images/femaleinactive.png";
+    maleBtn.src = "images/maleactive.png";
+    femaleBtn.src = "images/femaleinactive.png";
     currentGender = "male";
     updateHeroImages(
       document.querySelector(".class-icons img.active").dataset.character,
     );
   });
   femaleBtn.addEventListener("click", () => {
-    femaleBtn.src = "skill-images/femaleactive.png";
-    maleBtn.src = "skill-images/maleinactive.png";
+    femaleBtn.src = "images/femaleactive.png";
+    maleBtn.src = "images/maleinactive.png";
     currentGender = "female";
     updateHeroImages(
       document.querySelector(".class-icons img.active").dataset.character,

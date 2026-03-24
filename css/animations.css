@@ -1,0 +1,15 @@
+/* Ensure hero images have a transition for transform and hint GPU usage */
+#heroImage, .hero-selection img, .character-gif img, .hero-selection-panel img {
+  transition: transform 0.6s cubic-bezier(0.22, 0.8, 0.28, 1);
+  will-change: transform;
+}
+
+/* Move character left when class is added. Adjust the translateX value to taste or replace with vw units for responsiveness. */
+.character-move-left {
+  transform: translateX(-480px);
+}
+
+/* Optional: reverse state (not required but useful) */
+.character-move-reset {
+  transform: translateX(0);
+}

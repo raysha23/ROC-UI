@@ -1522,3 +1522,12 @@ body {
 .skills-btn:active {
   transform: scale(0.97);
 }
+
+.hero-selection img {
+  transition: transform 0.5s ease-in-out;
+  display: block; /* ensures transform works correctly */
+}
+
+.character-move-left {
+  transform: translateX(-300px); /* adjust distance */
+}
