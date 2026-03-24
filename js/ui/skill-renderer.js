@@ -1,13 +1,15 @@
-// File Path: js/ui/skill-renderer.js
+// ================= IMPORTS =================
 import {
   skillLayout,
   skillData,
   skillInfo,
   skillConnections,
 } from "../data/skill-data.js";
+
 import { state, incrementSkill } from "../state/skill-state.js";
 import { updatePoints } from "../systems/skill-utils.js";
 
+// ================= MAIN RENDER FUNCTION =================
 export function renderSkills(character, elements) {
   const {
     skillTreeArea,
@@ -17,9 +19,40 @@ export function renderSkills(character, elements) {
     pointsUsedInput,
   } = elements;
 
+  resetTree(skillTreeArea, character);
+
+  const svg = createSVG(skillTreeArea);
+
+  const skillKeys = getSkillKeys(character);
+  const connMap = buildConnectionMap(character);
+
+  const nodesMap = new Map();
+
+  // ================= CREATE NODES =================
+  skillKeys.forEach((skillKey) => {
+    const node = createSkillNode({
+      skillKey,
+      character,
+      skillTreeArea,
+      skillCard,
+      jobLevelSelect,
+      pointsLeftInput,
+      pointsUsedInput,
+      connMap,
+    });
+
+    skillTreeArea.appendChild(node);
+    nodesMap.set(skillKey, node);
+  });
+
+  // ================= DRAW CONNECTIONS =================
+  drawConnections(svg, skillKeys, nodesMap, connMap);
+}
+
+// ================= RESET TREE =================
+function resetTree(skillTreeArea, character) {
   skillTreeArea.innerHTML = "";
 
-  // Reset character layout classes
   skillTreeArea.classList.remove(
     "novice-layout",
     "swordsman-layout",
@@ -27,204 +60,321 @@ export function renderSkills(character, elements) {
     "archer-layout",
     "acolyte-layout",
     "merchant-layout",
-    "thief-layout",
+    "thief-layout"
   );
 
   if (character) skillTreeArea.classList.add(`${character}-layout`);
 
   skillTreeArea.style.position = "relative";
-  skillTreeArea.style.overflow = "visible"; // allow lines outside
+  skillTreeArea.style.overflow = "visible";
+}
 
-  // ================= SVG =================
+// ================= SVG CREATION =================
+function createSVG(container) {
   const svgNS = "http://www.w3.org/2000/svg";
+
   const svg = document.createElementNS(svgNS, "svg");
   svg.classList.add("skill-connectors-svg");
-  svg.style.position = "absolute";
-  svg.style.top = "0";
-  svg.style.left = "0";
-  svg.style.width = "100%";
-  svg.style.height = "100%";
-  svg.style.pointerEvents = "none"; // avoid blocking clicks
-  svg.style.zIndex = "0"; // behind nodes
-  skillTreeArea.appendChild(svg);
 
-  // ================= DATA =================
-  const skillKeys = (skillData[character] || []).map((f) =>
+  Object.assign(svg.style, {
+    position: "absolute",
+    top: "0",
+    left: "0",
+    width: "100%",
+    height: "100%",
+    pointerEvents: "none",
+    zIndex: "0",
+  });
+
+  container.appendChild(svg);
+  return svg;
+}
+
+// ================= DATA HELPERS =================
+function getSkillKeys(character) {
+  return (skillData[character] || []).map((f) =>
     f.replace(".png", "")
   );
+}
 
+function buildConnectionMap(character) {
   const connKey = character.charAt(0).toUpperCase() + character.slice(1);
   const charConns = skillConnections[connKey] || [];
-  const connMap = new Map();
+
+  const map = new Map();
+
   charConns.forEach(([from, to]) => {
-    const arr = connMap.get(to) || [];
+    const arr = map.get(to) || [];
     arr.push({ skill: from, lv: 1 });
-    connMap.set(to, arr);
+    map.set(to, arr);
   });
 
-  function getReqList(key) {
-    const infoReq = skillInfo[key]?.req ? [...skillInfo[key].req] : [];
-    const connReq = connMap.get(key) || [];
-    const merged = [...infoReq];
-    connReq.forEach((cr) => {
-      if (!merged.some((m) => m.skill === cr.skill)) merged.push(cr);
-    });
-    return merged.length > 0 ? merged : null;
+  return map;
+}
+
+function getRequirements(skillKey, connMap) {
+  const infoReq = skillInfo[skillKey]?.req || [];
+  const connReq = connMap.get(skillKey) || [];
+
+  const merged = [...infoReq];
+
+  connReq.forEach((cr) => {
+    if (!merged.some((m) => m.skill === cr.skill)) {
+      merged.push(cr);
+    }
+  });
+
+  return merged.length ? merged : null;
+}
+
+// ================= NODE CREATION =================
+function createSkillNode(config) {
+  const {
+    skillKey,
+    character,
+    skillTreeArea,
+    skillCard,
+    jobLevelSelect,
+    pointsLeftInput,
+    pointsUsedInput,
+    connMap,
+  } = config;
+
+  const skillFile = skillData[character].find(
+    (f) => f.replace(".png", "") === skillKey
+  );
+
+  const info = skillInfo[skillKey];
+  const maxLv = info?.maxLv || 10;
+
+  if (state.characterSkillLevels[skillKey] === undefined) {
+    state.characterSkillLevels[skillKey] = 0;
   }
 
-  // ================= NODES =================
-  const nodesMap = new Map();
-  skillKeys.forEach((skillKey) => {
-    const skillFile = skillData[character].find(
-      (f) => f.replace(".png", "") === skillKey
-    );
-    const info = skillInfo[skillKey];
+  const reqs = getRequirements(skillKey, connMap);
 
-    if (state.characterSkillLevels[skillKey] === undefined)
-      state.characterSkillLevels[skillKey] = 0;
+  const isLocked =
+    reqs &&
+    reqs.some((r) => (state.characterSkillLevels[r.skill] || 0) < r.lv);
 
-    const reqs = getReqList(skillKey);
-    const isLocked =
-      reqs &&
-      reqs.some((r) => (state.characterSkillLevels[r.skill] || 0) < r.lv);
+  const pos = skillLayout[character]?.[skillKey];
 
-    const pos = skillLayout[character]?.[skillKey];
+  const node = document.createElement("div");
+  node.classList.add("skill-node");
+  node.classList.add(isLocked ? "is-locked" : "is-unlocked");
 
-    const node = document.createElement("div");
-    node.classList.add("skill-node");
-    node.classList.add(isLocked ? "is-locked" : "is-unlocked");
-    if (state.characterSkillLevels[skillKey] > 0) node.classList.add("is-active");
+  if (state.characterSkillLevels[skillKey] > 0) {
+    node.classList.add("is-active");
+  }
 
-    node.style.position = "absolute";
-    node.style.zIndex = "10";
-
-    // Use exact pixel position, no CSS transforms
-    if (pos) {
-      node.style.left = pos.x + "px";
-      node.style.top = pos.y + "px";
-    }
-
-    const maxLv = info?.maxLv || 10;
-
-    node.innerHTML = `
-      <div class="skill-thumb-wrap">
-        <img class="skill-thumb ${isLocked ? "locked-skill" : "active-skill"}"
-          src="images/${character}-skilltree-images/${skillFile}">
-        ${isLocked ? '<div class="skill-lock">🔒</div>' : ""}
-      </div>
-      <span class="skill-level">
-        Lvl ${state.characterSkillLevels[skillKey]}/${maxLv}
-      </span>
-    `;
-
-    // CLICK + HOVER
-    node.addEventListener("click", () => {
-      const reqs = getReqList(skillKey);
-      const currentlyLocked =
-        reqs &&
-        reqs.some((r) => (state.characterSkillLevels[r.skill] || 0) < r.lv);
-
-      if (currentlyLocked) {
-        const neededMap = new Map();
-        function dfs(key) {
-          const rlist = getReqList(key);
-          if (!rlist) return;
-          for (const r of rlist) {
-            const cur = state.characterSkillLevels[r.skill] || 0;
-            const need = Math.max(0, r.lv - cur);
-            if (need > 0)
-              neededMap.set(r.skill, Math.max(need, neededMap.get(r.skill) || 0));
-            dfs(r.skill);
-          }
-        }
-        dfs(skillKey);
-
-        let totalNeeded = 1 + [...neededMap.values()].reduce((a, b) => a + b, 0);
-        if (state.skillPointsLeft >= totalNeeded) {
-          [...neededMap.entries()].forEach(([k, v]) => {
-            const maxForK = skillInfo[k]?.maxLv || 10;
-            for (let i = 0; i < v; i++) incrementSkill(k, maxForK);
-          });
-          incrementSkill(skillKey, maxLv);
-          updatePoints(jobLevelSelect, state, pointsLeftInput, pointsUsedInput);
-          renderSkills(character, elements);
-        } else {
-          jobLevelSelect?.classList.add("insufficient");
-          setTimeout(() => jobLevelSelect?.classList.remove("insufficient"), 3000);
-          node.classList.add("shake");
-          setTimeout(() => node.classList.remove("shake"), 400);
-        }
-        return;
-      }
-
-      if (incrementSkill(skillKey, maxLv)) {
-        updatePoints(jobLevelSelect, state, pointsLeftInput, pointsUsedInput);
-        renderSkills(character, elements);
-      } else {
-        jobLevelSelect?.classList.add("insufficient");
-        setTimeout(() => jobLevelSelect?.classList.remove("insufficient"), 3000);
-        node.classList.add("shake");
-        setTimeout(() => node.classList.remove("shake"), 400);
-      }
-    });
-
-    node.addEventListener("mouseenter", () => {
-      if (!info) return;
-      skillCard.querySelector(".header-main h2").innerHTML =
-        `${info.title} <span class="skill-id">${info.id}</span>`;
-      skillCard.querySelector(".skill-stats").innerHTML = `
-        <tr>
-          <th>Type</th><td>${info.type}</td>
-          <th>Max Lv</th><td>${info.maxLv}</td>
-        </tr>
-        <tr>
-          <th>Effect</th><td colspan="3">
-            ${info.effect || "No description"}
-          </td>
-        </tr>
-      `;
-      skillCard.classList.add("show");
-    });
-    node.addEventListener("mouseleave", () => skillCard.classList.remove("show"));
-
-    skillTreeArea.appendChild(node);
-    nodesMap.set(skillKey, node);
+  Object.assign(node.style, {
+    position: "absolute",
+    zIndex: "10",
+    left: pos?.x + "px",
+    top: pos?.y + "px",
   });
 
-  // ================= DRAW LINES =================
-  requestAnimationFrame(() => {
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
+  node.innerHTML = `
+    <div class="skill-thumb-wrap">
+      <img class="skill-thumb ${isLocked ? "locked-skill" : "active-skill"}"
+        src="images/${character}-skilltree-images/${skillFile}">
+      ${isLocked ? '<div class="skill-lock">🔒</div>' : ""}
+    </div>
+    <span class="skill-level">
+      Lvl ${state.characterSkillLevels[skillKey]}/${maxLv}
+    </span>
+  `;
 
-    // Helper: exact center relative to SVG
-    function getNodeCenter(node) {
+  attachNodeEvents({
+    node,
+    skillKey,
+    maxLv,
+    info,
+    skillCard,
+    jobLevelSelect,
+    pointsLeftInput,
+    pointsUsedInput,
+    connMap,
+    character,
+  });
+
+  return node;
+}
+
+// ================= NODE EVENTS =================
+function attachNodeEvents(config) {
+  const {
+    node,
+    skillKey,
+    maxLv,
+    info,
+    skillCard,
+    jobLevelSelect,
+    pointsLeftInput,
+    pointsUsedInput,
+    connMap,
+    character,
+  } = config;
+
+  node.addEventListener("click", () => {
+    handleSkillClick(
+      skillKey,
+      maxLv,
+      jobLevelSelect,
+      pointsLeftInput,
+      pointsUsedInput,
+      connMap,
+      character
+    );
+  });
+
+  node.addEventListener("mouseenter", () => {
+    showSkillCard(node, info, skillCard);
+  });
+
+  node.addEventListener("mouseleave", () => {
+    skillCard.classList.remove("show");
+  });
+}
+
+// ================= CLICK LOGIC =================
+function handleSkillClick(
+  skillKey,
+  maxLv,
+  jobLevelSelect,
+  pointsLeftInput,
+  pointsUsedInput,
+  connMap,
+  character
+) {
+  const reqs = getRequirements(skillKey, connMap);
+
+  const locked =
+    reqs &&
+    reqs.some((r) => (state.characterSkillLevels[r.skill] || 0) < r.lv);
+
+  if (locked) {
+    shakeUI(jobLevelSelect);
+    return;
+  }
+
+  if (incrementSkill(skillKey, maxLv)) {
+    updatePoints(jobLevelSelect, state, pointsLeftInput, pointsUsedInput);
+    renderSkills(character, {
+      skillTreeArea: document.querySelector(".skill-tree-area"),
+      skillCard: document.querySelector(".skill-card"),
+      jobLevelSelect,
+      pointsLeftInput,
+      pointsUsedInput,
+    });
+  } else {
+    shakeUI(jobLevelSelect);
+  }
+}
+
+// ================= SKILL CARD =================
+function showSkillCard(node, info, skillCard) {
+  if (!info) return;
+
+  // ================= CONTENT =================
+  skillCard.querySelector(".header-main h2").innerHTML =
+    `${info.title} <span class="skill-id">${info.id}</span>`;
+
+  skillCard.querySelector(".skill-stats").innerHTML = `
+    <tr>
+      <th>Type</th><td>${info.type}</td>
+      <th>Max Lv</th><td>${info.maxLv}</td>
+    </tr>
+    <tr>
+      <th>Effect</th><td colspan="3">
+        ${info.effect || "No description"}
+      </td>
+    </tr>
+  `;
+
+  // ================= SHOW FIRST (for measurement) =================
+  skillCard.classList.add("show");
+  skillCard.style.visibility = "hidden"; // prevent flicker
+
+  const nodeRect = node.getBoundingClientRect();
+  const cardRect = skillCard.getBoundingClientRect();
+
+  const margin = 12;
+  const offset = 16;
+
+  // Default position → right side of node
+  let left = nodeRect.right + offset;
+  let top = nodeRect.top;
+
+  // ================= SMART POSITIONING =================
+
+  // If overflowing right → move to left side
+  if (left + cardRect.width > window.innerWidth - margin) {
+    left = nodeRect.left - cardRect.width - offset;
+  }
+
+  // If overflowing bottom → move up
+  if (top + cardRect.height > window.innerHeight - margin) {
+    top = window.innerHeight - cardRect.height - margin;
+  }
+
+  // If too high → push down
+  if (top < margin) {
+    top = margin;
+  }
+
+  // ================= APPLY =================
+  skillCard.style.position = "fixed";
+  skillCard.style.left = `${left}px`;
+  skillCard.style.top = `${top}px`;
+
+  // IMPORTANT: remove center transform
+  skillCard.style.transform = "none";
+
+  skillCard.style.visibility = "visible";
+}
+// ================= DRAW CONNECTIONS =================
+function drawConnections(svg, skillKeys, nodesMap, connMap) {
+  const svgNS = "http://www.w3.org/2000/svg";
+
+  requestAnimationFrame(() => {
+    svg.innerHTML = "";
+
+    function getCenter(node) {
       const rect = node.getBoundingClientRect();
       const containerRect = svg.getBoundingClientRect();
+
       return {
         x: rect.left - containerRect.left + rect.width / 2,
         y: rect.top - containerRect.top + rect.height / 2,
       };
     }
 
-    skillKeys.forEach((skillKey) => {
-      const reqs = getReqList(skillKey);
+    skillKeys.forEach((key) => {
+      const reqs = getRequirements(key, connMap);
       if (!reqs) return;
 
-      const toNode = nodesMap.get(skillKey);
+      const toNode = nodesMap.get(key);
       if (!toNode) return;
-      const toCenter = getNodeCenter(toNode);
+
+      const toCenter = getCenter(toNode);
 
       reqs.forEach((r) => {
         const fromNode = nodesMap.get(r.skill);
         if (!fromNode) return;
-        const fromCenter = getNodeCenter(fromNode);
+
+        const fromCenter = getCenter(fromNode);
 
         const line = document.createElementNS(svgNS, "line");
-        const met = (state.characterSkillLevels[r.skill] || 0) >= r.lv;
+
+        const met =
+          (state.characterSkillLevels[r.skill] || 0) >= r.lv;
 
         line.setAttribute("x1", fromCenter.x);
         line.setAttribute("y1", fromCenter.y);
         line.setAttribute("x2", toCenter.x);
         line.setAttribute("y2", toCenter.y);
+
         line.setAttribute("stroke", met ? "var(--gold-bright)" : "#555");
         line.setAttribute("stroke-width", met ? "4" : "3");
         line.setAttribute("stroke-linecap", "round");
@@ -234,4 +384,10 @@ export function renderSkills(character, elements) {
       });
     });
   });
+}
+
+// ================= UTIL =================
+function shakeUI(el) {
+  el?.classList.add("insufficient");
+  setTimeout(() => el?.classList.remove("insufficient"), 3000);
 }

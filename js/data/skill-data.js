@@ -656,9 +656,9 @@ export const skillTreeTitles = {
 
 export const skillLayout = {
   novice: {
-    NoviceBasicSkill: { x: 80, y: 20 },
-    NoviceFirstAid: { x: 5, y: 130 },
-    NoviceTrickDead: { x: 150, y: 130 },
+    NoviceBasicSkill: { x: 180, y: 20 },
+    NoviceFirstAid: { x: 120, y: 130 },
+    NoviceTrickDead: { x: 250, y: 130 },
   },
   swordsman: {
     SwordsmanSwordMastery: { x: 20, y: 20 },
@@ -740,9 +740,9 @@ export const skillLayout = {
     ThiefEnvenom: { x: 290, y: 20 },
     ThiefSprinkleSand: { x: 20, y: 150 },
     ThiefBackSliding: { x: 110, y: 150 },
-    ThiefPickStone: { x: 200, y: 150 },
-    ThiefThrowStone: { x: 290, y: 150 },
-    ThiefHiding: { x: 20, y: 270 },
-    ThiefDetoxify: { x: 110, y: 270 },
+    ThiefPickStone: { x: 380, y: 20 },
+    ThiefThrowStone: { x: 460, y: 20 },
+    ThiefHiding: { x: 200, y: 270 },
+    ThiefDetoxify: { x: 290, y: 270 },
   },
 };

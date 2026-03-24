@@ -348,3 +348,23 @@
   margin-top: 4px;
   font-family: "Reaver", Arial, sans-serif;
 }
+
+/* Apply consistent row sizing to all grid-based layouts so children align
+   vertically across columns when you position them with grid-row/grid-column. */
+.skill-tree-area.swordsman-layout,
+.skill-tree-area.magician-layout,
+.skill-tree-area.archer-layout,
+.skill-tree-area.acolyte-layout,
+.skill-tree-area.merchant-layout,
+.skill-tree-area.thief-layout {
+  grid-auto-rows: var(--node-row);
+  align-content: start;    /* keep rows starting at the top */
+  justify-items: center;   /* center content in each grid cell */
+}
+
+/* Novice layout is flex-based; force equal vertical centering so icons sit
+   on the same baseline. */
+.skill-tree-area.novice-layout {
+  align-items: center; /* center vertically inside the single-row flex */
+  height: var(--node-row); /* keep consistent height so connectors line up */
+}
