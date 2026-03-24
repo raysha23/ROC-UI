@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      #homePage {
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 35%;
+      }
+
+      .left-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .right-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .left-head-container {
+        height: 22%;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .navigate-image-container {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 40% 60%;
+      }
+
+      .left-panel-navigation {
+        padding: 10px;
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .weapon-job-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+      }
+
+      .sub-right-head-container {
+        display: grid;
+        grid-template-columns: 20% 40% 40%;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .right-navigations {
+        padding: 10px;
+      }
+    </style>
+
+    <!-- project styles -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/skill-styles.css" />
+
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="homePage" class="page active">
+        <div class="left-container">
+          <div class="left-head-container">
+            <div class="vital-stats">
+              <img src="images/swordsmanBarmale.png" class="bars-character" />
+
+              <div class="level-box">
+                <span class="lvl-label">BASE LVL.</span>
+                <input type="text" class="lvl-value-input" value="99" />
+              </div>
+
+              <div class="bars-container">
+                <div class="bar-row">
+                  <div class="bar-label">HP</div>
+                  <div class="bar-bg">
+                    <div class="bar-fill hp-fill"></div>
+                  </div>
+                  <input class="bar-text-input" value="4250 / 5000" readonly />
+                </div>
+
+                <div class="bar-row">
+                  <div class="bar-label">SP</div>
+                  <div class="bar-bg">
+                    <div class="bar-fill sp-fill"></div>
+                  </div>
+                  <input class="bar-text-input" value="1250 / 2000" readonly />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-navigate-image-container">
+            <div class="left-panel-navigation">
+              <div class="job-menu">
+                <div class="job-item active">Novice</div>
+                <div class="job-item">Swordsman</div>
+                <div class="job-item">Magician</div>
+                <div class="job-item">Archer</div>
+              </div>
+            </div>
+
+            <!-- <div class="gender-image-container">
+               <div class="gender-container">
+                <img src="images/maleactive.png" id="maleBtn" />
+                <img src="images/femaleinactive.png" id="femaleBtn" />
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="right-container">
+          <div class="right-head-container">
+            <div class="weapon-job-container">
+              <select>
+                <option>Weapon</option>
+              </select>
+
+              <select>
+                <option>Job Level</option>
+              </select>
+            </div>
+
+            <div class="sub-right-head-container">
+              <div>Icons</div>
+              <div>
+                <img src="images/novice.gif" width="100" />
+              </div>
+              <div>
+                <h3>Novice</h3>
+                <p>Description here...</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="right-navigations">
+            <button onclick="goToSkills()">SKILLS</button>
+          </div>
+
+          <div class="stats-container">
+            <h2>Stats Area</h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPA skill container (used by main.js for in-place skill UI injection) -->
+      <div id="skillContainer" class="page" style="display:none"></div>
+    </div>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

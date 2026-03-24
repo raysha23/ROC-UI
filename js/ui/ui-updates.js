@@ -39,22 +39,24 @@ export function updateUI() {
   const statOrder = ["str", "agi", "vit", "int", "dex", "luk"];
 
   statOrder.forEach((statName, index) => {
-    const row = elements.statRows[statName];
+    const row = elements.statRows && elements.statRows[statName];
+    if (!row) return; // skip if UI for stat row not present on this page
 
     const input = row.querySelector(".stat-input");
     const plusBtn = row.querySelector(".stat-btn.plus");
     const minusBtn = row.querySelector(".stat-btn.minus");
 
     const value = character.stats[statName];
-
     const cost = getStatIncreaseCost(value);
 
-    input.value = value;
+    if (input) input.value = value;
 
-    elements.ptsReqDisplays[index].textContent = cost;
+    if (elements.ptsReqDisplays && elements.ptsReqDisplays[index]) {
+      elements.ptsReqDisplays[index].textContent = cost;
+    }
 
-    plusBtn.disabled = value >= 99 || character.availablePoints < cost;
-    minusBtn.disabled = value <= 1;
+    if (plusBtn) plusBtn.disabled = value >= 99 || character.availablePoints < cost;
+    if (minusBtn) minusBtn.disabled = value <= 1;
   });
 
   // ================= HP / SP =================
@@ -62,19 +64,17 @@ export function updateUI() {
   const maxSP = combatStats.maxSP;
 
   // Using the bar-row and classes to target HP
-  const hpText = document
-    .querySelector(".bar-row .hp-fill")
-    ?.closest(".bar-row")
-    .querySelector(".bar-text-input");
+  const hpFill = document.querySelector(".bar-row .hp-fill");
+  const hpRow = hpFill ? hpFill.closest(".bar-row") : null;
+  const hpText = hpRow ? hpRow.querySelector(".bar-text-input") : null;
   if (hpText) {
     hpText.value = `${maxHP.toLocaleString()} / ${maxHP.toLocaleString()}`;
   }
 
   // Using the bar-row and classes to target SP
-  const spText = document
-    .querySelector(".bar-row .sp-fill")
-    ?.closest(".bar-row")
-    .querySelector(".bar-text-input");
+  const spFill = document.querySelector(".bar-row .sp-fill");
+  const spRow = spFill ? spFill.closest(".bar-row") : null;
+  const spText = spRow ? spRow.querySelector(".bar-text-input") : null;
   if (spText) {
     spText.value = `${maxSP.toLocaleString()} / ${maxSP.toLocaleString()}`;
   }

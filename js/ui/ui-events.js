@@ -12,42 +12,35 @@ import { getTotalJobBonus } from "../systems/joblevel-system.js";
 import { jobData } from "../data/job-data.js";
 
 export function initializeUIEvents() {
-  const {
-    heroImage,
-    innateLeftImgs,
-    barsCharacter,
-    heroSelection,
-    jobItems,
-    weaponSelect,
-    maleBtn,
-    femaleBtn,
-    levelInput,
-  } = elements;
+  // Prefer elements provided by initializeElements, fall back to querying the DOM
+  const heroImage = elements.heroImage || document.getElementById('heroImage');
+  const innateLeftImgs = (elements.innateLeftImgs && Array.from(elements.innateLeftImgs)) || Array.from(document.querySelectorAll('.innate-left img'));
+  const barsCharacter = elements.barsCharacter || document.querySelector('.bars-character');
+  const heroSelection = elements.heroSelection || document.querySelector('.hero-selection img');
+  const jobItems = elements.jobItems || document.querySelectorAll('.job-item');
+  const weaponSelect = elements.weaponSelect || document.getElementById('weapon-select');
+  const maleBtn = elements.maleBtn || document.getElementById('maleBtn');
+  const femaleBtn = elements.femaleBtn || document.getElementById('femaleBtn');
+  const levelInput = elements.levelInput || document.querySelector('.lvl-value-input');
 
-  if (
-    !heroImage ||
-    !innateLeftImgs ||
-    innateLeftImgs.length === 0 ||
-    !jobItems
-  ) {
-    console.error(
-      "Essential UI elements for In-game job controls are missing.",
-    );
+  // Minimal essential check: if there are no job items and no heroImage, nothing to initialize for this module
+  if (!heroImage && (!jobItems || jobItems.length === 0)) {
+    // Not the in-game UI page
     return;
   }
+
+  // Now proceed using the local variables
 
   const heroes = CharacterImages.heroes;
   const jobIcons = CharacterImages.icons;
   const barsCharacterImages = CharacterImages.bars;
   const heroSelectionImages = CharacterImages.selection;
 
-  let currentGender = "male";
+  let currentGender = 'male';
 
   // ================= HERO IMAGE =================
   function initializeHero(heroName) {
-    const hero =
-      heroes.find((h) => h.name.toLowerCase() === heroName.toLowerCase()) ||
-      heroes[0];
+    const hero = (heroes && heroes.find((h) => h.name.toLowerCase() === heroName.toLowerCase())) || (heroes && heroes[0]);
 
     const job = heroName.toLowerCase();
 
@@ -82,7 +75,7 @@ export function initializeUIEvents() {
     setHeroSelection(0);
 
     // Display innate icons list (non-gendered)
-    const imgs = hero.innateLeft;
+    const imgs = (hero && hero.innateLeft) || [];
     imgs.forEach((src, i) => {
       if (innateLeftImgs[i]) innateLeftImgs[i].src = src;
     });
@@ -277,18 +270,19 @@ export function initializeUIEvents() {
       const bonusLevels = Object.keys(jobData[job].jobBonus || {}).map(Number);
       const maxJobLevel = bonusLevels.length ? Math.max(...bonusLevels) : 9;
 
-      elements.jobLevelInput.innerHTML = "";
+      if (elements.jobLevelInput) {
+        elements.jobLevelInput.innerHTML = "";
+        for (let i = 1; i <= maxJobLevel; i++) {
+          const option = document.createElement("option");
+          option.value = i;
+          option.textContent = i;
+          elements.jobLevelInput.appendChild(option);
+        }
 
-      for (let i = 1; i <= maxJobLevel; i++) {
-        const option = document.createElement("option");
-        option.value = i;
-        option.textContent = i;
-        elements.jobLevelInput.appendChild(option);
+        // ✅ RESET JOB LEVEL
+        character.jobLevel = 1;
+        elements.jobLevelInput.value = 1;
       }
-
-      // ✅ RESET JOB LEVEL
-      character.jobLevel = 1;
-      elements.jobLevelInput.value = 1;
 
       updateJobBonusUI(); // will now show 0 bonuses
 

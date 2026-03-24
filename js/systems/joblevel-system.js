@@ -21,9 +21,24 @@ export function updateJobLevel(newLevel) {
 // ======================================================
 
 export function getTotalJobBonus() {
-  const job = elements.jobTitle.textContent.toLowerCase();
-  const currentLevel = character.jobLevel || 1;
-  const bonusData = jobData[job].jobBonus || {};
+  // Prefer elements.jobTitle if available, otherwise fall back to active job item or 'novice'
+  let job = 'novice';
+  try {
+    if (elements && elements.jobTitle && elements.jobTitle.textContent) {
+      job = elements.jobTitle.textContent.toLowerCase();
+    } else {
+      const activeJobItem = document.querySelector('.job-item.active');
+      if (activeJobItem && activeJobItem.dataset && activeJobItem.dataset.job) {
+        job = activeJobItem.dataset.job.toLowerCase();
+      }
+    }
+  } catch (e) {
+    // ignore and use default
+  }
+
+  const currentLevel = (character && character.jobLevel) || 1;
+  const jobEntry = (jobData && jobData[job]) ? jobData[job] : (jobData && jobData['novice']) ? jobData['novice'] : {};
+  const bonusData = jobEntry.jobBonus || {};
 
   // Initialize stats
   const totalBonus = { str: 0, agi: 0, vit: 0, int: 0, dex: 0, luk: 0 };
