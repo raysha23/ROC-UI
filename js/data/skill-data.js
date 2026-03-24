@@ -99,6 +99,7 @@ export const skillInfo = {
     id: "142",
     type: "Quest",
     maxLv: 1,
+    req: [{ skill: "NoviceBasicSkill", lv: 1 }],
     effect: "Heal 5 HP.",
     levels: [],
   },
@@ -527,6 +528,53 @@ export const skillInfo = {
   },
 };
 
+export const skillConnections = {
+  Novice: [
+    ["NoviceBasicSkill", "NoviceFirstAid"],
+    ["NoviceBasicSkill", "NoviceTrickDead"],
+  ],
+  Swordsman: [
+    ["SwordsmanSwordMastery", "SwordsmanTwoHandedSM"],
+    ["SwordsmanBash", "SwordsmanMagnumBreak"],
+    ["SwordsmanProvoke", "SwordsmanEndure"],
+  ],
+  Magician: [
+    ["MagicianNapalmBeat", "MagicianSoulStrike"],
+    ["MagicianSoulStrike", "MagicianSafetyWall"],
+    ["MagicianSight", "MagicianFireWall"],
+    ["MagicianFireBolt", "MagicianFireBall"],
+    ["MagicianFireBall", "MagicianFireWall"],
+    ["MagicianColdBolt", "MagicianFrostDiver"],
+    ["MagicianLightningBolt", "MagicianThunderStorm"],
+  ],
+  Archer: [
+    ["ArcherOwlsEye", "ArcherVulturesEye"],
+    ["ArcherVulturesEye", "ArcherAttentionConcentrate"],
+    ["ArcherDoubleStrafing", "ArcherArrowShower"],
+  ],
+  Merchant: [
+    ["MerchantEnlargeWeightLimit", "MerchantDiscount"],
+    ["MerchantEnlargeWeightLimit", "MerchantPushcart"],
+    ["MerchantDiscount", "MerchantOvercharge"],
+    ["MerchantPushcart", "MerchantVending"],
+  ],
+  Thief: [
+    ["ThiefSteal", "ThiefHiding"],
+    ["ThiefEnvenom", "ThiefDetoxify"],
+  ],
+  Acolyte: [
+    ["AcolyteDivineProtection", "AcolyteDemonBane"],
+    ["AcolyteDivineProtection", "AcolyteAngelus"],
+    ["AcolyteDemonBane", "AcolyteSignumCrucis"],
+    ["AcolyteHeal", "AcolyteCure"],
+    ["AcolyteHeal", "AcolyteIncreaseAgility"],
+    ["AcolyteIncreaseAgility", "AcolyteDecreaseAgility"],
+    ["AcolyteRuwach", "AcolyteTeleportation"],
+    ["AcolyteTeleportation", "AcolyteWarpPortal"],
+    ["AcolyteWarpPortal", "AcolytePneuma"],
+  ],
+};
+
 export const characterImages = {
   novice: {
     active: "images/noviceactive.png",
@@ -604,4 +652,97 @@ export const skillTreeTitles = {
   acolyte: `ACOLYTE SKILL TREE`,
   merchant: `MERCHANT SKILL TREE`,
   thief: `THIEF SKILL TREE`,
+};
+
+export const skillLayout = {
+  novice: {
+    NoviceBasicSkill: { x: 80, y: 20 },
+    NoviceFirstAid: { x: 5, y: 130 },
+    NoviceTrickDead: { x: 150, y: 130 },
+  },
+  swordsman: {
+    SwordsmanSwordMastery: { x: 20, y: 20 },
+    SwordsmanIncreaseRP: { x: 110, y: 20 },
+    SwordsmanBash: { x: 190, y: 20 },
+    SwordsmanProvoke: { x: 270, y: 20 },
+    SwordsmanMovingHP: { x: 350, y: 20 },
+    SwordsmanFatalBlow: { x: 420, y: 20 },
+    SwordsmanAutoBerserk: { x: 500, y: 20 },
+
+    SwordsmanTwoHandedSM: { x: 20, y: 150 },
+    SwordsmanMagnumBreak: { x: 190, y: 150 },
+    SwordsmanEndure: { x: 270, y: 150 },
+  },
+  magician: {
+    MagicianIncreaseSPRecovery: { x: 20, y: 20 },
+    MagicianSight: { x: 110, y: 20 },
+    MagicianNapalmBeat: { x: 190, y: 20 },
+    MagicianColdBolt: { x: 270, y: 20 },
+    MagicianStoneCurse: { x: 350, y: 20 },
+    MagicianFireBolt: { x: 420, y: 20 },
+    MagicianLightningBolt: { x: 500, y: 20 },
+    MagicianEnergyCoat: { x: 580, y: 20 },
+
+    MagicianSoulStrike: { x: 190, y: 120 },
+    MagicianSafetyWall: { x: 190, y: 200 },
+    MagicianFrostDiver: { x: 270, y: 120 },
+    MagicianFireBall: { x: 420, y: 270 },
+    MagicianFireWall: { x: 110, y: 270 },
+    MagicianThunderStorm: { x: 500, y: 120 },
+  },
+  archer: {
+    ArcherOwlsEye: { x: 20, y: 20 },
+    ArcherDoubleStrafing: { x: 110, y: 20 },
+    ArcherMakingArrow: { x: 200, y: 20 },
+    ArcherChargeArrow: { x: 290, y: 20 },
+
+    ArcherVulturesEye: { x: 20, y: 150 },
+    ArcherAttentionConcentrate: { x: 20, y: 300 },
+    ArcherArrowShower: { x: 110, y: 150 },
+  },
+  acolyte: {
+    AcolyteDivineProtection: { x: 150, y: 20},
+    AcolyteRuwach: { x: 230, y: 20 },
+    AcolyteHeal: { x: 310, y: 20 },
+    AcolyteAquaBenedicta: { x: 380, y: 20 },
+    AcolyteHolyLight: { x: 450, y: 20 },
+
+    AcolyteDemonBane: { x: 150, y: 150},
+    AcolytePneuma: { x: 230, y: 400 },
+    AcolyteTeleportation: { x: 230, y: 150 },
+    AcolyteWarpPortal: { x: 230, y: 270 },
+    AcolyteIncreaseAgility: { x: 310, y: 150 },
+    AcolyteDecreaseAgility: { x: 310, y: 400 },
+    AcolyteSignumCrucis: { x: 150, y: 400},
+    AcolyteAngelus: { x: 70, y: 150},
+    AcolyteBlessing: { x: 70, y: 20},
+    AcolyteCure: { x: 380, y: 150 },
+  },
+  merchant: {
+    MerchantEnlargeWeightLimit: { x: 70, y: 20},
+    MerchantIdentify: { x: 140, y: 20 },
+    MerchantMammonite: { x: 210, y: 20 },
+    MerchantCartRevolution: { x: 280, y: 20 },
+    MerchantChangeCart: { x: 350, y: 20 },
+    MerchantLoudExclamation: { x: 420, y: 20 },
+    MerchantCartDecoration: { x: 500, y: 20 },
+
+    MerchantDiscount: { x: 70, y: 150 },
+    MerchantOvercharge: { x: 70, y: 300 },
+    MerchantPushcart: { x: 140, y: 150 },
+    MerchantVending: { x: 140, y: 300 },
+    MerchantBuyingStore: { x: 210, y: 300 },
+  },
+  thief: {
+    ThiefDoubleAttack: { x: 20, y: 20 },
+    ThiefIncreaseDodge: { x: 110, y: 20 },
+    ThiefSteal: { x: 200, y: 20 },
+    ThiefEnvenom: { x: 290, y: 20 },
+    ThiefSprinkleSand: { x: 20, y: 150 },
+    ThiefBackSliding: { x: 110, y: 150 },
+    ThiefPickStone: { x: 200, y: 150 },
+    ThiefThrowStone: { x: 290, y: 150 },
+    ThiefHiding: { x: 20, y: 270 },
+    ThiefDetoxify: { x: 110, y: 270 },
+  },
 };
