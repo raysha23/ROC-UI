@@ -684,7 +684,7 @@ export const skillLayout = {
     MagicianEnergyCoat: { x: 580, y: 20 },
 
     MagicianSoulStrike: { x: 190, y: 120 },
-    MagicianSafetyWall: { x: 190, y: 200 },
+    MagicianSafetyWall: { x: 190, y: 230 },
     MagicianFrostDiver: { x: 270, y: 120 },
     MagicianFireBall: { x: 420, y: 270 },
     MagicianFireWall: { x: 110, y: 270 },

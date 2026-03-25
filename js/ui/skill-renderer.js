@@ -1,3 +1,4 @@
+//File path: js/ui/skill-renderer.js
 // ================= IMPORTS =================
 import {
   skillLayout,
@@ -60,7 +61,7 @@ function resetTree(skillTreeArea, character) {
     "archer-layout",
     "acolyte-layout",
     "merchant-layout",
-    "thief-layout"
+    "thief-layout",
   );
 
   if (character) skillTreeArea.classList.add(`${character}-layout`);
@@ -92,9 +93,7 @@ function createSVG(container) {
 
 // ================= DATA HELPERS =================
 function getSkillKeys(character) {
-  return (skillData[character] || []).map((f) =>
-    f.replace(".png", "")
-  );
+  return (skillData[character] || []).map((f) => f.replace(".png", ""));
 }
 
 function buildConnectionMap(character) {
@@ -141,7 +140,7 @@ function createSkillNode(config) {
   } = config;
 
   const skillFile = skillData[character].find(
-    (f) => f.replace(".png", "") === skillKey
+    (f) => f.replace(".png", "") === skillKey,
   );
 
   const info = skillInfo[skillKey];
@@ -150,13 +149,15 @@ function createSkillNode(config) {
   if (state.characterSkillLevels[skillKey] === undefined) {
     state.characterSkillLevels[skillKey] = 0;
   }
+  console.log("CLICK:", skillKey);
 
   const reqs = getRequirements(skillKey, connMap);
 
   const isLocked =
-    reqs &&
-    reqs.some((r) => (state.characterSkillLevels[r.skill] || 0) < r.lv);
+    reqs && reqs.some((r) => (state.characterSkillLevels[r.skill] || 0) < r.lv);
 
+  console.log("Is Locked?", isLocked);
+  console.log("Current Levels:", state.characterSkillLevels);
   const pos = skillLayout[character]?.[skillKey];
 
   const node = document.createElement("div");
@@ -174,17 +175,26 @@ function createSkillNode(config) {
     top: pos?.y + "px",
   });
 
-  node.innerHTML = `
-    <div class="skill-thumb-wrap">
-      <img class="skill-thumb ${isLocked ? "locked-skill" : "active-skill"}"
-        src="images/${character}-skilltree-images/${skillFile}">
-      ${isLocked ? '<div class="skill-lock">🔒</div>' : ""}
-    </div>
-    <span class="skill-level">
-      Lvl ${state.characterSkillLevels[skillKey]}/${maxLv}
-    </span>
-  `;
+  const level = state.characterSkillLevels[skillKey] || 0;
 
+  let skillClass = "locked-skill";
+
+  if (level > 0) {
+    skillClass = "active-skill"; // ✅ highest priority
+  } else if (!isLocked) {
+    skillClass = "unlocked-skill";
+  }
+
+  node.innerHTML = `
+  <div class="skill-thumb-wrap">
+    <img class="skill-thumb ${skillClass}"
+      src="images/${character}-skilltree-images/${skillFile}">
+    ${isLocked ? '<div class="skill-lock">🔒</div>' : ""}
+  </div>
+  <span class="skill-level">
+    Lvl ${level}/${maxLv}
+  </span>
+`;
   attachNodeEvents({
     node,
     skillKey,
@@ -217,6 +227,7 @@ function attachNodeEvents(config) {
   } = config;
 
   node.addEventListener("click", () => {
+    skillCard.classList.remove("show");
     handleSkillClick(
       skillKey,
       maxLv,
@@ -224,7 +235,7 @@ function attachNodeEvents(config) {
       pointsLeftInput,
       pointsUsedInput,
       connMap,
-      character
+      character,
     );
   });
 
@@ -236,6 +247,29 @@ function attachNodeEvents(config) {
     skillCard.classList.remove("show");
   });
 }
+function fulfillRequirements(skillKey, connMap) {
+  const reqs = getRequirements(skillKey, connMap);
+  if (!reqs) return true;
+
+  for (const r of reqs) {
+    let currentLv = state.characterSkillLevels[r.skill] || 0;
+
+    // 🔁 FIRST: fulfill THIS skill's own requirements
+    const ok = fulfillRequirements(r.skill, connMap);
+    if (!ok) return false;
+
+    // 🔁 THEN: raise level to required
+    while (currentLv < r.lv) {
+      const success = incrementSkill(r.skill, skillInfo[r.skill]?.maxLv || 10);
+
+      if (!success) return false;
+
+      currentLv++;
+    }
+  }
+
+  return true;
+}
 
 // ================= CLICK LOGIC =================
 function handleSkillClick(
@@ -245,24 +279,25 @@ function handleSkillClick(
   pointsLeftInput,
   pointsUsedInput,
   connMap,
-  character
+  character,
 ) {
   const reqs = getRequirements(skillKey, connMap);
 
-  const locked =
-    reqs &&
-    reqs.some((r) => (state.characterSkillLevels[r.skill] || 0) < r.lv);
+  // ================= AUTO UNLOCK (RECURSIVE) =================
+  const ok = fulfillRequirements(skillKey, connMap);
 
-  if (locked) {
+  if (!ok) {
     shakeUI(jobLevelSelect);
     return;
   }
 
+  // ================= APPLY TARGET SKILL =================
   if (incrementSkill(skillKey, maxLv)) {
     updatePoints(jobLevelSelect, state, pointsLeftInput, pointsUsedInput);
+
     renderSkills(character, {
       skillTreeArea: document.querySelector(".skill-tree-area"),
-      skillCard: document.querySelector(".skill-card"),
+      skillCard: document.querySelector(".ro-skill-card"),
       jobLevelSelect,
       pointsLeftInput,
       pointsUsedInput,
@@ -274,9 +309,9 @@ function handleSkillClick(
 
 // ================= SKILL CARD =================
 function showSkillCard(node, info, skillCard) {
-  if (!info) return;
+  if (!info || !skillCard) return;
 
-  // ================= CONTENT =================
+  // CONTENT
   skillCard.querySelector(".header-main h2").innerHTML =
     `${info.title} <span class="skill-id">${info.id}</span>`;
 
@@ -292,45 +327,9 @@ function showSkillCard(node, info, skillCard) {
     </tr>
   `;
 
-  // ================= SHOW FIRST (for measurement) =================
+  // ONLY SHOW
   skillCard.classList.add("show");
-  skillCard.style.visibility = "hidden"; // prevent flicker
-
-  const nodeRect = node.getBoundingClientRect();
-  const cardRect = skillCard.getBoundingClientRect();
-
-  const margin = 12;
-  const offset = 16;
-
-  // Default position → right side of node
-  let left = nodeRect.right + offset;
-  let top = nodeRect.top;
-
-  // ================= SMART POSITIONING =================
-
-  // If overflowing right → move to left side
-  if (left + cardRect.width > window.innerWidth - margin) {
-    left = nodeRect.left - cardRect.width - offset;
-  }
-
-  // If overflowing bottom → move up
-  if (top + cardRect.height > window.innerHeight - margin) {
-    top = window.innerHeight - cardRect.height - margin;
-  }
-
-  // If too high → push down
-  if (top < margin) {
-    top = margin;
-  }
-
-  // ================= APPLY =================
   skillCard.style.position = "fixed";
-  skillCard.style.left = `${left}px`;
-  skillCard.style.top = `${top}px`;
-
-  // IMPORTANT: remove center transform
-  skillCard.style.transform = "none";
-
   skillCard.style.visibility = "visible";
 }
 // ================= DRAW CONNECTIONS =================
@@ -367,8 +366,7 @@ function drawConnections(svg, skillKeys, nodesMap, connMap) {
 
         const line = document.createElementNS(svgNS, "line");
 
-        const met =
-          (state.characterSkillLevels[r.skill] || 0) >= r.lv;
+        const met = (state.characterSkillLevels[r.skill] || 0) >= r.lv;
 
         line.setAttribute("x1", fromCenter.x);
         line.setAttribute("y1", fromCenter.y);

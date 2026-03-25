@@ -1,3 +1,4 @@
+//File Path: js/ui/skill-init.js
 import {
   skillData,
   characterImages,
@@ -5,7 +6,11 @@ import {
   skillTreeTitles,
 } from "../data/skill-data.js";
 import { state, resetState } from "../state/skill-state.js";
-import { populateJobLevels, updatePoints, typeMessage } from "../systems/skill-utils.js";
+import {
+  populateJobLevels,
+  updatePoints,
+  typeMessage,
+} from "../systems/skill-utils.js";
 import { renderSkills } from "../ui/skill-renderer.js";
 
 export function init() {
@@ -23,12 +28,15 @@ export function init() {
   const pointsUsedInput = document.getElementById("pointsUsed");
 
   // mouse follow for card
-  document.addEventListener("mousemove", (e) => {
-    if (skillCard && skillCard.classList.contains("show")) {
-      skillCard.style.top = e.clientY + 20 + "px";
-      skillCard.style.left = e.clientX + 20 + "px";
-    }
-  });
+ document.addEventListener("mousemove", (e) => {
+  if (skillCard && skillCard.classList.contains("show")) {
+    skillCard.style.left =
+      e.clientX - skillCard.offsetWidth - 20 + "px";
+
+    skillCard.style.top =
+      e.clientY - skillCard.offsetHeight / 2 + "px";
+  }
+});
 
   // Populate job levels for skill page: clamp to 1-50 (job level depends on home page)
   populateJobLevels(jobLevelSelect, 1, 50);
@@ -61,7 +69,9 @@ export function init() {
   currentGender = urlParams.get("gender") || "male";
   // Accept jobLevel passed from home page; clamp 1-50
   const urlJobLevel = parseInt(urlParams.get("jobLevel"), 10);
-  const initialJobLevel = !isNaN(urlJobLevel) ? Math.max(1, Math.min(50, urlJobLevel)) : 1;
+  const initialJobLevel = !isNaN(urlJobLevel)
+    ? Math.max(1, Math.min(50, urlJobLevel))
+    : 50;
   if (jobLevelSelect) jobLevelSelect.value = initialJobLevel;
   // Update points UI based on initial job level
   updatePoints(jobLevelSelect, state, pointsLeftInput, pointsUsedInput);
@@ -95,19 +105,33 @@ export function init() {
     } else {
       icon.src = characterImages[charName].inactive;
     }
-
     icon.addEventListener("click", () => {
+      // ✅ RESET EVERYTHING
+      resetState();
+
+      // ✅ FORCE JOB LEVEL TO 50
+      jobLevelSelect.value = 50;
+
+      // ✅ RECALCULATE POINTS BASED ON 50
+      updatePoints(jobLevelSelect, state, pointsLeftInput, pointsUsedInput);
+
+      // ================= EXISTING CODE =================
       classIcons.forEach(
         (i) => (i.src = characterImages[i.dataset.character].inactive),
       );
+
       icon.src = characterImages[charName].active;
+
       document
         .querySelector(".class-icons img.active")
         ?.classList.remove("active");
+
       icon.classList.add("active");
+
       updateHeroImages(charName);
       typeMessage(messageText, characterMessages[charName]);
       updateSkillTreeTitle(skillTreeTitles[charName]);
+
       renderSkills(charName, {
         skillTreeArea,
         skillCard,
